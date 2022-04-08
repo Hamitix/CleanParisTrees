@@ -14,6 +14,9 @@
 		A8E2D0A92800626F0088CFDD /* TreeOPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0A82800626F0088CFDD /* TreeOPTests.swift */; };
 		A8E2D0B32800626F0088CFDD /* TreeOPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0B22800626F0088CFDD /* TreeOPUITests.swift */; };
 		A8E2D0B52800626F0088CFDD /* TreeOPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0B42800626F0088CFDD /* TreeOPUITestsLaunchTests.swift */; };
+		A8E2D0C7280064C40088CFDD /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0C6280064C40088CFDD /* Tree.swift */; };
+		A8E2D0CB280068BC0088CFDD /* ParisOpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CA280068BC0088CFDD /* ParisOpenDataAPI.swift */; };
+		A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CC28006D270088CFDD /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		A8E2D0AE2800626F0088CFDD /* TreeOPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeOPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E2D0B22800626F0088CFDD /* TreeOPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPUITests.swift; sourceTree = "<group>"; };
 		A8E2D0B42800626F0088CFDD /* TreeOPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A8E2D0C6280064C40088CFDD /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		A8E2D0CA280068BC0088CFDD /* ParisOpenDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParisOpenDataAPI.swift; sourceTree = "<group>"; };
+		A8E2D0CC28006D270088CFDD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +100,12 @@
 		A8E2D0962800626E0088CFDD /* TreeOP */ = {
 			isa = PBXGroup;
 			children = (
-				A8E2D0972800626E0088CFDD /* TreeOPApp.swift */,
-				A8E2D0992800626E0088CFDD /* ContentView.swift */,
+				A8E2D0C82800687D0088CFDD /* WebService */,
+				A8E2D0C2280064090088CFDD /* Common */,
+				A8E2D0C5280064350088CFDD /* Views */,
+				A8E2D0C4280064220088CFDD /* Controllers */,
+				A8E2D0C3280064150088CFDD /* ViewModels */,
+				A8E2D0C1280064030088CFDD /* Models */,
 				A8E2D09B2800626F0088CFDD /* Assets.xcassets */,
 				A8E2D09D2800626F0088CFDD /* Preview Content */,
 			);
@@ -125,6 +135,53 @@
 				A8E2D0B42800626F0088CFDD /* TreeOPUITestsLaunchTests.swift */,
 			);
 			path = TreeOPUITests;
+			sourceTree = "<group>";
+		};
+		A8E2D0C1280064030088CFDD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A8E2D0C6280064C40088CFDD /* Tree.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A8E2D0C2280064090088CFDD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A8E2D0972800626E0088CFDD /* TreeOPApp.swift */,
+				A8E2D0CC28006D270088CFDD /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A8E2D0C3280064150088CFDD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A8E2D0C4280064220088CFDD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8E2D0C5280064350088CFDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8E2D0992800626E0088CFDD /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A8E2D0C82800687D0088CFDD /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				A8E2D0CA280068BC0088CFDD /* ParisOpenDataAPI.swift */,
+			);
+			path = WebService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +314,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */,
+				A8E2D0C7280064C40088CFDD /* Tree.swift in Sources */,
 				A8E2D09A2800626E0088CFDD /* ContentView.swift in Sources */,
+				A8E2D0CB280068BC0088CFDD /* ParisOpenDataAPI.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
