@@ -9,6 +9,14 @@ import Foundation
 
 struct K {
     static let titleApp = "Tree OP"
+    static let titleMainView = "List of Trees"
+    
+    struct TreeItem {
+        static let species = "Species : "
+        static let height = "Height : "
+        static let circumference = "Circumference : "
+        static let adress = "Adress : "
+    }
     
     struct OpenDataAPI {
         static let baseURL = "https://opendata.paris.fr/api/"

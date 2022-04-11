@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8D58E072804170B009C3705 /* ListTreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D58E062804170B009C3705 /* ListTreeItem.swift */; };
 		A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0972800626E0088CFDD /* TreeOPApp.swift */; };
 		A8E2D09A2800626E0088CFDD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0992800626E0088CFDD /* MainView.swift */; };
 		A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E2D09B2800626F0088CFDD /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A8D58E062804170B009C3705 /* ListTreeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeItem.swift; sourceTree = "<group>"; };
 		A8E2D0942800626E0088CFDD /* TreeOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E2D0972800626E0088CFDD /* TreeOPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPApp.swift; sourceTree = "<group>"; };
 		A8E2D0992800626E0088CFDD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				A8E2D0992800626E0088CFDD /* MainView.swift */,
+				A8D58E062804170B009C3705 /* ListTreeItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				A8E2D0CB280068BC0088CFDD /* ParisOpenDataAPI.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,
 				A8E2D0CF28008A100088CFDD /* MainViewModel.swift in Sources */,
+				A8D58E072804170B009C3705 /* ListTreeItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

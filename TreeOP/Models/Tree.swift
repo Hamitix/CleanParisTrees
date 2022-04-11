@@ -33,3 +33,11 @@ struct Tree: Decodable {
         case circumference = "circonferenceencm"
     }
 }
+
+extension Tree {
+    static let sampleData = Tree(name: "Pommier", species: "trilobata", adress: "Rue Victor Hugo", height: 5, circumference:  34)
+}
+
+extension RecordsData {
+    static let sampleData = RecordsData(recordid: "0", fields: Tree.sampleData)
+}

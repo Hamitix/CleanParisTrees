@@ -17,18 +17,15 @@ struct MainView: View {
     }
     
     var body: some View {
-        Text(K.titleApp)
+        Text(K.titleMainView)
             .padding()
         
-        
         List(mainViewModel.records) { record in
-            Text(record.fields.name)
-                .padding()
-        }
+            ListTreeItem(record: record)
+        }.listStyle(.inset)
+        
         .onAppear(perform: mainViewModel.getTreesData)
     }
-    
-    
 }
 
 struct MainView_Previews: PreviewProvider {
