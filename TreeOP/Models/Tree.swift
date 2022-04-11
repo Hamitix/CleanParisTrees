@@ -8,14 +8,20 @@
 import Foundation
 
 struct Trees: Decodable {
-    let records: [RecordData]
+    let nhits: Int
+    let records: [RecordsData]
 }
 
-struct RecordData: Decodable {
-    let fields: TreeData
+struct RecordsData: Decodable, Identifiable {
+    let recordid: String
+    let fields: Tree
+    
+    var id: String {
+        recordid
+       }
 }
 
-struct TreeData: Decodable {
+struct Tree: Decodable {
     let name, species, adress: String
     let height, circumference: Int
     

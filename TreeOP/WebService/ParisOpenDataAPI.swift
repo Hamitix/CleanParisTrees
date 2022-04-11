@@ -7,12 +7,18 @@
 
 import Foundation
 
+
+// MARK: Protocol DataService
+protocol DataService {
+    func apiGetDataTrees(completion: @escaping ([RecordsData]) -> Void)
+}
+
 // MARK: ParisOpenDataAPI
-class ParisOpenDataAPI : NSObject {
+class ParisOpenDataAPI : NSObject, DataService {
     
     private let url = URL(string: "\(K.OpenDataAPI.baseURL)\(K.OpenDataAPI.query)")!
     
-    func apiGetTreesData(completion: @escaping (Trees) -> ()) {
+    func apiGetDataTrees(completion: @escaping ([RecordsData]) -> ()) {
         
         URLSession.shared.dataTask(with: url) { data, response
             , error in
@@ -20,10 +26,10 @@ class ParisOpenDataAPI : NSObject {
             if let data = data {
                 let jsonDecoder = JSONDecoder()
                 
-                if  let treesData = try? jsonDecoder.decode(Trees.self, from: data) {
-                    completion(treesData)
+                if let trees = try? jsonDecoder.decode(Trees.self, from: data) {
+                    completion(trees.records)
                 }
-                else  {
+                else {
                     print("\(K.OpenDataAPI.errorDecodingData)\( String(describing: error))")
                 }
             } else {
