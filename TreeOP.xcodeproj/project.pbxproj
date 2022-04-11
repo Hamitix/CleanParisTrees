@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0972800626E0088CFDD /* TreeOPApp.swift */; };
-		A8E2D09A2800626E0088CFDD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0992800626E0088CFDD /* ContentView.swift */; };
+		A8E2D09A2800626E0088CFDD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0992800626E0088CFDD /* MainView.swift */; };
 		A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E2D09B2800626F0088CFDD /* Assets.xcassets */; };
 		A8E2D09F2800626F0088CFDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E2D09E2800626F0088CFDD /* Preview Assets.xcassets */; };
 		A8E2D0A92800626F0088CFDD /* TreeOPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0A82800626F0088CFDD /* TreeOPTests.swift */; };
@@ -17,6 +17,7 @@
 		A8E2D0C7280064C40088CFDD /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0C6280064C40088CFDD /* Tree.swift */; };
 		A8E2D0CB280068BC0088CFDD /* ParisOpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CA280068BC0088CFDD /* ParisOpenDataAPI.swift */; };
 		A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CC28006D270088CFDD /* Constants.swift */; };
+		A8E2D0CF28008A100088CFDD /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CE28008A100088CFDD /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,7 @@
 /* Begin PBXFileReference section */
 		A8E2D0942800626E0088CFDD /* TreeOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E2D0972800626E0088CFDD /* TreeOPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPApp.swift; sourceTree = "<group>"; };
-		A8E2D0992800626E0088CFDD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A8E2D0992800626E0088CFDD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A8E2D09B2800626F0088CFDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8E2D09E2800626F0088CFDD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A8E2D0A42800626F0088CFDD /* TreeOPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeOPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +51,7 @@
 		A8E2D0C6280064C40088CFDD /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		A8E2D0CA280068BC0088CFDD /* ParisOpenDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParisOpenDataAPI.swift; sourceTree = "<group>"; };
 		A8E2D0CC28006D270088CFDD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A8E2D0CE28008A100088CFDD /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,6 @@
 				A8E2D0C82800687D0088CFDD /* WebService */,
 				A8E2D0C2280064090088CFDD /* Common */,
 				A8E2D0C5280064350088CFDD /* Views */,
-				A8E2D0C4280064220088CFDD /* Controllers */,
 				A8E2D0C3280064150088CFDD /* ViewModels */,
 				A8E2D0C1280064030088CFDD /* Models */,
 				A8E2D09B2800626F0088CFDD /* Assets.xcassets */,
@@ -157,21 +158,15 @@
 		A8E2D0C3280064150088CFDD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A8E2D0CE28008A100088CFDD /* MainViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		A8E2D0C4280064220088CFDD /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A8E2D0C5280064350088CFDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A8E2D0992800626E0088CFDD /* ContentView.swift */,
+				A8E2D0992800626E0088CFDD /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,9 +311,10 @@
 			files = (
 				A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */,
 				A8E2D0C7280064C40088CFDD /* Tree.swift in Sources */,
-				A8E2D09A2800626E0088CFDD /* ContentView.swift in Sources */,
+				A8E2D09A2800626E0088CFDD /* MainView.swift in Sources */,
 				A8E2D0CB280068BC0088CFDD /* ParisOpenDataAPI.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,
+				A8E2D0CF28008A100088CFDD /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
