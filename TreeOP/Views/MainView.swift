@@ -22,7 +22,10 @@ struct MainView: View {
         
         List(mainViewModel.records) { record in
             ListTreeItem(record: record)
-        }.listStyle(.inset)
+                .listRowSeparatorTint(Color("separator"))
+                .listRowSeparator(.hidden, edges: .top)
+        }
+        .listStyle(.inset)
         
         .onAppear(perform: mainViewModel.getTreesData)
     }

@@ -18,7 +18,7 @@ struct RecordsData: Decodable, Identifiable {
     
     var id: String {
         recordid
-       }
+    }
 }
 
 struct Tree: Decodable {

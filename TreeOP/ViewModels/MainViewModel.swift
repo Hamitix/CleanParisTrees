@@ -22,7 +22,7 @@ class MainViewModel: ObservableObject {
         dataService.apiGetDataTrees {[weak self] recordsData in
             DispatchQueue.main.async {
                 self?.records = recordsData
-            } 
+            }
         }
     }
 }
