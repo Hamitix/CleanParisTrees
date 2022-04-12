@@ -30,10 +30,10 @@ class ParisOpenDataAPI : NSObject, DataService {
                     completion(trees.records)
                 }
                 else {
-                    print("\(K.OpenDataAPI.errorDecodingData)\( String(describing: error))")
+                    print("errorDecodingData \(String(describing: error))")
                 }
             } else {
-                print("\(K.OpenDataAPI.errorRetrievingData)\(String(describing: error))")
+                print("errorRetrievingData \(String(describing: error))")
             }
         }.resume()
     }

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8D58E072804170B009C3705 /* ListTreeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D58E062804170B009C3705 /* ListTreeItem.swift */; };
+		A85AEEB32805A6CE009EB14E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AEEB22805A6CE009EB14E /* DetailView.swift */; };
+		A85AEEB52805A74A009EB14E /* View Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AEEB42805A74A009EB14E /* View Extensions.swift */; };
+		A8D58E2C2805814A009C3705 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A8D58E2E2805814A009C3705 /* Localizable.stringsdict */; };
 		A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0972800626E0088CFDD /* TreeOPApp.swift */; };
 		A8E2D09A2800626E0088CFDD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0992800626E0088CFDD /* MainView.swift */; };
 		A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E2D09B2800626F0088CFDD /* Assets.xcassets */; };
@@ -39,7 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A8D58E062804170B009C3705 /* ListTreeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeItem.swift; sourceTree = "<group>"; };
+		A85AEEB22805A6CE009EB14E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		A85AEEB42805A74A009EB14E /* View Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extensions.swift"; sourceTree = "<group>"; };
+		A8D58E2D2805814A009C3705 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		A8D58E2F28058163009C3705 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A8E2D0942800626E0088CFDD /* TreeOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E2D0972800626E0088CFDD /* TreeOPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPApp.swift; sourceTree = "<group>"; };
 		A8E2D0992800626E0088CFDD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -81,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8D58E272805812D009C3705 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				A8D58E2E2805814A009C3705 /* Localizable.stringsdict */,
+			);
+			name = Ressources;
+			path = WebService/Ressources;
+			sourceTree = "<group>";
+		};
 		A8E2D08B2800626D0088CFDD = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +118,7 @@
 		A8E2D0962800626E0088CFDD /* TreeOP */ = {
 			isa = PBXGroup;
 			children = (
+				A8D58E272805812D009C3705 /* Ressources */,
 				A8E2D0C82800687D0088CFDD /* WebService */,
 				A8E2D0C2280064090088CFDD /* Common */,
 				A8E2D0C5280064350088CFDD /* Views */,
@@ -153,6 +168,7 @@
 			children = (
 				A8E2D0972800626E0088CFDD /* TreeOPApp.swift */,
 				A8E2D0CC28006D270088CFDD /* Constants.swift */,
+				A85AEEB42805A74A009EB14E /* View Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -169,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				A8E2D0992800626E0088CFDD /* MainView.swift */,
-				A8D58E062804170B009C3705 /* ListTreeItem.swift */,
+				A85AEEB22805A6CE009EB14E /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +284,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = A8E2D08B2800626D0088CFDD;
 			productRefGroup = A8E2D0952800626E0088CFDD /* Products */;
@@ -288,6 +305,7 @@
 			files = (
 				A8E2D09F2800626F0088CFDD /* Preview Assets.xcassets in Resources */,
 				A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */,
+				A8D58E2C2805814A009C3705 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,12 +331,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */,
+				A85AEEB32805A6CE009EB14E /* DetailView.swift in Sources */,
 				A8E2D0C7280064C40088CFDD /* Tree.swift in Sources */,
 				A8E2D09A2800626E0088CFDD /* MainView.swift in Sources */,
+				A85AEEB52805A74A009EB14E /* View Extensions.swift in Sources */,
 				A8E2D0CB280068BC0088CFDD /* ParisOpenDataAPI.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,
 				A8E2D0CF28008A100088CFDD /* MainViewModel.swift in Sources */,
-				A8D58E072804170B009C3705 /* ListTreeItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,11 +373,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		A8D58E2E2805814A009C3705 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8D58E2D2805814A009C3705 /* en */,
+				A8D58E2F28058163009C3705 /* fr */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		A8E2D0B62800626F0088CFDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -419,6 +451,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

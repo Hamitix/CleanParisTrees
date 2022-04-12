@@ -15,27 +15,28 @@ struct Trees: Decodable {
 struct RecordsData: Decodable, Identifiable {
     let recordid: String
     let fields: Tree
-    
+
     var id: String {
         recordid
     }
 }
 
 struct Tree: Decodable {
-    let name, species, adress: String
+    let name, species, address, address2: String
     let height, circumference: Int
     
     enum CodingKeys: String, CodingKey {
         case name = "libellefrancais"
         case species = "espece"
         case height = "hauteurenm"
-        case adress = "adresse"
+        case address = "adresse"
+        case address2 = "arrondissement"
         case circumference = "circonferenceencm"
     }
 }
 
 extension Tree {
-    static let sampleData = Tree(name: "Pommier", species: "trilobata", adress: "Rue Victor Hugo", height: 5, circumference:  34)
+    static let sampleData = Tree(name: "Pommier", species: "trilobata", address: "Rue Victor Hugo", address2: "PARIS 20 ARRDT ", height: 5, circumference:  34)
 }
 
 extension RecordsData {
