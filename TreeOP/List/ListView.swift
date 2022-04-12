@@ -8,18 +8,18 @@
 import SwiftUI
 
 
-struct MainView: View {
+struct ListView: View {
     
-    @StateObject var mainViewModel: MainViewModel
+    @StateObject var listViewModel: ListViewModel
     
-    init(viewModel: MainViewModel = .init()) {
-        _mainViewModel = StateObject(wrappedValue: viewModel)
+    init(viewModel: ListViewModel = .init()) {
+        _listViewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
         
         NavigationView {
-            List(mainViewModel.records) { record in
+            List(listViewModel.records) { record in
                 
                 NavigationLink(destination: DetailView(record: record)) {
                     Text("\(record.fields.name)")
@@ -31,13 +31,13 @@ struct MainView: View {
             .padding(.trailing)
             
             .navigationTitle(Text("titleMainView"))
-            .onAppear(perform: mainViewModel.getTreesData)
+            .onAppear(perform: listViewModel.getTreesData)
         }
     }
 }
 
-struct MainView_Previews: PreviewProvider {
+struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        ListView()
     }
 }

@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-class MainViewModel: ObservableObject {
+class ListViewModel: ObservableObject {
     
     @Published var records = [RecordsData]()
     
