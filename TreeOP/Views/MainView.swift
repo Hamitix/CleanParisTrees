@@ -17,17 +17,22 @@ struct MainView: View {
     }
     
     var body: some View {
-        Text(K.titleMainView)
-            .padding()
         
-        List(mainViewModel.records) { record in
-            ListTreeItem(record: record)
+        NavigationView {
+            List(mainViewModel.records) { record in
+                
+                NavigationLink(destination: DetailView(record: record)) {
+                    Text("\(record.fields.name)")
+                }
                 .listRowSeparatorTint(Color("separator"))
                 .listRowSeparator(.hidden, edges: .top)
+            }
+            .listStyle(.inset)
+            .padding(.trailing)
+            
+            .navigationTitle(Text("titleMainView"))
+            .onAppear(perform: mainViewModel.getTreesData)
         }
-        .listStyle(.inset)
-        
-        .onAppear(perform: mainViewModel.getTreesData)
     }
 }
 
