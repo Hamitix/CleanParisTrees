@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MapKit
 
 struct Trees: Decodable {
     let nhits: Int
@@ -40,16 +39,6 @@ struct Tree: Decodable, Hashable {
 struct Geometry: Decodable, Hashable {
     let type: String
     let coordinates: [Double]
-    
-    var coordinateCL: CLLocationCoordinate2D {
-        switch coordinates.count {
-            
-        case Int.min...1:
-            return CLLocationCoordinate2D()
-
-        default: return  CLLocationCoordinate2D(latitude: self.coordinates[1], longitude: self.coordinates[0])
-        }
-    }
 }
 
 extension Geometry {

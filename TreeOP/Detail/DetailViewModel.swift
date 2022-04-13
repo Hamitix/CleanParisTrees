@@ -6,19 +6,28 @@
 //
 
 import Foundation
-import MapKit
 
 class DetailViewModel: ObservableObject {
     
-    var record: RecordsData
+    @Published var record: RecordsData?
     
-    @Published var mapRegion = MKCoordinateRegion.init()
+    @Published var annotationItems: [RecordsData] = [RecordsData]()
+    @Published var latitude: Double = 0
+    @Published var longitude: Double = 0
     
-    init(record: RecordsData) {
+    init(record: RecordsData?) {
         self.record = record
     }
     
-    func getMapCoordinates() {
-        self.mapRegion = MKCoordinateRegion(center: self.record.geometry.coordinateCL, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
+    func updateCoordinates() {
+        if let safeRecord = record  {
+            
+            if(safeRecord.geometry.coordinates.count >= 2) {
+                self.longitude = safeRecord.geometry.coordinates[0]
+                self.latitude = safeRecord.geometry.coordinates[1]
+            }
+            
+            self.annotationItems = [safeRecord]
+        }
     }
 }
