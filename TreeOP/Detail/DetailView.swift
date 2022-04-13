@@ -1,4 +1,5 @@
 //
+
 //  DetailView.swift
 //  TreeOP
 //
@@ -6,10 +7,18 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DetailView: View {
     
     let record: RecordsData
+    
+    @StateObject var detailViewModel: DetailViewModel
+    
+    init(record: RecordsData, viewModel: DetailViewModel = .init(record: RecordsData.sampleData)) {
+        self.record = record
+        _detailViewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -37,14 +46,22 @@ struct DetailView: View {
             
             Text("Address \(record.fields.address.localizedCapitalized) \(record.fields.address2.localizedCapitalized)" , comment: "display the address where you can find this tree")
                 .padding(.bottom, 5)
-                
-            Spacer()
+            
+            Map(coordinateRegion: $detailViewModel.mapRegion, interactionModes: MapInteractionModes.all , annotationItems: [detailViewModel.record]) { record in
+                MapMarker(coordinate: record.geometry.coordinateCL, tint: .red)
+            }
+            
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
         .navigationTitle(Text(record.fields.name))
         .navigationBarTitleDisplayMode(.inline)
+        
+        .onAppear {
+            self.detailViewModel.record = self.record
+            self.detailViewModel.getMapCoordinates()
+        }
     }
 }
 

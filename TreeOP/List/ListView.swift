@@ -27,6 +27,7 @@ struct ListView: View {
                         Text("\(record.fields.name)")
                     }
                 }
+
                 .listRowSeparatorTint(Color("separator"))
                 .listRowSeparator(.hidden, edges: .top)
             }
@@ -35,6 +36,7 @@ struct ListView: View {
             
             .navigationTitle(Text("titleMainView"))
         }
+        .navigationViewStyle(.stack)
         .onAppear(perform: listViewModel.getTreesData)
     }
 }

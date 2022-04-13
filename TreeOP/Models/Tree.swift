@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct Trees: Decodable {
     let nhits: Int
@@ -15,6 +16,7 @@ struct Trees: Decodable {
 struct RecordsData: Decodable, Identifiable, Hashable {
     let recordid: String
     let fields: Tree
+    let geometry: Geometry
     
     var id: String {
         recordid
@@ -35,10 +37,33 @@ struct Tree: Decodable, Hashable {
     }
 }
 
+struct Geometry: Decodable, Hashable {
+    let type: String
+    let coordinates: [Double]
+    
+    var coordinateCL: CLLocationCoordinate2D {
+        switch coordinates.count {
+            
+        case Int.min...1:
+            return CLLocationCoordinate2D()
+
+        default: return  CLLocationCoordinate2D(latitude: self.coordinates[1], longitude: self.coordinates[0])
+        }
+    }
+}
+
+extension Geometry {
+    static let sampleData = Geometry(type: "Point", coordinates: [
+        2.349718604917588,
+        48.89082227307561
+    ])
+}
+
+
 extension Tree {
     static let sampleData = Tree(name: "Pommier", species: "trilobata", address: "Rue Victor Hugo", address2: "PARIS 20 ARRDT ", height: 5, circumference:  34)
 }
 
 extension RecordsData {
-    static let sampleData = RecordsData(recordid: "0", fields: Tree.sampleData)
+    static let sampleData = RecordsData(recordid: "0", fields: Tree.sampleData, geometry: Geometry.sampleData)
 }
