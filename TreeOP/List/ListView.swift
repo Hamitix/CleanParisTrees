@@ -19,10 +19,13 @@ struct ListView: View {
     var body: some View {
         
         NavigationView {
-            List(listViewModel.records) { record in
+            
+            List{
                 
-                NavigationLink(destination: DetailView(record: record)) {
-                    Text("\(record.fields.name)")
+                ForEach(listViewModel.records, id: \.self) { record in
+                    NavigationLink(destination: DetailView(record: record)) {
+                        Text("\(record.fields.name)")
+                    }
                 }
                 .listRowSeparatorTint(Color("separator"))
                 .listRowSeparator(.hidden, edges: .top)
@@ -31,8 +34,8 @@ struct ListView: View {
             .padding(.trailing)
             
             .navigationTitle(Text("titleMainView"))
-            .onAppear(perform: listViewModel.getTreesData)
         }
+        .onAppear(perform: listViewModel.getTreesData)
     }
 }
 

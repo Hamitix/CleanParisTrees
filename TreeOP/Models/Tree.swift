@@ -12,16 +12,16 @@ struct Trees: Decodable {
     let records: [RecordsData]
 }
 
-struct RecordsData: Decodable, Identifiable {
+struct RecordsData: Decodable, Identifiable, Hashable {
     let recordid: String
     let fields: Tree
-
+    
     var id: String {
         recordid
     }
 }
 
-struct Tree: Decodable {
+struct Tree: Decodable, Hashable {
     let name, species, address, address2: String
     let height, circumference: Int
     
