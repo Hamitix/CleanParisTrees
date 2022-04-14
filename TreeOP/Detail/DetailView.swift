@@ -10,11 +10,10 @@ import SwiftUI
 import MapKit
 
 struct DetailView: View {
-        
-    @ObservedObject var detailViewModel = DetailViewModel(record: nil)
     
-    @State var regionMap: MKCoordinateRegion = MKCoordinateRegion.init()
-    @State var cllCoordinates: CLLocationCoordinate2D = CLLocationCoordinate2D.init()
+    @ObservedObject var detailViewModel = DetailViewModel()
+    
+    @State var mapRegion: MKCoordinateRegion = MKCoordinateRegion.init()
     
     init(record: RecordsData) {
         detailViewModel.record = record
@@ -47,11 +46,11 @@ struct DetailView: View {
                 .padding(.bottom, 5)
             
             
-            Map(coordinateRegion: self.$regionMap, interactionModes: MapInteractionModes.all
-                , annotationItems: self.detailViewModel.annotationItems ) { marker in
-                MapMarker(coordinate: self.cllCoordinates, tint: .red)
+            Map(coordinateRegion: self.$mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems ) { item in
+                MapMarker(coordinate: detailViewModel.cllCoordinates, tint: .red)
             }
         }
+        
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
@@ -60,18 +59,9 @@ struct DetailView: View {
         
         .onAppear {
             self.detailViewModel.updateCoordinates()
-            
-            self.setCLLCoordinates()
-            self.setRegion()
+    
+            self.mapRegion = MKCoordinateRegion(center: detailViewModel.cllCoordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
         }
-    }
-    
-    func setCLLCoordinates() {
-        self.cllCoordinates = CLLocationCoordinate2D(latitude: self.detailViewModel.latitude, longitude: self.detailViewModel.longitude)
-    }
-    
-    func setRegion() {
-        self.regionMap = MKCoordinateRegion(center: self.cllCoordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
     }
 }
 
