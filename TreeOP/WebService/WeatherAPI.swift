@@ -1,17 +1,17 @@
 //
-//  ParisOpenDataAPI.swift
+//  WeatherAPI.swift
 //  TreeOP
 //
-//  Created by Dylan HAMITI on 08/04/2022.
+//  Created by Dylan HAMITI on 14/04/2022.
 //
 
 import Foundation
 
-class ParisOpenDataAPI : NSObject, TreeDataService {
+class WeatherAPI: NSObject, WeatherDataService {
     
-    private let url = URL(string: "\(K.OpenDataAPI.baseURL)\(K.OpenDataAPI.query)")!
-    
-    func apiGetDataTrees(completion: @escaping ([RecordsData]) -> ()) {
+    func apiGetWeatherData(lat: Double, long: Double, completion: @escaping (Double) -> Void) {
+        
+        let url = URL(string: "\(K.WeatherAPI.baseURL)lat=\(lat)&lon=\(long)&appid=\(K.WeatherAPI.keyAPI)&units=metric")!
         
         URLSession.shared.dataTask(with: url) { data, response
             , error in
@@ -19,8 +19,8 @@ class ParisOpenDataAPI : NSObject, TreeDataService {
             if let data = data {
                 let jsonDecoder = JSONDecoder()
                 
-                if let trees = try? jsonDecoder.decode(Trees.self, from: data) {
-                    completion(trees.records)
+                if let weatherData = try? jsonDecoder.decode(WeatherResponse.self, from: data) {
+                    completion(weatherData.main.temperature)
                 }
                 else {
                     print("errorDecodingData \(String(describing: error))")

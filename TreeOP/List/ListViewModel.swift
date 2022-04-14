@@ -11,9 +11,9 @@ class ListViewModel: ObservableObject {
     
     @Published var records = [RecordsData]()
     
-    let dataService: DataService
+    let dataService: TreeDataService
     
-    init(dataService: DataService = ParisOpenDataAPI()) {
+    init(dataService: TreeDataService = ParisOpenDataAPI()) {
         self.dataService = dataService
     }
     

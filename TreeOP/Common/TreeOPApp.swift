@@ -11,7 +11,19 @@ import SwiftUI
 struct TreeOPApp: App {
     var body: some Scene {
         WindowGroup {
-            ListView()
+            TabView {
+                ListView()
+                    .tabItem {
+                        Image(systemName: "list.bullet")
+                        Text("Trees")
+                    }
+                
+                InfosView()
+                    .tabItem {
+                        Image(systemName: "questionmark.circle")
+                        Text("General Infos")
+                    }
+            }
         }
     }
 }

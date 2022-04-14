@@ -18,6 +18,18 @@
 	<string>Erreur en recupérant les données : %@</string>
 	<key>errorDecodingData %@</key>
 	<string>Erreur en décodant les données : %@ </string>
+	<key>Temperature</key>
+	<string>Température : </string>
+	<key>Air Quality</key>
+	<string>Qualité de l&apos;Air :</string>
+	<key>Trees</key>
+	<string>Arbres</string>
+	<key>General Infos</key>
+	<string>Informations Générales</string>
+	<key>Paris</key>
+	<string>Paris</string>
+	<key>Description %@</key>
+	<string>Description : %@</string>
 	<key>StringKey</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
