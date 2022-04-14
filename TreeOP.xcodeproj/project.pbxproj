@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A85AEEB32805A6CE009EB14E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AEEB22805A6CE009EB14E /* DetailView.swift */; };
 		A85AEEB52805A74A009EB14E /* View Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AEEB42805A74A009EB14E /* View Extensions.swift */; };
-		A8A2C5FE2808112A00431AFE /* AirQualityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A2C5FD2808112A00431AFE /* AirQualityAPI.swift */; };
 		A8A2C6002808114000431AFE /* AirQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A2C5FF2808114000431AFE /* AirQuality.swift */; };
 		A8A2C60228085E1B00431AFE /* AirQualityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A2C60128085E1B00431AFE /* AirQualityView.swift */; };
 		A8D58E2C2805814A009C3705 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A8D58E2E2805814A009C3705 /* Localizable.stringsdict */; };
@@ -52,7 +51,6 @@
 /* Begin PBXFileReference section */
 		A85AEEB22805A6CE009EB14E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		A85AEEB42805A74A009EB14E /* View Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extensions.swift"; sourceTree = "<group>"; };
-		A8A2C5FD2808112A00431AFE /* AirQualityAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityAPI.swift; sourceTree = "<group>"; };
 		A8A2C5FF2808114000431AFE /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
 		A8A2C60128085E1B00431AFE /* AirQualityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityView.swift; sourceTree = "<group>"; };
 		A8D58E2D2805814A009C3705 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				A8E2D0CA280068BC0088CFDD /* ParisOpenDataAPI.swift */,
 				A8F3FF46280808EE0090B3B5 /* WeatherAPI.swift */,
 				A8F3FF48280809980090B3B5 /* Protocols.swift */,
-				A8A2C5FD2808112A00431AFE /* AirQualityAPI.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -377,7 +374,6 @@
 				A8F3FF3C2805CA410090B3B5 /* DetailViewModel.swift in Sources */,
 				A85AEEB52805A74A009EB14E /* View Extensions.swift in Sources */,
 				A8E2D0CB280068BC0088CFDD /* ParisOpenDataAPI.swift in Sources */,
-				A8A2C5FE2808112A00431AFE /* AirQualityAPI.swift in Sources */,
 				A8F3FF43280807BC0090B3B5 /* InfosView.swift in Sources */,
 				A8F3FF47280808EE0090B3B5 /* WeatherAPI.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AirQualityView: View {
     
-    let aqIndex: Double
+    let aqIndex: Int
     let aqIDesc: String
     
     var body: some View {
@@ -22,7 +22,7 @@ struct AirQualityView: View {
                     ProgressView()
                         .padding(.horizontal)
                 } else {
-                    Text(String(format: "%.0f", aqIndex))
+                    Text("\(aqIndex)")
                 }
             }
             .padding()

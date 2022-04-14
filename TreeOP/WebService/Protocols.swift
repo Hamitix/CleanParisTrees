@@ -15,5 +15,7 @@ protocol TreeDataService {
 
 // MARK: Protocol WeatherDataService
 protocol WeatherDataService {
-    func apiGetWeatherData(lat: Double, long: Double, completion: @escaping (Double) -> Void)
+    func getWeatherData(lat: Double, long: Double, completion: @escaping (Double) -> Void)
+    
+    func getAirQualityData(lat: Double, long: Double, completion: @escaping (Int) -> Void)
 }

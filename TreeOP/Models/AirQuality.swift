@@ -13,7 +13,7 @@ struct AirQualityResponse: Decodable {
 }
 
 struct AQData: Decodable {
-    let aqIndex: Double
+    let aqIndex: Int
     
     enum CodingKeys: String, CodingKey {
         case aqIndex = "aqi"
