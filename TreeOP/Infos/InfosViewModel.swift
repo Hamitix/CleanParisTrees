@@ -44,18 +44,16 @@ class InfosViewModel: ObservableObject {
     
     func getAQDesc(id: Int) -> String {
         switch id {
-        case 0...50:
+        case 1:
             return "Good"
-        case 51...100:
+        case 2:
+            return "Fair"
+        case 3:
             return "Moderate"
-        case 101...150:
-            return "Unhealthy for sensitive groups"
-        case 151...200:
-            return "Unhealthy"
-        case 201...300:
-            return "Very unhealthy"
-        case 300...Int.max:
-            return "Hazardous"
+        case 4:
+            return "Poor"
+        case 5:
+            return "Very Poor"
         default:
             return "Couldn't process data"
         }

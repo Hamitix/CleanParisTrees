@@ -10,7 +10,7 @@ import Foundation
 
 struct WeatherResponse: Decodable {
     let weather: [Weather]
-    let main: Main
+    let main: MainWeather
 }
 
 struct Weather: Decodable {
@@ -19,7 +19,7 @@ struct Weather: Decodable {
     let description: String
 }
 
-struct Main: Decodable {
+struct MainWeather: Decodable {
     let temperature: Double
     
     enum CodingKeys: String, CodingKey {

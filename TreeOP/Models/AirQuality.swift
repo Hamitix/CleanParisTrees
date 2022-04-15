@@ -8,14 +8,18 @@
 import Foundation
 
 struct AirQualityResponse: Decodable {
-    let status: String
-    let data: AQData
+    
+    let data: [AQData]
+    
+    enum CodingKeys: String, CodingKey {
+        case data = "list"
+    }
 }
 
 struct AQData: Decodable {
-    let aqIndex: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case aqIndex = "aqi"
-    }
+    let main: MainAQI
+}
+
+struct MainAQI: Decodable {
+    let aqi: Int
 }

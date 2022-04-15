@@ -33,7 +33,7 @@ class WeatherAPI: NSObject, WeatherDataService {
     
     func getWeatherData(lat: Double, long: Double, completion: @escaping (Double) -> Void) {
         
-        let url =  "\(K.WeatherAPI.baseURL)lat=\(lat)&lon=\(long)&appid=\(K.WeatherAPI.keyAPI)&units=metric"
+        let url =  "\(K.WeatherAPI.baseURL)weather?lat=\(lat)&lon=\(long)&appid=\(K.WeatherAPI.keyAPI)&units=metric"
         
         self.genericRequest(stringURL: url) { (res: WeatherResponse) in
             DispatchQueue.main.async {
@@ -44,11 +44,11 @@ class WeatherAPI: NSObject, WeatherDataService {
     
     func getAirQualityData(lat: Double, long: Double, completion: @escaping (Int) -> Void) {
         
-        let url: String = "\(K.AirQualityAPI.baseURL)\(lat);\(long)?token=\(K.AirQualityAPI.keyAPI)"
+        let url =  "\(K.WeatherAPI.baseURL)air_pollution?lat=\(lat)&lon=\(long)&appid=\(K.WeatherAPI.keyAPI)&units=metric"
         
         self.genericRequest(stringURL: url) { (res: AirQualityResponse) in
             DispatchQueue.main.async {
-                completion(res.data.aqIndex)
+                completion(res.data.first?.main.aqi ?? 0)
             }
         }
     }

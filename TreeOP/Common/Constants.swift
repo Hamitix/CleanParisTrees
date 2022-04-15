@@ -14,7 +14,8 @@ struct K {
     
     struct OpenDataAPI {
         static let baseURL = "https://opendata.paris.fr/api/"
-        static let query = "records/1.0/search/?dataset=les-arbres&q=&rows=20&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable"
+        static let query = "records/1.0/search/?dataset=les-arbres&q=&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable"
+
     }
     
     struct Map {
@@ -24,7 +25,8 @@ struct K {
     
     struct WeatherAPI {
         static let keyAPI = "bffc2bd3a2ab6f94b7cdfd793266b8c4"
-        static let baseURL = "https://api.openweathermap.org/data/2.5/weather?"
+        static let baseURL = "https://api.openweathermap.org/data/2.5/"
+        
     }
     
     struct AirQualityAPI {

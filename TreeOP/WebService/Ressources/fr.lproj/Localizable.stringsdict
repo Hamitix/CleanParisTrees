@@ -28,8 +28,18 @@
 	<string>Informations Générales</string>
 	<key>Paris</key>
 	<string>Paris</string>
-	<key>Description %@</key>
-	<string>Description : %@</string>
+	<key>Description</key>
+	<string>Description :</string>
+	<key>Good</key>
+	<string>Bien</string>
+	<key>Fair</key>
+	<string>Normal</string>
+	<key>Moderate</key>
+	<string>Modéré</string>
+	<key>Poor</key>
+	<string>Déterioré</string>
+	<key>Very Poor</key>
+	<string>Très Déterioré</string>
 	<key>StringKey</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

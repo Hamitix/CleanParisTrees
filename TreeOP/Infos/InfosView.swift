@@ -36,7 +36,7 @@ struct InfosView: View {
             
             Divider()
             
-            AirQualityView(aqIndex: infosViewModel.airQuality, aqIDesc: infosViewModel.aqiDescription)
+            AirQualityView(aqIDesc: infosViewModel.aqiDescription)
         }
         .onAppear {
             if(infosViewModel.weather == 0) {
