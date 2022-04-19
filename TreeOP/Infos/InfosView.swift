@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfosView: View {
     
-    @StateObject var infosViewModel: InfosViewModel
+    @StateObject  private var infosViewModel: InfosViewModel
     
     init (viewModel: InfosViewModel = .init(latitude: K.latParis, longitude: K.longParis)) {
         _infosViewModel = StateObject(wrappedValue: viewModel)

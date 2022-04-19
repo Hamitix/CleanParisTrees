@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ListView: View {
     
-    @StateObject var listViewModel: ListViewModel
+    @StateObject private var listViewModel: ListViewModel
     
     init(viewModel: ListViewModel = .init()) {
         _listViewModel = StateObject(wrappedValue: viewModel)
@@ -21,13 +21,9 @@ struct ListView: View {
         NavigationView {
             
             List{
-                
                 ForEach(listViewModel.records, id: \.self) { record in
-                    NavigationLink(destination: DetailView(record: record)) {
-                        Text("\(record.fields.name)")
-                    }
+                    ListItem(record: record)
                 }
-
                 .listRowSeparatorTint(Color("separator"))
                 .listRowSeparator(.hidden, edges: .top)
             }
@@ -37,7 +33,11 @@ struct ListView: View {
             .navigationTitle(Text("titleMainView"))
         }
         .navigationViewStyle(.stack)
-        .onAppear(perform: listViewModel.getTreesData)
+        .onAppear{
+            if(listViewModel.records.count == 0) {
+                listViewModel.getTreesData()
+            }
+        }
     }
 }
 

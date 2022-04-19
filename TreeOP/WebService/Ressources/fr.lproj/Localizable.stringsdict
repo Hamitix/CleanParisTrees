@@ -40,6 +40,8 @@
 	<string>Déterioré</string>
 	<key>Very Poor</key>
 	<string>Très Déterioré</string>
+	<key>No Name</key>
+	<string>Sans Nom</string>
 	<key>StringKey</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

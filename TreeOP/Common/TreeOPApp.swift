@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct TreeOPApp: App {
+    
+    @StateObject private var favouriteTrees = FavouriteTrees()
+    
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -24,6 +27,7 @@ struct TreeOPApp: App {
                         Text("General Infos")
                     }
             }
+            .environmentObject(favouriteTrees)
         }
     }
 }

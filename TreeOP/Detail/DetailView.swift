@@ -11,9 +11,10 @@ import MapKit
 
 struct DetailView: View {
     
+    @EnvironmentObject var favouriteTrees: FavouriteTrees
     @ObservedObject var detailViewModel = DetailViewModel()
     
-    @State var mapRegion: MKCoordinateRegion = MKCoordinateRegion.init()
+    @State private var mapRegion: MKCoordinateRegion = MKCoordinateRegion.init()
     
     init(record: RecordsData) {
         detailViewModel.record = record
@@ -22,51 +23,69 @@ struct DetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             
-            HStack(alignment: .center) {
-                
-                Spacer()
-                Label {
-                    Text(detailViewModel.record?.fields.name ?? "No name")
-                        .titleStyle()
-                } icon: {
-                    Image(systemName: "leaf")
-                        .foregroundColor(.green)
-                }
-                Spacer()
-            }
-            .padding(.bottom, 15)
+            Text("Species \(detailViewModel.record?.fields.species?.localizedCapitalized ?? "No species")", comment: "display the species of the tree")
             
-            Text("Species \(detailViewModel.record?.fields.species.localizedCapitalized ?? " No species")", comment: "display the species of the tree")
             
             Text("Height \(detailViewModel.record?.fields.height ?? 0)", comment: "display the height of the tree in meter")
             
             Text("Circumference \(detailViewModel.record?.fields.circumference ?? 0)", comment: "display the circumference of the tree in centimetres")
             
-            Text("Address \(detailViewModel.record?.fields.address.localizedCapitalized ?? "No Address") \(detailViewModel.record?.fields.address2.localizedCapitalized ?? "")" , comment: "display the address where you can find this tree")
+            Text("Address \(detailViewModel.record?.fields.address.localizedCapitalized ?? "No Address") \(detailViewModel.record?.fields.address2?.localizedCapitalized ?? "")" , comment: "display the address where you can find this tree")
                 .padding(.bottom, 5)
             
-            
-            Map(coordinateRegion: self.$mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems ) { item in
-                MapMarker(coordinate: detailViewModel.cllCoordinates, tint: .red)
+            Map(coordinateRegion: $mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems) { item in
+                MapAnnotation(coordinate: self.detailViewModel.cllCoordinates) {
+                    PlaceMarkerView(title: detailViewModel.record?.fields.name)
+                }
+                
             }
         }
         
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
-        .navigationTitle(Text(detailViewModel.record?.fields.name ?? "No name"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(displayTreeName())
+        .navigationBarTitleDisplayMode(.large)
+        
+        .toolbar(content: {
+            Button {
+                toggleFavorite()
+            } label: {
+                displayStarIcon()
+            }
+        })
         
         .onAppear {
-            self.detailViewModel.updateCoordinates()
-    
-            self.mapRegion = MKCoordinateRegion(center: detailViewModel.cllCoordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
+            if(detailViewModel.longitude == 0) {
+                self.detailViewModel.updateCoordinates()
+            }
+            
+            if(self.mapRegion.center.longitude == 0) {
+                self.mapRegion = MKCoordinateRegion(center: detailViewModel.cllCoordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
+            }
         }
     }
-}
-
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(record: RecordsData.sampleData)
+    
+    func displayTreeName() -> Text {
+        return Text(LocalizedStringKey(detailViewModel.record?.fields.name ?? "No Name"), comment: "Indicate either the title or a default placeholder")
+    }
+    
+    func toggleFavorite() {
+        if let record = detailViewModel.record {
+            favouriteTrees.toggleFavorite(tree: record.fields)
+        }
+    }
+    
+    func displayStarIcon() -> Image? {
+        if let record = self.detailViewModel.record {
+            return  Image(systemName: favouriteTrees.isFavorite(tree: record.fields) ? "star.fill" : "star")
+        }
+        return nil
+    }
+    
+    struct DetailView_Previews: PreviewProvider {
+        static var previews: some View {
+            DetailView(record: RecordsData.sampleData)
+        }
     }
 }

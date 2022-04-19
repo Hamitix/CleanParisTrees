@@ -23,16 +23,19 @@ struct RecordsData: Decodable, Identifiable, Hashable {
 }
 
 struct Tree: Decodable, Hashable {
-    let name, species, address, address2: String
-    let height, circumference: Int
+    let name, species, address2: String?
+    let address, arrdt : String
+    let height, circumference, id: Int
     
     enum CodingKeys: String, CodingKey {
         case name = "libellefrancais"
         case species = "espece"
-        case height = "hauteurenm"
+        case address2 = "complementadresse"
         case address = "adresse"
-        case address2 = "arrondissement"
+        case arrdt = "arrondissement"
+        case height = "hauteurenm"
         case circumference = "circonferenceencm"
+        case id = "idbase"
     }
 }
 
@@ -48,11 +51,14 @@ extension Geometry {
     ])
 }
 
-
 extension Tree {
-    static let sampleData = Tree(name: "Pommier", species: "trilobata", address: "Rue Victor Hugo", address2: "PARIS 20 ARRDT ", height: 5, circumference:  34)
+    static let sampleData = Tree(name: "Pommier",  species: "trilobata", address2: "85", address: "Rue Victor Hugo", arrdt: "PARIS 18E ARRDT", height: 12, circumference: 12, id: 23)
 }
 
 extension RecordsData {
-    static let sampleData = RecordsData(recordid: "0", fields: Tree.sampleData, geometry: Geometry.sampleData)
+    static let sampleData = RecordsData(recordid: "0"
+                                        , fields: Tree.sampleData
+                                        , geometry: Geometry.sampleData
+    )
 }
+

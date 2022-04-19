@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: Protocol TreeDataService
 protocol TreeDataService {
-    func apiGetDataTrees(completion: @escaping ([RecordsData]) -> Void)
+    func apiGetDataTrees(startRow: Int,completion: @escaping ([RecordsData]) -> Void)
 }
 
 

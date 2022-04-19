@@ -10,7 +10,7 @@ import Foundation
 class ListViewModel: ObservableObject {
     
     @Published var records = [RecordsData]()
-    
+        
     let dataService: TreeDataService
     
     init(dataService: TreeDataService = ParisOpenDataAPI()) {
@@ -18,7 +18,7 @@ class ListViewModel: ObservableObject {
     }
     
     func getTreesData() {
-        dataService.apiGetDataTrees {[weak self] recordsData in
+        dataService.apiGetDataTrees(startRow: 0) {[weak self] recordsData in
             DispatchQueue.main.async {
                 self?.records = recordsData
             }
