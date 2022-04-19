@@ -18,26 +18,28 @@ struct ListView: View {
     
     var body: some View {
         
-        NavigationView {
-            
-            List{
-                ForEach(listViewModel.records, id: \.self) { record in
-                    ListItem(record: record)
+        VStack {
+            NavigationView {
+                List{
+                    ForEach(listViewModel.records, id: \.self) { record in
+                        ListItem(record: record)
+                            .onAppear {
+                                listViewModel.loadMoreRowsIfNeeded(currentRow: record)
+                            }
+                    }
+                    .listRowSeparatorTint(Color("separator"))
+                    .listRowSeparator(.hidden, edges: .top)
                 }
-                .listRowSeparatorTint(Color("separator"))
-                .listRowSeparator(.hidden, edges: .top)
+                .listStyle(.inset)
+                .padding(.trailing)
+                .navigationTitle(Text("titleMainView"))
             }
-            .listStyle(.inset)
-            .padding(.trailing)
             
-            .navigationTitle(Text("titleMainView"))
+            if(listViewModel.isLoadingRows) {
+                ProgressView()
+            }
         }
         .navigationViewStyle(.stack)
-        .onAppear{
-            if(listViewModel.records.count == 0) {
-                listViewModel.getTreesData()
-            }
-        }
     }
 }
 

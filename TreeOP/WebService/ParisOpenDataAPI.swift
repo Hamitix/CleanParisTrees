@@ -10,7 +10,7 @@ import Foundation
 class ParisOpenDataAPI : NSObject, TreeDataService {
   
     func apiGetDataTrees(startRow: Int, completion: @escaping ([RecordsData]) -> ()) {
-        let url = URL(string: "\(K.OpenDataAPI.baseURL)\(K.OpenDataAPI.baseQuery)&start=\(startRow)\(K.OpenDataAPI.facet)")!
+        let url = URL(string: "\(K.OpenDataAPI.baseURL)\(K.OpenDataAPI.baseQuery)&rows=\(K.OpenDataAPI.nbrRowPerRequest)&start=\(startRow)\(K.OpenDataAPI.facet)")!
         
         URLSession.shared.dataTask(with: url) { data, response
             , error in
