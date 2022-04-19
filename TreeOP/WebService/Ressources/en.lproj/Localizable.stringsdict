@@ -42,6 +42,10 @@
 	<string>Very Poor</string>
 	<key>No Name</key>
 	<string>No Name</string>
+	<key>Show Favourite Trees</key>
+	<string>Show favourites</string>
+	<key>Show All Trees</key>
+	<string>Show all</string>
 	<key>StringKey</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

@@ -25,7 +25,6 @@ struct DetailView: View {
             
             Text("Species \(detailViewModel.record?.fields.species?.localizedCapitalized ?? "No species")", comment: "display the species of the tree")
             
-            
             Text("Height \(detailViewModel.record?.fields.height ?? 0)", comment: "display the height of the tree in meter")
             
             Text("Circumference \(detailViewModel.record?.fields.circumference ?? 0)", comment: "display the circumference of the tree in centimetres")
@@ -34,10 +33,7 @@ struct DetailView: View {
                 .padding(.bottom, 5)
             
             Map(coordinateRegion: $mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems) { item in
-                MapAnnotation(coordinate: self.detailViewModel.cllCoordinates) {
-                    PlaceMarkerView(title: detailViewModel.record?.fields.name)
-                }
-                
+                    MapMarker(coordinate: self.detailViewModel.cllCoordinates, tint: .red)
             }
         }
         

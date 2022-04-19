@@ -42,6 +42,10 @@
 	<string>Très Déterioré</string>
 	<key>No Name</key>
 	<string>Sans Nom</string>
+	<key>Show Favourite Trees</key>
+	<string>Afficher les favoris</string>
+	<key>Show All Trees</key>
+	<string>Afficher tous</string>
 	<key>StringKey</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

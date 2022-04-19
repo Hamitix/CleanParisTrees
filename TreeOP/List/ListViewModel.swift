@@ -8,11 +8,15 @@
 import Foundation
 
 class ListViewModel: ObservableObject {
-    
+        
     @Published var records = [RecordsData]()
+    
     @Published var isLoadingRows: Bool = false
     private var currentRow: Int = 0
     private var canLoadMoreRows: Bool = true
+    
+    @Published var filterButtonName: String = "Show Favourite Trees"
+    @Published var isFilteringFavourites: Bool = false
         
     let dataService: TreeDataService
     
@@ -50,5 +54,10 @@ class ListViewModel: ObservableObject {
         
         isLoadingRows = true
         getTreesData(startRow: currentRow == 0 ? 0 : currentRow + 1)
+    }
+    
+    func toggleFilterFavourites() {
+        self.isFilteringFavourites.toggle()
+        self.filterButtonName = self.isFilteringFavourites ? "Show All Trees" : "Show Favourite Trees"
     }
 }

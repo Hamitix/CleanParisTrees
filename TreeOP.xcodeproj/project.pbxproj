@@ -11,7 +11,6 @@
 		A85AEEB52805A74A009EB14E /* View Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AEEB42805A74A009EB14E /* View Extensions.swift */; };
 		A86BD2E72809A22800FB3102 /* FavouriteTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BD2E62809A22800FB3102 /* FavouriteTrees.swift */; };
 		A86BD2E92809B27000FB3102 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BD2E82809B27000FB3102 /* ListItem.swift */; };
-		A86BD2ED280EB5D600FB3102 /* PlaceMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BD2EC280EB5D600FB3102 /* PlaceMarkerView.swift */; };
 		A8A2C6002808114000431AFE /* AirQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A2C5FF2808114000431AFE /* AirQuality.swift */; };
 		A8A2C60228085E1B00431AFE /* AirQualityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A2C60128085E1B00431AFE /* AirQualityView.swift */; };
 		A8D58E2C2805814A009C3705 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A8D58E2E2805814A009C3705 /* Localizable.stringsdict */; };
@@ -56,7 +55,6 @@
 		A85AEEB42805A74A009EB14E /* View Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extensions.swift"; sourceTree = "<group>"; };
 		A86BD2E62809A22800FB3102 /* FavouriteTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTrees.swift; sourceTree = "<group>"; };
 		A86BD2E82809B27000FB3102 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
-		A86BD2EC280EB5D600FB3102 /* PlaceMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarkerView.swift; sourceTree = "<group>"; };
 		A8A2C5FF2808114000431AFE /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
 		A8A2C60128085E1B00431AFE /* AirQualityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityView.swift; sourceTree = "<group>"; };
 		A8D58E2D2805814A009C3705 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			children = (
 				A85AEEB22805A6CE009EB14E /* DetailView.swift */,
 				A8F3FF3B2805CA410090B3B5 /* DetailViewModel.swift */,
-				A86BD2EC280EB5D600FB3102 /* PlaceMarkerView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -381,7 +378,6 @@
 			files = (
 				A8A2C6002808114000431AFE /* AirQuality.swift in Sources */,
 				A8F3FF49280809980090B3B5 /* Protocols.swift in Sources */,
-				A86BD2ED280EB5D600FB3102 /* PlaceMarkerView.swift in Sources */,
 				A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */,
 				A85AEEB32805A6CE009EB14E /* DetailView.swift in Sources */,
 				A8A2C60228085E1B00431AFE /* AirQualityView.swift in Sources */,
