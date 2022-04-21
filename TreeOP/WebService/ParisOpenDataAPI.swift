@@ -9,23 +9,17 @@ import Foundation
 
 class ParisOpenDataAPI : NSObject, TreeDataService {
   
-    func apiGetDataTrees(startRow: Int, completion: @escaping ([RecordsData]) -> ()) {
-        let url = URL(string: "\(K.OpenDataAPI.baseURL)\(K.OpenDataAPI.baseQuery)&rows=\(K.OpenDataAPI.nbrRowPerRequest)&start=\(startRow)\(K.OpenDataAPI.facet)")!
+    func apiGetDataTrees(startRow: Int, completion: @escaping (Result<[RecordsData], ErrorAPI>) -> ()) {
+        let url = "\(K.OpenDataAPI.baseURL)\(K.OpenDataAPI.baseQuery)&rows=\(K.OpenDataAPI.nbrRowPerRequest)&start=\(startRow)\(K.OpenDataAPI.facet)"
         
-        URLSession.shared.dataTask(with: url) { data, response
-            , error in
+        Network.genericRequest(stringURL: url) { (response: Result<Trees,ErrorAPI>) in
             
-            if let data = data {
-                                
-                if let trees = try? JSONDecoder().decode(Trees.self, from: data) {
-                    completion(trees.records)
-                }
-                else {
-                    print("errorDecodingData \(String(describing: error))")
-                }
-            } else {
-                print("errorRetrievingData \(String(describing: error))")
+            switch response {
+            case .success(let trees):
+                completion(.success(trees.records))
+            case .failure(let error):
+                completion(.failure(error))
             }
-        }.resume()
+        }
     }
 }

@@ -14,10 +14,14 @@
 	<string>**Circonférence** : %lld cm</string>
 	<key>Address %@ %@</key>
 	<string>**Adresse** : %@ %@</string>
-	<key>errorRetrievingData %@</key>
-	<string>Erreur en recupérant les données : %@</string>
-	<key>errorDecodingData %@</key>
-	<string>Erreur en décodant les données : %@ </string>
+	<key>errorRetrievingData</key>
+	<string>Erreur en recupérant les données</string>
+	<key>errorDecodingData</key>
+	<string>Erreur en décodant les données</string>
+	<key>errorBadURL</key>
+	<string>Erreur : URL erronée</string>
+	<key>errorUnknown</key>
+	<string>Erreur inconnue</string>
 	<key>Temperature</key>
 	<string>Température : </string>
 	<key>Air Quality</key>
