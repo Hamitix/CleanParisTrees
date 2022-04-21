@@ -11,7 +11,7 @@ class WeatherAPI: NSObject, WeatherDataService {
         
     func getWeatherData(lat: Double, long: Double, completion: @escaping (Result<Double, ErrorAPI>) -> Void) {
         
-        let url =  "\(K.WeatherAPI.baseURL)weather?lat=\(lat)&lon=\(long)&appid=\(K.WeatherAPI.keyAPI)&units=metric"
+        let url = String(localized: "temperatureURL \(lat.description) \(long.description)")
         
         Network.genericRequest(stringURL: url) { (response: Result<WeatherResponse, ErrorAPI>)  in
             
@@ -28,7 +28,7 @@ class WeatherAPI: NSObject, WeatherDataService {
     
     func getAirQualityData(lat: Double, long: Double, completion: @escaping (Result<Int, ErrorAPI>) -> Void) {
         
-        let url =  "\(K.WeatherAPI.baseURL)air_pollution?lat=\(lat)&lon=\(long)&appid=\(K.WeatherAPI.keyAPI)&units=metric"
+        let url = String(localized: "aqiURL \(lat.description) \(long.description)")
         
         Network.genericRequest(stringURL: url) { (response: Result<AirQualityResponse, ErrorAPI>) in
             

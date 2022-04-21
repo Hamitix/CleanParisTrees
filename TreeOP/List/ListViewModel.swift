@@ -44,7 +44,7 @@ class ListViewModel: ObservableObject {
     }
     
     func getTreesData(startRow: Int = 0) {
-        dataService.apiGetDataTrees(startRow: startRow) { (response: Result<[RecordsData],ErrorAPI> ) in
+        dataService.apiGetDataTrees(startRow: startRow, nbrRows: 20) { (response: Result<[RecordsData],ErrorAPI> ) in
             
             switch response {
                 

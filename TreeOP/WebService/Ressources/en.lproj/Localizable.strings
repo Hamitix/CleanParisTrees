@@ -29,3 +29,11 @@
 
 "cannotProcessData" = "Couldn't process data";
 "notSpecified" = "not specified";
+
+//MARK: URLs
+
+"urlOpenDataURL %lld %lld" = "https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&rows=%lld&start=%lld&facet=&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=circonferenceencm&facet=hauteurenm";
+
+"temperatureURL %@ %@" = "https://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&appid=bffc2bd3a2ab6f94b7cdfd793266b8c4&units=metric";
+
+"aqiURL %@ %@" = "https://api.openweathermap.org/data/2.5/air_pollution?lat=%@&lon=%@&appid=bffc2bd3a2ab6f94b7cdfd793266b8c4&units=metric";

@@ -9,8 +9,9 @@ import Foundation
 
 class ParisOpenDataAPI : NSObject, TreeDataService {
   
-    func apiGetDataTrees(startRow: Int, completion: @escaping (Result<[RecordsData], ErrorAPI>) -> ()) {
-        let url = "\(K.OpenDataAPI.baseURL)\(K.OpenDataAPI.baseQuery)&rows=\(K.OpenDataAPI.nbrRowPerRequest)&start=\(startRow)\(K.OpenDataAPI.facet)"
+    func apiGetDataTrees(startRow: Int, nbrRows: Int, completion: @escaping (Result<[RecordsData], ErrorAPI>) -> ()) {
+        
+        let url = String(localized: "urlOpenDataURL \(nbrRows) \(startRow)")
         
         Network.genericRequest(stringURL: url) { (response: Result<Trees,ErrorAPI>) in
             
