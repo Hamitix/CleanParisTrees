@@ -19,7 +19,7 @@ class FavouriteTrees: ObservableObject {
     func isFavorite(tree: Tree) -> Bool {
         treeIDs.contains(tree.id)
     }
-
+    
     func toggleFavorite(tree: Tree) {
         if treeIDs.contains(tree.id) {
             treeIDs.remove(tree.id)

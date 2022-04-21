@@ -18,49 +18,54 @@ struct ListView: View {
         _listViewModel = StateObject(wrappedValue: viewModel)
     }
     
-    var filteredRecords : [RecordsData] {
-        switch listViewModel.isFilteringFavourites {
-        case false:
-            return listViewModel.records
-         case true:
-            return listViewModel.records.filter { favouriteTrees.isFavorite(tree: $0.fields) }
-        }
-    }
-    
     var body: some View {
         
         VStack {
             NavigationView {
-                List{
-                    ForEach(filteredRecords, id: \.self) { record in
-                        ListItem(record: record)
-                            .onAppear {
-                                listViewModel.loadMoreRowsIfNeeded(currentRow: record)
-                            }
+                List(listViewModel.filteredRecords) { record in
+                    
+                    ListItem(record: record)
+                        .onAppear {
+                            listViewModel.loadMoreRowsIfNeeded(currentRow: record)
                         }
-                    .listRowSeparatorTint(Color("separator"))
-                    .listRowSeparator(.hidden, edges: .top)
+                        .listRowSeparatorTint(Color("separator"))
+                        .listRowSeparator(.hidden, edges: .top)
+                    
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button {
+                                listViewModel.toggleFavorite(record: record)
+                            } label: {
+                                Image(systemName: "star")
+                            }
+                            .tint(.yellow)
+                        }
                 }
+                
                 .listStyle(.inset)
                 .padding(.trailing)
+                
                 .animation(.default, value: listViewModel.isFilteringFavourites)
+                
                 .toolbar(content: {
                     Button {
                         listViewModel.toggleFilterFavourites()
                     } label: {
                         Text(LocalizedStringKey(listViewModel.filterButtonName))
                     }
-
                 })
+                
                 .navigationTitle(Text("titleMainView"))
+                .navigationViewStyle(.stack)
             }
             
-            if(listViewModel.isLoadingRows) {
+            if listViewModel.isLoadingRows {
                 ProgressView()
                     .padding(.bottom)
             }
         }
-        .navigationViewStyle(.stack)
+        .onAppear {
+            self.listViewModel.setup(favTrees: self.favouriteTrees)
+        }
     }
 }
 

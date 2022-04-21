@@ -9,29 +9,27 @@ import SwiftUI
 
 struct AirQualityView: View {
     
-    let aqIDesc: String
+    let aqiDesc: String
     
     var body: some View {
-        VStack(alignment: .center) {
+        
+        HStack(alignment: .center) {
             
-            HStack(alignment: .center) {
-                
-                Label(LocalizedStringKey("Air Quality"), systemImage: "aqi.medium")
-                if(aqIDesc == "") {
-                    ProgressView()
-                        .padding(.horizontal)
-                } else {
-                    Text(LocalizedStringKey(aqIDesc.description))
-
-                }
+            Label(LocalizedStringKey("Air Quality"), systemImage: "aqi.medium")
+            
+            if aqiDesc == "" {
+                ProgressView()
+                    .padding(.horizontal)
+            } else {
+                Text(LocalizedStringKey(aqiDesc.description))
             }
-            .padding()
         }
+        .padding()
     }
 }
 
 struct AirQualityView_Previews: PreviewProvider {
     static var previews: some View {
-        AirQualityView(aqIDesc: "Good")
+        AirQualityView(aqiDesc: "Good")
     }
 }

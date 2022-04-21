@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfosView: View {
     
-    @StateObject  private var infosViewModel: InfosViewModel
+    @StateObject private var infosViewModel: InfosViewModel
     
     init (viewModel: InfosViewModel = .init(latitude: K.latParis, longitude: K.longParis)) {
         _infosViewModel = StateObject(wrappedValue: viewModel)
@@ -23,32 +23,23 @@ struct InfosView: View {
                 .titleStyle()
             
             Divider()
-            
-            HStack {
-                Label(LocalizedStringKey("Temperature"), systemImage: "thermometer")
-                if(infosViewModel.weather == 0) {
-                    ProgressView()
-                        .padding(.horizontal)
-                } else {
-                    Text(String(format: "%.1f", infosViewModel.weather) + " °C")
-                }
-            }
+                        
+            WeatherView(temp: infosViewModel.weather)
             
             Divider()
             
-            AirQualityView(aqIDesc: infosViewModel.aqiDescription)
+            AirQualityView(aqiDesc: infosViewModel.aqiDescription)
         }
         .onAppear {
-            if(infosViewModel.weather == 0) {
+            if infosViewModel.weather == 0 {
                 infosViewModel.getWeatherData()
             }
             
-            if(infosViewModel.airQuality == 0) {
+            if infosViewModel.airQuality == 0 {
                 infosViewModel.getAQData()
             }
         }
     }
-    
 }
 
 struct InfosView_Previews: PreviewProvider {

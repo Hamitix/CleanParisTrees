@@ -9,37 +9,23 @@ import SwiftUI
 
 struct ListItem: View {
     
-    let record: RecordsData
-    
     @EnvironmentObject var favouriteTrees: FavouriteTrees
     
+    let record: RecordsData
+    
     var body: some View {
-        NavigationLink(destination: DetailView(record: record)) {
+        HStack(alignment: .center, spacing: 10) {
             
-            HStack {
+            NavigationLink(destination: DetailView(record: record)) {
                 Text(LocalizedStringKey(record.fields.name ?? "No Name"), comment: "Indicate either the title or a default placeholder")
                 
-                Spacer()
-                displayStarIcon()
+                
+                if favouriteTrees.isFavorite(tree: record.fields) {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                }
             }
         }
-        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-            Button {
-                toggleFavorite()
-            } label: {
-                displayStarIcon()
-
-            }
-            .tint(.yellow)
-        }
-    }
-    
-    func toggleFavorite() {
-        favouriteTrees.toggleFavorite(tree: self.record.fields)
-    }
-    
-    func displayStarIcon() -> Image {
-        return  Image(systemName: favouriteTrees.isFavorite(tree: self.record.fields) ? "star.fill" : "star")
     }
 }
 

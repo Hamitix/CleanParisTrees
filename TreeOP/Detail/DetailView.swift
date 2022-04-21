@@ -33,50 +33,35 @@ struct DetailView: View {
                 .padding(.bottom, 5)
             
             Map(coordinateRegion: $mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems) { item in
-                    MapMarker(coordinate: self.detailViewModel.cllCoordinates, tint: .red)
+                    MapMarker(coordinate: self.detailViewModel.coordinates, tint: .red)
             }
         }
-        
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
-        .navigationTitle(displayTreeName())
+        .navigationTitle(detailViewModel.displayTreeName())
         .navigationBarTitleDisplayMode(.large)
         
         .toolbar(content: {
             Button {
-                toggleFavorite()
+                detailViewModel.toggleFavorite()
             } label: {
-                displayStarIcon()
+                Image(systemName: detailViewModel.getStarIconName())
+                    .foregroundColor(.yellow)
             }
         })
         
         .onAppear {
-            if(detailViewModel.longitude == 0) {
+            self.detailViewModel.setup(self.favouriteTrees)
+            
+            if detailViewModel.longitude == 0 {
                 self.detailViewModel.updateCoordinates()
             }
             
-            if(self.mapRegion.center.longitude == 0) {
-                self.mapRegion = MKCoordinateRegion(center: detailViewModel.cllCoordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
+            if self.mapRegion.center.longitude == 0 {
+                self.mapRegion = MKCoordinateRegion(center: detailViewModel.coordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
             }
         }
-    }
-    
-    func displayTreeName() -> Text {
-        return Text(LocalizedStringKey(detailViewModel.record?.fields.name ?? "No Name"), comment: "Indicate either the title or a default placeholder")
-    }
-    
-    func toggleFavorite() {
-        if let record = detailViewModel.record {
-            favouriteTrees.toggleFavorite(tree: record.fields)
-        }
-    }
-    
-    func displayStarIcon() -> Image? {
-        if let record = self.detailViewModel.record {
-            return  Image(systemName: favouriteTrees.isFavorite(tree: record.fields) ? "star.fill" : "star")
-        }
-        return nil
     }
     
     struct DetailView_Previews: PreviewProvider {

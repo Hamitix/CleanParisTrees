@@ -11,12 +11,11 @@ class InfosViewModel: ObservableObject {
     
     @Published var airQuality: Int = 0
     @Published var aqiDescription: String = ""
-    @Published var weather: Double = 0
+    @Published var weather: Double? = 0
     
     private let latitude: Double
     private let longitude: Double
     private let weatherDataService: WeatherDataService
-    
     
     init(latitude: Double, longitude: Double, weatherDataService: WeatherDataService = WeatherAPI()) {
         self.weatherDataService = weatherDataService
@@ -25,22 +24,44 @@ class InfosViewModel: ObservableObject {
     }
     
     func getWeatherData() {
-        weatherDataService.getWeatherData(lat: self.latitude, long: self.longitude) { weatherData in
-            DispatchQueue.main.async {
-                self.weather = weatherData
+        weatherDataService.getWeatherData(lat: self.latitude, long: self.longitude) { (responseWeather: Result<Double, ErrorAPI>) in
+            
+            switch responseWeather {
+            case .success(let temperature):
+                DispatchQueue.main.async {
+                    self.weather = temperature
+                }
+            case .failure(let error):
+                Network.printErrorAPI(error: error)
+                
+                DispatchQueue.main.async {
+                    self.weather = nil
+                }
             }
         }
     }
     
     func getAQData() {
-        weatherDataService.getAirQualityData(lat: self.latitude, long: self.longitude) { aqData in
-            DispatchQueue.main.async {
-                self.airQuality = aqData
-                self.aqiDescription = self.getAQDesc(id: aqData)
+        weatherDataService.getAirQualityData(lat: self.latitude, long: self.longitude) { (responseAQI: Result<Int, ErrorAPI>) in
+            
+            switch responseAQI {
+                
+            case .success(let aqi):
+                DispatchQueue.main.async {
+                    self.airQuality = aqi
+                    self.aqiDescription = self.getAQDesc(id: aqi)
+                }
+                
+            case .failure(let error):
+                Network.printErrorAPI(error: error)
+                
+                DispatchQueue.main.async {
+                    self.airQuality = 0
+                    self.aqiDescription = self.getAQDesc(id: 0)
+                }
             }
         }
     }
-    
     
     func getAQDesc(id: Int) -> String {
         switch id {
@@ -56,25 +77,6 @@ class InfosViewModel: ObservableObject {
             return "Very Poor"
         default:
             return "Couldn't process data"
-        }
-    }
-    
-    func getWeatherIconName(aqi: Int) -> String {
-        switch aqi {
-        case 200...232:
-            return "cloud.bolt"
-        case 300...321:
-            return "cloud-drizzle"
-        case 500...531:
-            return "cloud-rain"
-        case 600...622:
-            return "cloud-snow"
-        case 701...781:
-            return "cloud.fog"
-        case 800:
-            return "sun-max"
-        default:
-            return "cloud"
         }
     }
 }
