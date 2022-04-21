@@ -17,11 +17,11 @@ struct ListItem: View {
         HStack(alignment: .center, spacing: 10) {
             
             NavigationLink(destination: DetailView(record: record)) {
-                Text(LocalizedStringKey(record.fields.name ?? "No Name"), comment: "Indicate either the title or a default placeholder")
+                Text(LocalizedStringKey(record.fields.name ?? String(localized: "No Name")), comment: "treeNameComment")
                 
                 
                 if favouriteTrees.isFavorite(tree: record.fields) {
-                    Image(systemName: "star.fill")
+                    Image(systemName: String(localized: "starFillIcon"))
                         .foregroundColor(.yellow)
                 }
             }

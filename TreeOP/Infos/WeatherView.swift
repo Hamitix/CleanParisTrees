@@ -14,11 +14,11 @@ struct WeatherView: View {
     var body: some View {
         
         HStack(alignment: .center) {
-            Label(LocalizedStringKey("Temperature"), systemImage: "thermometer")
+            Label(LocalizedStringKey("Temperature"), systemImage: String(localized: "thermometerIcon"))
             
             switch temp {
             case nil:
-                Text("Couldn't proccess data")
+                Text("cannotProcessData")
                 
             case 0:
                 ProgressView()

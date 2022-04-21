@@ -24,6 +24,47 @@ class DetailViewModel: ObservableObject {
         self.favouriteTrees = favouriteTrees
     }
     
+    
+    func getStarIconName() -> String {
+        //TODO: Resolve Bug : FavouriteTrees became nil when the star button is pressed & Map Marker disappear
+        
+        if let record = record, let favouriteTrees = favouriteTrees {
+            return favouriteTrees.isFavorite(tree: record.fields) ? String(localized: "starFillIcon") : String(localized: "starIcon")
+        } else {
+            return String(localized: "errorIcon")
+        }
+    }
+    
+    func displayTreeName() -> Text {
+        if let record = record {
+            return Text(LocalizedStringKey(record.fields.name ?? "No Name"), comment: "treeNameComment")
+        }
+        return Text("No Name")
+    }
+    
+    
+    func getFullAddress(record: RecordsData) -> String {
+        if let address2 = record.fields.address2 {
+            return address2.appending(" \(record.fields.address)")
+        }
+        return record.fields.address
+    }
+    
+    func displayFullAddress() -> Text? {
+        if let record = record {
+            return Text("Address \(self.getFullAddress(record: record).localizedCapitalized)", comment: "addressComment")
+
+        }
+        return nil
+    }
+    
+    func toggleFavorite() {
+        if let record = record, let favouriteTrees = favouriteTrees {
+            favouriteTrees.toggleFavorite(tree: record.fields)
+        }
+    }
+    
+    //MARK: Coordinates Methods
     func updateCoordinates() {
         if let record = record  {
             
@@ -31,7 +72,6 @@ class DetailViewModel: ObservableObject {
                 self.longitude = record.geometry.coordinates[0]
                 self.latitude = record.geometry.coordinates[1]
             }
-            
             self.setCLLCoordinates()
             self.annotationItems = [record]
         }
@@ -39,28 +79,5 @@ class DetailViewModel: ObservableObject {
     
     func setCLLCoordinates() {
         self.coordinates = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-    }
-    
-    func getStarIconName() -> String {
-        //TODO: Resolve Bug : FavouriteTrees became nil when the star button is pressed & Map Marker disappear
-        
-        if let record = record, let favouriteTrees = favouriteTrees {
-            return favouriteTrees.isFavorite(tree: record.fields) ? "star.fill" : "star"
-        } else {
-            return "xmark.octagon"
-        }
-    }
-    
-    func displayTreeName() -> Text {
-        if let record = record {
-            return Text(LocalizedStringKey(record.fields.name ?? "No Name"), comment: "Indicate either the title or a default placeholder")
-        }
-        return Text("No Name")
-    }
-    
-    func toggleFavorite() {
-        if let record = record, let favouriteTrees = favouriteTrees {
-            favouriteTrees.toggleFavorite(tree: record.fields)
-        }
     }
 }

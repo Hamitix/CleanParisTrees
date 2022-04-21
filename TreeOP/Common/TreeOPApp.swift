@@ -17,13 +17,13 @@ struct TreeOPApp: App {
             TabView {
                 ListView()
                     .tabItem {
-                        Image(systemName: "list.bullet")
+                        Image(systemName: String(localized: "listBulletIcon"))
                         Text("Trees")
                     }
                 
                 InfosView()
                     .tabItem {
-                        Image(systemName: "questionmark.circle")
+                        Image(systemName: String(localized: "questionMarkCircleIcon"))
                         Text("General Infos")
                     }
             }

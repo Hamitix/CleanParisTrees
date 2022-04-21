@@ -15,7 +15,7 @@ struct AirQualityView: View {
         
         HStack(alignment: .center) {
             
-            Label(LocalizedStringKey("Air Quality"), systemImage: "aqi.medium")
+            Label(LocalizedStringKey("Air Quality"), systemImage: String(localized: "aqiIcon"))
             
             if aqiDesc == "" {
                 ProgressView()

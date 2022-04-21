@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  TreeOP
+
+  Created by Dylan HAMITI on 21/04/2022.
+  
+*/
+
+//MARK: Icons
+
+"listBulletIcon" = "list.bullet";
+"questionMarkCircleIcon" = "questionmark.circle";
+"starIcon" = "star";
+"starFillIcon" = "star.fill";
+"errorIcon" = "xmark.octagon";
+"thermometerIcon" = "thermometer";
+"aqiIcon" = "aqi.medium";
+
+//MARK: Text Comments
+
+"circumferenceComment" = "Affiche la circonférence de l'arbre en centimètre";
+"heightComment" = "Affiche la hauteur de l'arbre en mètre";
+"speciesComment" = "Affiche l'espèce de l'arbre";
+"addressComment" = "Affiche l'adresse où vous pouvez trouver cet arbre";
+"treeNameComment" = "Indique le nom de l'arbre ou une valeur par défaut";
+
+"cannotProcessData" = "Impossible de traiter les données";
+"notSpecified" = "Non spécifié";

@@ -35,7 +35,7 @@ struct ListView: View {
                             Button {
                                 listViewModel.toggleFavorite(record: record)
                             } label: {
-                                Image(systemName: "star")
+                                Image(systemName: String(localized:"starIcon"))
                             }
                             .tint(.yellow)
                         }

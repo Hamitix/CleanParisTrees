@@ -76,7 +76,7 @@ class InfosViewModel: ObservableObject {
         case 5:
             return "Very Poor"
         default:
-            return "Couldn't process data"
+            return "cannotProcessData"
         }
     }
 }

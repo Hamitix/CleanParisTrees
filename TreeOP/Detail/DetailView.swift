@@ -23,14 +23,15 @@ struct DetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             
-            Text("Species \(detailViewModel.record?.fields.species?.localizedCapitalized ?? "No species")", comment: "display the species of the tree")
+            Text("Species \(detailViewModel.record?.fields.species?.localizedCapitalized ?? String(localized:"notSpecified"))", comment: "speciesComment")
             
-            Text("Height \(detailViewModel.record?.fields.height ?? 0)", comment: "display the height of the tree in meter")
+            Text("Height \(detailViewModel.record?.fields.height ?? 0)", comment: "heightComment")
             
-            Text("Circumference \(detailViewModel.record?.fields.circumference ?? 0)", comment: "display the circumference of the tree in centimetres")
+            Text("Circumference \(detailViewModel.record?.fields.circumference ?? 0)", comment: "circumferenceComment")
             
-            Text("Address \(detailViewModel.record?.fields.address.localizedCapitalized ?? "No Address") \(detailViewModel.record?.fields.address2?.localizedCapitalized ?? "")" , comment: "display the address where you can find this tree")
+            detailViewModel.displayFullAddress()
                 .padding(.bottom, 5)
+            
             
             Map(coordinateRegion: $mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems) { item in
                     MapMarker(coordinate: self.detailViewModel.coordinates, tint: .red)

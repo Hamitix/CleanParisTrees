@@ -15,6 +15,7 @@
 		A8A2C60228085E1B00431AFE /* AirQualityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A2C60128085E1B00431AFE /* AirQualityView.swift */; };
 		A8C7F0D428113FD8009E87C8 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7F0D328113FD8009E87C8 /* WeatherView.swift */; };
 		A8C7F0D628114F80009E87C8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7F0D528114F80009E87C8 /* Network.swift */; };
+		A8C7F0D928115D84009E87C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8C7F0D728115D84009E87C8 /* Localizable.strings */; };
 		A8D58E2C2805814A009C3705 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A8D58E2E2805814A009C3705 /* Localizable.stringsdict */; };
 		A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0972800626E0088CFDD /* TreeOPApp.swift */; };
 		A8E2D09A2800626E0088CFDD /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0992800626E0088CFDD /* ListView.swift */; };
@@ -60,6 +61,8 @@
 		A8A2C60128085E1B00431AFE /* AirQualityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityView.swift; sourceTree = "<group>"; };
 		A8C7F0D328113FD8009E87C8 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		A8C7F0D528114F80009E87C8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		A8C7F0D828115D84009E87C8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A8C7F0DA28115D99009E87C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A8D58E2D2805814A009C3705 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A8D58E2F28058163009C3705 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A8E2D0942800626E0088CFDD /* TreeOP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeOP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				A8D58E2E2805814A009C3705 /* Localizable.stringsdict */,
+				A8C7F0D728115D84009E87C8 /* Localizable.strings */,
 			);
 			name = Ressources;
 			path = WebService/Ressources;
@@ -353,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8E2D09F2800626F0088CFDD /* Preview Assets.xcassets in Resources */,
+				A8C7F0D928115D84009E87C8 /* Localizable.strings in Resources */,
 				A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */,
 				A8D58E2C2805814A009C3705 /* Localizable.stringsdict in Resources */,
 			);
@@ -434,6 +439,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A8C7F0D728115D84009E87C8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8C7F0D828115D84009E87C8 /* fr */,
+				A8C7F0DA28115D99009E87C8 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A8D58E2E2805814A009C3705 /* Localizable.stringsdict */ = {
 			isa = PBXVariantGroup;
 			children = (

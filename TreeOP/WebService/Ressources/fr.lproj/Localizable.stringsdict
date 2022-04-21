@@ -12,8 +12,8 @@
 	<string>**Hauteur** : %lld m</string>
 	<key>Circumference %lld</key>
 	<string>**Circonférence** : %lld cm</string>
-	<key>Address %@ %@</key>
-	<string>**Adresse** : %@ %@</string>
+	<key>Address %@</key>
+	<string>**Adresse** : %@</string>
 	<key>errorRetrievingData</key>
 	<string>Erreur en recupérant les données</string>
 	<key>errorDecodingData</key>
