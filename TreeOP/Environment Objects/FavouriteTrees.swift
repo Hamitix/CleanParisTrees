@@ -9,7 +9,7 @@ import Foundation
 
 class FavouriteTrees: ObservableObject {
     
-    @Published private var treeIDs: Set<Int>
+    @Published var treeIDs: Set<Int>
     
     init() {
         let savedValues = UserDefaults.standard.array(forKey: K.UserDefaults.keyFavTrees) as? [Int] ?? []
@@ -20,11 +20,11 @@ class FavouriteTrees: ObservableObject {
         treeIDs.contains(tree.id)
     }
     
-    func toggleFavorite(tree: Tree) {
-        if treeIDs.contains(tree.id) {
-            treeIDs.remove(tree.id)
+    func toggleFavorite(treeID: Int) {
+        if treeIDs.contains(treeID) {
+            treeIDs.remove(treeID)
         } else {
-            treeIDs.insert(tree.id)
+            treeIDs.insert(treeID)
         }
         UserDefaults.standard.set(Array(treeIDs), forKey: K.UserDefaults.keyFavTrees)
     }

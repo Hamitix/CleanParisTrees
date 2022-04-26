@@ -25,10 +25,9 @@
 "addressComment" = "Display the address where you can find this tree";
 "treeNameComment" = "Indicate either the title or a default placeholder";
 
-//MARK: Strings
 
 "cannotProcessData" = "Couldn't process data";
-"notSpecified" = "not specified";
+"notSpecified" = "Not specified";
 
 //MARK: URLs
 

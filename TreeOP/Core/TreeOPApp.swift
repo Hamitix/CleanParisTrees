@@ -15,13 +15,13 @@ struct TreeOPApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                ListView()
+                TreeListView()
                     .tabItem {
                         Image(systemName: String(localized: "listBulletIcon"))
                         Text("Trees")
                     }
                 
-                InfosView()
+                WeatherInfoView()
                     .tabItem {
                         Image(systemName: String(localized: "questionMarkCircleIcon"))
                         Text("General Infos")

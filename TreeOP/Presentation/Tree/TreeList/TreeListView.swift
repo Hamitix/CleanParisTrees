@@ -8,32 +8,32 @@
 import SwiftUI
 
 
-struct ListView: View {
+struct TreeListView: View {
     
     @EnvironmentObject var favouriteTrees: FavouriteTrees
     
-    @StateObject private var listViewModel: ListViewModel
+    @StateObject private var listViewModel: TreeListViewModel
     
-    init(viewModel: ListViewModel = .init()) {
+    init(viewModel: TreeListViewModel = .init()) {
         _listViewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        
         VStack {
             NavigationView {
-                List(listViewModel.filteredRecords) { record in
+                List(listViewModel.filteredTrees) { item in
                     
-                    ListItem(record: record)
-                        .onAppear {
-                            listViewModel.loadMoreRowsIfNeeded(currentRow: record)
+                    TreeListItem(item: item)
+                        .task {
+                            await listViewModel.loadMoreRowsIfNeeded(currentItem: item)
                         }
+                    
                         .listRowSeparatorTint(Color("separator"))
                         .listRowSeparator(.hidden, edges: .top)
                     
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button {
-                                listViewModel.toggleFavorite(record: record)
+                                listViewModel.toggleFavorite(tree: item.tree)
                             } label: {
                                 Image(systemName: String(localized:"starIcon"))
                             }
@@ -66,11 +66,16 @@ struct ListView: View {
         .onAppear {
             self.listViewModel.setup(favTrees: self.favouriteTrees)
         }
+        .task {
+            if listViewModel.filteredTrees.count == 0 {
+                await self.listViewModel.getTreesData()
+            }
+        }
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView()
+        TreeListView()
     }
 }

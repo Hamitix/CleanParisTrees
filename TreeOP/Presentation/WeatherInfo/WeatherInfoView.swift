@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct InfosView: View {
+struct WeatherInfoView: View {
     
-    @StateObject private var infosViewModel: InfosViewModel
+    @StateObject private var infosViewModel: WeatherInfoViewModel
     
-    init (viewModel: InfosViewModel = .init(latitude: K.latParis, longitude: K.longParis)) {
+    init (viewModel: WeatherInfoViewModel = .init(latitude: K.latParis, longitude: K.longParis)) {
         _infosViewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -23,27 +23,22 @@ struct InfosView: View {
                 .titleStyle()
             
             Divider()
-                        
+            
             WeatherView(temp: infosViewModel.weather)
             
             Divider()
             
             AirQualityView(aqiDesc: infosViewModel.aqiDescription)
         }
-        .onAppear {
-            if infosViewModel.weather == 0 {
-                infosViewModel.getWeatherData()
-            }
-            
-            if infosViewModel.airQuality == 0 {
-                infosViewModel.getAQData()
-            }
+        .task {
+            await infosViewModel.getWeatherData()
+            await infosViewModel.getAQData()
         }
     }
 }
 
 struct InfosView_Previews: PreviewProvider {
     static var previews: some View {
-        InfosView()
+        WeatherInfoView()
     }
 }

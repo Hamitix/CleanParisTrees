@@ -9,32 +9,32 @@
 import SwiftUI
 import MapKit
 
-struct DetailView: View {
+struct DetailTreeView: View {
     
     @EnvironmentObject var favouriteTrees: FavouriteTrees
-    @ObservedObject var detailViewModel = DetailViewModel()
+    @ObservedObject private(set) var detailViewModel = DetailTreeViewModel()
     
     @State private var mapRegion: MKCoordinateRegion = MKCoordinateRegion.init()
     
-    init(record: RecordsData) {
-        detailViewModel.record = record
+    init(tree: GeolocatedTree) {
+        detailViewModel.tree = tree
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             
-            Text("Species \(detailViewModel.record?.fields.species?.localizedCapitalized ?? String(localized:"notSpecified"))", comment: "speciesComment")
+            Text("Species \(detailViewModel.tree?.tree.species?.localizedCapitalized ?? String(localized:"notSpecified"))", comment: "speciesComment")
             
-            Text("Height \(detailViewModel.record?.fields.height ?? 0)", comment: "heightComment")
+            Text("Height \(detailViewModel.tree?.tree.height ?? 0)", comment: "heightComment")
             
-            Text("Circumference \(detailViewModel.record?.fields.circumference ?? 0)", comment: "circumferenceComment")
+            Text("Circumference \(detailViewModel.tree?.tree.circumference ?? 0)", comment: "circumferenceComment")
             
             detailViewModel.displayFullAddress()
                 .padding(.bottom, 5)
             
             
             Map(coordinateRegion: $mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems) { item in
-                    MapMarker(coordinate: self.detailViewModel.coordinates, tint: .red)
+                MapMarker(coordinate: self.detailViewModel.coordinates, tint: .red)
             }
         }
         .padding()
@@ -46,6 +46,8 @@ struct DetailView: View {
         .toolbar(content: {
             Button {
                 detailViewModel.toggleFavorite()
+                detailViewModel.displayTrees()
+                
             } label: {
                 Image(systemName: detailViewModel.getStarIconName())
                     .foregroundColor(.yellow)
@@ -67,7 +69,7 @@ struct DetailView: View {
     
     struct DetailView_Previews: PreviewProvider {
         static var previews: some View {
-            DetailView(record: RecordsData.sampleData)
+            DetailTreeView(tree: GeolocatedTree(tree: Tree.sampleData, lat: 20, lng: 20))
         }
     }
 }

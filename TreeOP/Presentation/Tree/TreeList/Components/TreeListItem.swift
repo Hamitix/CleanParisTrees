@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct ListItem: View {
+struct TreeListItem: View {
     
     @EnvironmentObject var favouriteTrees: FavouriteTrees
     
-    let record: RecordsData
+    let item: GeolocatedTree
     
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             
-            NavigationLink(destination: DetailView(record: record)) {
-                Text(LocalizedStringKey(record.fields.name ?? String(localized: "No Name")), comment: "treeNameComment")
+            NavigationLink(destination: DetailTreeView(tree: item)) {
+                Text(LocalizedStringKey(item.tree.name ?? String(localized: "No Name")), comment: "treeNameComment")
                 
                 
-                if favouriteTrees.isFavorite(tree: record.fields) {
+                if favouriteTrees.isFavorite(tree: item.tree) {
                     Image(systemName: String(localized: "starFillIcon"))
                         .foregroundColor(.yellow)
                 }
@@ -29,8 +29,8 @@ struct ListItem: View {
     }
 }
 
-struct ListItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ListItem(record: RecordsData.sampleData)
-    }
-}
+//struct ListItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ListItem(record: RecordsData.sampleData)
+//    }
+//}
