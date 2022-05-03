@@ -1,46 +1,37 @@
 //
-//  MainViewModel.swift
+//  TreeListViewModel.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 08/04/2022.
 //
 
 import SwiftUI
+import Resolver
 
 class TreeListViewModel: ObservableObject {
+
+    @Injected private var bookmarkManager: BookmarkManager
     
-    private var favouriteTrees: FavouriteTrees?
     private var treeList = [GeolocatedTree]()
     
     @Published var isLoadingRows: Bool = false
     private var currentRow: Int = 0
-    private var canLoadMoreRows: Bool = true
     
     @Published var filterButtonName: String = "Show Favourite Trees"
     @Published var isFilteringFavourites: Bool = false
     
-    
     @Published var errorMessage: String = ""
     @Published var hasError: Bool = false
     
-    var filteredTrees : [GeolocatedTree] {
+    var filteredTrees: [GeolocatedTree] {
         switch self.isFilteringFavourites {
         case false:
             return self.treeList
         case true:
-            if let favouriteTrees = favouriteTrees {
-                return self.treeList.filter { favouriteTrees.isFavorite(tree: $0.tree) }
-            } else {
-                return self.treeList
-            }
+            return self.treeList.filter { bookmarkManager.isFavorite(id: $0.id) }
         }
     }
-    
     var getTreeListUseCase = GetTreeListUseCase(treeRepository: TreeRepositoryImpl(dataSource: TreeAPIImpl()))
-
-    func setup(favTrees favouriteTrees: FavouriteTrees) {
-        self.favouriteTrees = favouriteTrees
-    }
     
     func getTreesData(startRow: Int = 0) async {
         
@@ -72,13 +63,13 @@ class TreeListViewModel: ObservableObject {
             return
         }
         
-        if self.filteredTrees[filteredTrees.count - 3] == item {
+        if self.treeList[treeList.count - 3] == item {
             await self.loadMoreContent()
         }
     }
     
     private func loadMoreContent() async {
-        guard !isLoadingRows && canLoadMoreRows else {
+        guard !isLoadingRows else {
             return
         }
         
@@ -94,8 +85,6 @@ class TreeListViewModel: ObservableObject {
     }
     
     func toggleFavorite(tree: Tree) {
-        if let favouriteTrees = favouriteTrees {
-            favouriteTrees.toggleFavorite(treeID: tree.id)
-        }
+        bookmarkManager.toggleFavorite(treeID: tree.id)
     }
 }

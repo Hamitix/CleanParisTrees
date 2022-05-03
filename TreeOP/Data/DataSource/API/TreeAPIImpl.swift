@@ -28,7 +28,7 @@ struct TreeAPIImpl: TreeDataSource {
         }
         
         return result.records.map { item in
-            GeolocatedTree(tree: item.fields.ToDomain(), lat: item.geometry.coordinates[0], lng: item.geometry.coordinates[1])
+            GeolocatedTree(tree: item.fields.ToDomain(), lng: item.geometry.coordinates[0], lat: item.geometry.coordinates[1])
         }
     }
 }

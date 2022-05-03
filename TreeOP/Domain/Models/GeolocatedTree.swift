@@ -9,8 +9,8 @@ import Foundation
 
 struct GeolocatedTree: Identifiable {
     let tree: Tree
-    let lat: Double
     let lng: Double
+    let lat: Double
     var id: Int {
         tree.id
     }
@@ -21,4 +21,8 @@ extension GeolocatedTree : Equatable {
     static func == (lhs: GeolocatedTree, rhs: GeolocatedTree) -> Bool {
         lhs.id == rhs.id
     }
+}
+
+extension GeolocatedTree {
+    static let sampleGLTree = GeolocatedTree(tree: Tree.sampleData, lng: 2.380276792214754, lat: 48.87979863300749)
 }

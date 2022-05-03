@@ -1,5 +1,5 @@
 //
-//  AirInfoViewModel.swift
+//  WeatherInfoViewModel.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 14/04/2022.
