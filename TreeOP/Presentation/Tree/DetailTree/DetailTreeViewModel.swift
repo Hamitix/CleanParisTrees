@@ -7,41 +7,35 @@
 
 import SwiftUI
 import CoreLocation
+import Resolver
 
 class DetailTreeViewModel: ObservableObject {
     
-    var favouriteTrees: FavouriteTrees?
+    @Injected private var bookmarkManager: BookmarkManager
     
-    @Published var tree: GeolocatedTree?
-    
-    @Published var latitude: Double = 0
-    @Published var longitude: Double = 0
+    @Published var glTree: GeolocatedTree?
     
     @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     @Published var annotationItems: [GeolocatedTree] = [GeolocatedTree]()
     
-    func setup(_ favouriteTrees: FavouriteTrees) {
-        self.favouriteTrees = favouriteTrees
-    }
     
-    func getStarIconName() -> String {
-        //TODO: Resolve Bug : FavouriteTrees became nil when the star button is pressed & Map Marker disappear
-        
-        if let tree = tree, let favouriteTrees = favouriteTrees  {
-            return favouriteTrees.isFavorite(tree: tree.tree) ? String(localized: "starFillIcon") : String(localized: "starIcon")
+    @Published var starIconName: String = String(localized: "starIcon")
+    
+    func setStarIconName() {
+        if let glTree = glTree {
+            starIconName =   String(localized: bookmarkManager.isFavorite(id: glTree.id) ? "starFillIcon" : "starIcon")
         }
-        return String(localized: "errorIcon")
     }
     
     func displayTreeName() -> Text {
-        if let tree = tree {
-            return Text(LocalizedStringKey(tree.tree.name ?? "No Name"), comment: "treeNameComment")
+        if let glTree = glTree {
+            return Text(LocalizedStringKey(glTree.tree.name ?? "No Name"), comment: "treeNameComment")
         }
         return Text("No Name")
     }
     
     
-    func getFullAddress(tree: Tree) -> String {
+    private func getFullAddress(tree: Tree) -> String {
         if let address2 = tree.address2 {
             return address2.appending(" \(tree.address)")
         }
@@ -49,37 +43,32 @@ class DetailTreeViewModel: ObservableObject {
     }
     
     func displayFullAddress() -> Text? {
-        if let tree = tree {
-            return Text("Address \(self.getFullAddress(tree: tree.tree).localizedCapitalized)", comment: "addressComment")
+        if let glTree = glTree {
+            return Text("Address \(self.getFullAddress(tree: glTree.tree).localizedCapitalized)", comment: "addressComment")
         }
         return nil
     }
     
     func toggleFavorite() {
-        if let tree = tree, let favouriteTrees = favouriteTrees {
-            favouriteTrees.toggleFavorite(treeID: tree.id)
-        } else {
-            //self.favouriteTrees = setup
+        if let glTree = glTree {
+            bookmarkManager.toggleFavorite(treeID: glTree.id)
+            setStarIconName()
         }
     }
     
     //MARK: Coordinates Methods
-    func updateCoordinates() {
-        if let tree = tree  {
-            self.longitude = tree.lng
-            self.latitude = tree.lat
-            self.setCLLCoordinates()
-            self.annotationItems = [tree]
+    func updateCoordinates(completion: @escaping (_ coordinates: CLLocationCoordinate2D) -> Void) {
+        if let glTree = glTree  {
+            self.coordinates = setCLLCoordinates(newLat: glTree.lat, newLng: glTree.lng)
+            self.annotationItems = [glTree]
+        
+            DispatchQueue.main.async {
+                completion(self.coordinates)
+            }
         }
     }
     
-    func setCLLCoordinates() {
-        self.coordinates = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-    }
-    
-    func displayTrees () {
-        if let favouriteTrees = self.favouriteTrees {
-            print("favouriteTrees : \(favouriteTrees.treeIDs)")
-        }
+    func setCLLCoordinates(newLat: Double, newLng: Double) -> CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
     }
 }

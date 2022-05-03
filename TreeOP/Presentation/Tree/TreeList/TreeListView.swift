@@ -10,8 +10,6 @@ import SwiftUI
 
 struct TreeListView: View {
     
-    @EnvironmentObject var favouriteTrees: FavouriteTrees
-    
     @StateObject private var listViewModel: TreeListViewModel
     
     init(viewModel: TreeListViewModel = .init()) {
@@ -20,27 +18,18 @@ struct TreeListView: View {
     
     var body: some View {
         VStack {
+            
             NavigationView {
-                List(listViewModel.filteredTrees) { item in
-                    
-                    TreeListItem(item: item)
-                        .task {
-                            await listViewModel.loadMoreRowsIfNeeded(currentItem: item)
-                        }
-                    
-                        .listRowSeparatorTint(Color("separator"))
-                        .listRowSeparator(.hidden, edges: .top)
-                    
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                            Button {
-                                listViewModel.toggleFavorite(tree: item.tree)
-                            } label: {
-                                Image(systemName: String(localized:"starIcon"))
+                List {
+                    ForEach(listViewModel.filteredTrees) { item in
+                        TreeItemView(item: item)
+                            .task {
+                                await listViewModel.loadMoreRowsIfNeeded(currentItem: item)
                             }
-                            .tint(.yellow)
-                        }
+                            .listRowSeparatorTint(Color("separator"))
+                            .listRowSeparator(.hidden, edges: .top)
+                    }
                 }
-                
                 .listStyle(.inset)
                 .padding(.trailing)
                 
@@ -62,9 +51,6 @@ struct TreeListView: View {
                 ProgressView()
                     .padding(.bottom)
             }
-        }
-        .onAppear {
-            self.listViewModel.setup(favTrees: self.favouriteTrees)
         }
         .task {
             if listViewModel.filteredTrees.count == 0 {

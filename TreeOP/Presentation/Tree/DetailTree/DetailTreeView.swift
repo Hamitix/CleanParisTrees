@@ -11,32 +11,31 @@ import MapKit
 
 struct DetailTreeView: View {
     
-    @EnvironmentObject var favouriteTrees: FavouriteTrees
-    @ObservedObject private(set) var detailViewModel = DetailTreeViewModel()
+    @ObservedObject private var detailViewModel = DetailTreeViewModel()
     
-    @State private var mapRegion: MKCoordinateRegion = MKCoordinateRegion.init()
-    
-    init(tree: GeolocatedTree) {
-        detailViewModel.tree = tree
+    init(glTree: GeolocatedTree) {
+        detailViewModel.glTree = glTree
     }
+    
+    @State var mapRegion: MKCoordinateRegion = MKCoordinateRegion.init()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             
-            Text("Species \(detailViewModel.tree?.tree.species?.localizedCapitalized ?? String(localized:"notSpecified"))", comment: "speciesComment")
+            Text("Species \(detailViewModel.glTree?.tree.species?.localizedCapitalized ?? String(localized:"notSpecified"))", comment: "speciesComment")
             
-            Text("Height \(detailViewModel.tree?.tree.height ?? 0)", comment: "heightComment")
+            Text("Height \(detailViewModel.glTree?.tree.height ?? 0)", comment: "heightComment")
             
-            Text("Circumference \(detailViewModel.tree?.tree.circumference ?? 0)", comment: "circumferenceComment")
+            Text("Circumference \(detailViewModel.glTree?.tree.circumference ?? 0)", comment: "circumferenceComment")
             
             detailViewModel.displayFullAddress()
                 .padding(.bottom, 5)
-            
             
             Map(coordinateRegion: $mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems) { item in
                 MapMarker(coordinate: self.detailViewModel.coordinates, tint: .red)
             }
         }
+        
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
@@ -46,23 +45,17 @@ struct DetailTreeView: View {
         .toolbar(content: {
             Button {
                 detailViewModel.toggleFavorite()
-                detailViewModel.displayTrees()
-                
             } label: {
-                Image(systemName: detailViewModel.getStarIconName())
+                Image(systemName: detailViewModel.starIconName)
                     .foregroundColor(.yellow)
             }
         })
         
         .onAppear {
-            self.detailViewModel.setup(self.favouriteTrees)
+            detailViewModel.setStarIconName()
             
-            if detailViewModel.longitude == 0 {
-                self.detailViewModel.updateCoordinates()
-            }
-            
-            if self.mapRegion.center.longitude == 0 {
-                self.mapRegion = MKCoordinateRegion(center: detailViewModel.coordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
+            self.detailViewModel.updateCoordinates { (updatedCoordinates) in
+                self.mapRegion = MKCoordinateRegion(center: updatedCoordinates, span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
             }
         }
     }
