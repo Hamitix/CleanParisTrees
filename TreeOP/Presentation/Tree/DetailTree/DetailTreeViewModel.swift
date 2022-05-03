@@ -1,5 +1,5 @@
 //
-//  DetailViewModel.swift
+//  DetailTreeViewModel.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 12/04/2022.

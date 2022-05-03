@@ -1,6 +1,6 @@
 //
 
-//  DetailView.swift
+//  DetailTreeView.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 12/04/2022.
@@ -60,9 +60,10 @@ struct DetailTreeView: View {
         }
     }
     
-    struct DetailView_Previews: PreviewProvider {
-        static var previews: some View {
-            DetailTreeView(tree: GeolocatedTree(tree: Tree.sampleData, lat: 20, lng: 20))
-        }
+}
+
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        DetailTreeView(glTree: GeolocatedTree.sampleGLTree)
     }
 }
