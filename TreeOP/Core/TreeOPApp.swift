@@ -8,10 +8,7 @@
 import SwiftUI
 
 @main
-struct TreeOPApp: App {
-    
-    @StateObject private var favouriteTrees = FavouriteTrees()
-    
+struct TreeOPApp: App {    
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -26,8 +23,8 @@ struct TreeOPApp: App {
                         Image(systemName: String(localized: "questionMarkCircleIcon"))
                         Text("General Infos")
                     }
+                
             }
-            .environmentObject(favouriteTrees)
         }
     }
 }

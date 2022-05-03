@@ -12,12 +12,12 @@ struct WeatherRepositoryImpl: WeatherRepository {
     var dataSource: WeatherDataSource
     
     func getWeather(lat: Double, lng: Double) async throws -> Double {
-        let _temperature = try await dataSource.getTemperature(lat: lat, lng: lng)
-        return _temperature
+        let temperature = try await dataSource.getTemperature(lat: lat, lng: lng)
+        return temperature
     }
     
     func getAirQuality(lat: Double, lng: Double) async throws -> Int {
-        let _aqi = try await dataSource.getAirQuality(lat: lat, lng: lng)
-        return _aqi
+        let aqi = try await dataSource.getAirQuality(lat: lat, lng: lng)
+        return aqi
     }
 }

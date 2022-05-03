@@ -10,4 +10,3 @@ import Foundation
 protocol TreeRepository {
     func getTreeList(startRow: Int, nbrRows: Int) async throws -> [GeolocatedTree]
 }
-
