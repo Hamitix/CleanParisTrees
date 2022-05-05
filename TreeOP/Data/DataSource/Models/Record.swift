@@ -42,24 +42,3 @@ struct Geometry: Decodable, Hashable {
     let type: String
     let coordinates: [Double]
 }
-
-
-//
-//extension Geometry {
-//    static let sampleData = Geometry(type: "Point", coordinates: [
-//        2.349718604917588,
-//        48.89082227307561
-//    ])
-//}
-//
-//extension Record {
-//    static let sampleData = Record(name: "Pommier",  species: "trilobata", address2: "85", address: "Rue Victor Hugo", height: 12, circumference: 12, id: 23)
-//}
-//
-//extension RecordData {
-//    static let sampleData = RecordData(recordid: "0"
-//                                        , fields: Record.sampleData
-//                                        , geometry: Geometry.sampleData
-//    )
-//}
-

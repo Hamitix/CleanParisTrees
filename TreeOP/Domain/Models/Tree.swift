@@ -28,8 +28,3 @@ extension Record: DataToDomain {
              id: id)
     }
 }
-
-
-extension Tree {
-    static let sampleData = Tree(name: "Pommier",  species: "trilobata", address: "Rue Victor Hugo", address2: "85", height: 12, circumference: 12, id: 23)
-}

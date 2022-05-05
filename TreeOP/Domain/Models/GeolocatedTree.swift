@@ -22,7 +22,3 @@ extension GeolocatedTree : Equatable {
         lhs.id == rhs.id
     }
 }
-
-extension GeolocatedTree {
-    static let sampleGLTree = GeolocatedTree(tree: Tree.sampleData, lng: 2.380276792214754, lat: 48.87979863300749)
-}

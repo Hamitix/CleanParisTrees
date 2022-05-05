@@ -18,7 +18,6 @@ class DetailTreeViewModel: ObservableObject {
     @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     @Published var annotationItems: [GeolocatedTree] = [GeolocatedTree]()
     
-    
     @Published var starIconName: String = String(localized: "starIcon")
     
     func setStarIconName() {
@@ -57,6 +56,11 @@ class DetailTreeViewModel: ObservableObject {
     }
     
     //MARK: Coordinates Methods
+    
+    private func setCLLCoordinates(newLat: Double, newLng: Double) -> CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
+    }
+    
     func updateCoordinates(completion: @escaping (_ coordinates: CLLocationCoordinate2D) -> Void) {
         if let glTree = glTree  {
             self.coordinates = setCLLCoordinates(newLat: glTree.lat, newLng: glTree.lng)
@@ -68,7 +72,4 @@ class DetailTreeViewModel: ObservableObject {
         }
     }
     
-    func setCLLCoordinates(newLat: Double, newLng: Double) -> CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
-    }
 }

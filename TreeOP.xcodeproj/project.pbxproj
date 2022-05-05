@@ -46,6 +46,8 @@
 		A8E2D0C7280064C40088CFDD /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0C6280064C40088CFDD /* Record.swift */; };
 		A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CC28006D270088CFDD /* Constants.swift */; };
 		A8E2D0CF28008A100088CFDD /* TreeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CE28008A100088CFDD /* TreeListViewModel.swift */; };
+		A8F0D9842822CA57005CA45D /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D9832822CA57005CA45D /* MockedData.swift */; };
+		A8F0D9862822CB42005CA45D /* MockedDataDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */; };
 		A8F3FF3C2805CA410090B3B5 /* DetailTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F3FF3B2805CA410090B3B5 /* DetailTreeViewModel.swift */; };
 		A8F3FF43280807BC0090B3B5 /* WeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F3FF42280807BC0090B3B5 /* WeatherInfoView.swift */; };
 		A8F3FF45280807CB0090B3B5 /* WeatherInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F3FF44280807CB0090B3B5 /* WeatherInfoViewModel.swift */; };
@@ -113,6 +115,8 @@
 		A8E2D0C6280064C40088CFDD /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		A8E2D0CC28006D270088CFDD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A8E2D0CE28008A100088CFDD /* TreeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeListViewModel.swift; sourceTree = "<group>"; };
+		A8F0D9832822CA57005CA45D /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
+		A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedDataDomain.swift; sourceTree = "<group>"; };
 		A8F3FF3B2805CA410090B3B5 /* DetailTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTreeViewModel.swift; sourceTree = "<group>"; };
 		A8F3FF42280807BC0090B3B5 /* WeatherInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoView.swift; sourceTree = "<group>"; };
 		A8F3FF44280807CB0090B3B5 /* WeatherInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoViewModel.swift; sourceTree = "<group>"; };
@@ -153,13 +157,6 @@
 			path = Bookmark;
 			sourceTree = "<group>";
 		};
-		A86BD2E52809A20400FB3102 /* Environment Objects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Environment Objects";
-			sourceTree = "<group>";
-		};
 		A8757DED2812F03D001E5EFF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +193,7 @@
 				A8757DF12812F0D7001E5EFF /* Tree.swift */,
 				A8757DF32812F1C9001E5EFF /* DataToDomain.swift */,
 				A8757DF52812F58F001E5EFF /* GeolocatedTree.swift */,
+				A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -366,7 +364,6 @@
 				A8757DED2812F03D001E5EFF /* Presentation */,
 				A8757DEE2812F047001E5EFF /* Domain */,
 				A8757DEF2812F04F001E5EFF /* Data */,
-				A86BD2E52809A20400FB3102 /* Environment Objects */,
 				A8D58E272805812D009C3705 /* Ressources */,
 				A8E2D09B2800626F0088CFDD /* Assets.xcassets */,
 				A8E2D09D2800626F0088CFDD /* Preview Content */,
@@ -405,6 +402,7 @@
 				A8E2D0C6280064C40088CFDD /* Record.swift */,
 				A8F3FF4A28080BB50090B3B5 /* Weather.swift */,
 				A8A2C5FF2808114000431AFE /* AirQuality.swift */,
+				A8F0D9832822CA57005CA45D /* MockedData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -579,11 +577,13 @@
 				A8757E1F2816A193001E5EFF /* WeatherRepository.swift in Sources */,
 				A8757DF22812F0D7001E5EFF /* Tree.swift in Sources */,
 				A8757E08281307D0001E5EFF /* TreeDataSource.swift in Sources */,
+				A8F0D9862822CB42005CA45D /* MockedDataDomain.swift in Sources */,
 				A8757E1D28169D9B001E5EFF /* TreeListRepository.swift in Sources */,
 				A8E2D0C7280064C40088CFDD /* Record.swift in Sources */,
 				A8757E0E2813086D001E5EFF /* TreeAPIImpl.swift in Sources */,
 				A8F3FF45280807CB0090B3B5 /* WeatherInfoViewModel.swift in Sources */,
 				A8C7F0D428113FD8009E87C8 /* WeatherView.swift in Sources */,
+				A8F0D9842822CA57005CA45D /* MockedData.swift in Sources */,
 				A8E2D09A2800626E0088CFDD /* TreeListView.swift in Sources */,
 				A8F3FF4B28080BB50090B3B5 /* Weather.swift in Sources */,
 				A8757E14281684D8001E5EFF /* APIServiceError.swift in Sources */,

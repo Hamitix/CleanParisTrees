@@ -22,7 +22,7 @@ struct DetailTreeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             
-            Text("Species \(detailViewModel.glTree?.tree.species?.localizedCapitalized ?? String(localized:"notSpecified"))", comment: "speciesComment")
+            Text("Species \(detailViewModel.glTree?.tree.species?.localizedCapitalized ?? String(localized: "notSpecified"))", comment: "specie)Comment")
             
             Text("Height \(detailViewModel.glTree?.tree.height ?? 0)", comment: "heightComment")
             
