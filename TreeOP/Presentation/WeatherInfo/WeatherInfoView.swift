@@ -9,14 +9,13 @@ import SwiftUI
 
 struct WeatherInfoView: View {
     
-    @StateObject private var infosViewModel: WeatherInfoViewModel
+    @StateObject private var weatherInfoViewModel: WeatherInfoViewModel
     
-    init (viewModel: WeatherInfoViewModel = .init(latitude: K.latParis, longitude: K.longParis)) {
-        _infosViewModel = StateObject(wrappedValue: viewModel)
+    init (viewModel: WeatherInfoViewModel = .init(latitude: K.Map.latParis, longitude: K.Map.longParis)) {
+        _weatherInfoViewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        
         VStack(alignment: .center) {
             
             Text("Paris")
@@ -24,15 +23,17 @@ struct WeatherInfoView: View {
             
             Divider()
             
-            WeatherView(temp: infosViewModel.weather)
+            WeatherView(temp: weatherInfoViewModel.weather)
             
             Divider()
             
-            AirQualityView(aqiDesc: infosViewModel.aqiDescription)
+            AirQualityView(aqiDesc: weatherInfoViewModel.aqiDescription)
+            
+            Divider()
         }
         .task {
-            await infosViewModel.getWeatherData()
-            await infosViewModel.getAQData()
+            await weatherInfoViewModel.getWeatherData()
+            await weatherInfoViewModel.getAQData()
         }
     }
 }

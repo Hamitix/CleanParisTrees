@@ -221,10 +221,10 @@
 			isa = PBXGroup;
 			children = (
 				A8757DF12812F0D7001E5EFF /* Tree.swift */,
-				A8757DF32812F1C9001E5EFF /* DataToDomain.swift */,
 				A8757DF52812F58F001E5EFF /* GeolocatedTree.swift */,
-				A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */,
+				A8757DF32812F1C9001E5EFF /* DataToDomain.swift */,
 				A815F2332829321F00B1962E /* CoreDataToDomain.swift */,
+				A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

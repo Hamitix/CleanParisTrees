@@ -14,22 +14,33 @@ protocol getWeather {
 
 struct GetWeatherUseCase: getWeather {
     
+    let networkManager = NetworkMonitor.shared
+    
     var weatherRepo: WeatherRepository
     
     func execute(lat: Double, lng: Double) async -> Result<Double, UseCaseError> {
         
-        do {
-            let temperature = try await weatherRepo.getWeather(lat: lat, lng: lng)
-            return .success(temperature)
-        } catch (let error) {
-            switch error {
-            case APIServiceError.decodingError:
-                return .failure(.decodingError)
-                
-            default:
-                return .failure(.networkError)
-            }
+        
+        switch networkManager.fetchStrategy {
             
+        case .local:
+            return .failure(.networkError)
+            
+        case .remote:
+            
+            do {
+                let temperature = try await weatherRepo.getWeather(lat: lat, lng: lng)
+                return .success(temperature)
+            } catch (let error) {
+                switch error {
+                case APIServiceError.decodingError:
+                    return .failure(.decodingError)
+                    
+                default:
+                    return .failure(.networkError)
+                }
+                
+            }
         }
     }
 }

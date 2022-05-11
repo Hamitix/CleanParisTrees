@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AirQualityView: View {
     
-    let aqiDesc: String
+    let aqiDesc: String?
     
     var body: some View {
         
@@ -17,11 +17,16 @@ struct AirQualityView: View {
             
             Label(LocalizedStringKey("Air Quality"), systemImage: String(localized: "aqiIcon"))
             
-            if aqiDesc == "" {
+            switch aqiDesc {
+                
+            case nil:
+                Text("cannotProcessData")
+                
+            case "":
                 ProgressView()
                     .padding(.horizontal)
-            } else {
-                Text(LocalizedStringKey(aqiDesc.description))
+            default:
+                Text(LocalizedStringKey(aqiDesc!.description))
             }
         }
         .padding()

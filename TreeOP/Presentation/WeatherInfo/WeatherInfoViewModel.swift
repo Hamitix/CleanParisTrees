@@ -10,7 +10,7 @@ import Foundation
 class WeatherInfoViewModel: ObservableObject {
     
     @Published var airQuality: Int = 0
-    @Published var aqiDescription: String = ""
+    @Published var aqiDescription: String? = ""
     @Published var weather: Double? = 0
     
     private let latitude: Double
@@ -27,7 +27,7 @@ class WeatherInfoViewModel: ObservableObject {
     
     func getWeatherData() async {
         
-        let result = await getWeatherUseCase.execute(lat: K.latParis, lng: K.longParis)
+        let result = await getWeatherUseCase.execute(lat: K.Map.latParis, lng: K.Map.longParis)
         
         switch result {
         case .success(let temperature):
@@ -36,6 +36,7 @@ class WeatherInfoViewModel: ObservableObject {
             }
         case .failure(let error):
             DispatchQueue.main.async {
+                self.weather = nil
                 print("Failure getWeatherData : \(error.localizedDescription)")
             }
         }
@@ -53,6 +54,7 @@ class WeatherInfoViewModel: ObservableObject {
             }
         case .failure(let error):
             DispatchQueue.main.async {
+                self.aqiDescription = nil
                 print("Failure getAQData : \(error.localizedDescription)")
             }
         }

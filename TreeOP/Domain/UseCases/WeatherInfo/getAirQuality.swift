@@ -13,20 +13,28 @@ protocol getAirQuality {
 
 struct GetAirQualityUseCase: getAirQuality {
     
+    let networkManager = NetworkMonitor.shared
+    
     var weatherRepository: WeatherRepository
     
     func execute(lat: Double, lng: Double) async -> Result<Int, UseCaseError> {
         
-        do {
-            let airQualityIndex = try await weatherRepository.getAirQuality(lat: lat, lng: lng)
-            return .success(airQualityIndex)
-        } catch (let error) {
-            switch error {
-            case APIServiceError.decodingError:
-                return .failure(.decodingError)
-                
-            default:
-                return .failure(.networkError)
+        switch networkManager.fetchStrategy {
+            
+        case .local:
+            return .failure(.networkError)
+        case .remote:
+            do {
+                let airQualityIndex = try await weatherRepository.getAirQuality(lat: lat, lng: lng)
+                return .success(airQualityIndex)
+            } catch (let error) {
+                switch error {
+                case APIServiceError.decodingError:
+                    return .failure(.decodingError)
+                    
+                default:
+                    return .failure(.networkError)
+                }
             }
         }
     }
