@@ -16,50 +16,67 @@ struct TreeListView: View {
     }
     
     var body: some View {
-        VStack {
-            
-            NavigationView {
-                List {
-                    ForEach(listViewModel.filteredTrees) { item in
-                        TreeItemView(item: item)
-                            .task {
-                                await listViewModel.loadMoreRowsIfNeeded(currentItem: item)
-                            }
-                            .listRowSeparatorTint(Color("separator"))
-                            .listRowSeparator(.hidden, edges: .top)
+            VStack {
+                
+                if listViewModel.filteredTrees.isEmpty {
+                    if listViewModel.isLoadingRows {
+                        ProgressView()
+                    } else {                    
+                        Text("treeListEmpty")
                     }
                 }
-                .listStyle(.inset)
-                .padding(.trailing)
-                
-                .refreshable {
-                    await listViewModel.refreshableAction()
-                }
-                
-                .animation(.default, value: listViewModel.isFilteringFavourites)
-                
-                .toolbar(content: {
-                    Button {
-                        listViewModel.toggleFilterFavourites()
-                    } label: {
-                        Text(LocalizedStringKey(listViewModel.filterButtonName))
+                else {
+                NavigationView {
+                    List {
+                        ForEach(listViewModel.filteredTrees) { item in
+                            TreeItemView(item: item)
+                                .task {
+                                    await listViewModel.loadMoreRowsIfNeeded(currentItem: item)
+                                }
+                                .listRowSeparatorTint(Color("separator"))
+                                .listRowSeparator(.hidden, edges: .top)
+                        }
+                        //                    GeometryReader { geo in
+                        //                        let offset = geo.frame(in: .named("list")).minY
+                        //                        print("offset : \(offset)")
+                        //                        Text("dzdzdz")
+                        //                    }
                     }
-                })
-                
-                .navigationTitle(Text("titleMainView"))
-                .navigationViewStyle(.stack)
+                    .listStyle(.inset)
+                    .padding(.trailing)
+                    
+                    .coordinateSpace(name: "list")
+                    
+                    .refreshable {
+                        await listViewModel.refreshableAction()
+                    }
+                    
+                    .animation(.default, value: listViewModel.isFilteringFavourites)
+                    
+                    .toolbar(content: {
+                        Button {
+                            listViewModel.toggleFilterFavourites()
+                        } label: {
+                            Text(LocalizedStringKey(listViewModel.filterButtonName))
+                        }
+                    })
+                    
+                    .navigationTitle(Text("titleMainView"))
+                    .navigationViewStyle(.stack)
+                }
+
+                if listViewModel.isLoadingRows && !listViewModel.filteredTrees.isEmpty {
+                    ProgressView()
+                        .padding(.bottom)
+                }
             }
             
-            if listViewModel.isLoadingRows && !listViewModel.filteredTrees.isEmpty {
-                ProgressView()
-                    .padding(.bottom)
-            }
         }
-        .task {
-            if listViewModel.filteredTrees.isEmpty {
-                await self.listViewModel.getTreesData()
+            .task {
+                if listViewModel.filteredTrees.isEmpty {
+                    await self.listViewModel.getTreesData()
+                }
             }
-        }
     }
 }
 

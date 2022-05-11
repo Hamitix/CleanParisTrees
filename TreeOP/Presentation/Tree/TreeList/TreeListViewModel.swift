@@ -14,7 +14,7 @@ class TreeListViewModel: ObservableObject {
     private let networkMonitor = NetworkMonitor.shared
     private var treeList = [GeolocatedTree]()
     
-    @Published var isLoadingRows: Bool = false
+    @Published var isLoadingRows: Bool = true
     private var currentRow: Int = 0
     
     @Published var filterButtonName: String = "Show Favourite Trees"
@@ -35,16 +35,16 @@ class TreeListViewModel: ObservableObject {
     var getTreeListUseCase = GetTreeListUseCase()
     
     //MARK: Methods
-    func getTreesData(startRow: Int = 0, forceRemote: Bool = false) async {
+    func getTreesData(startRow: Int = 0) async {
         
         errorMessage = ""
-        let result = await getTreeListUseCase.fetch(startRow: startRow, forceRemote: forceRemote)
+        let result = await getTreeListUseCase.fetch(startRow: startRow)
         
         switch result {
         case .success(let trees):
             DispatchQueue.main.async {
                 self.treeList.append(contentsOf: trees)
-                self.currentRow += K.OpenDataAPI.nbrRowPerRequest
+                self.currentRow = self.treeList.count
                 self.isLoadingRows = false
                 if self.networkMonitor.isDeviceConnectedToInternet() { CoreDataController.shared.saveGLTreesInContext(glTrees: trees)
                 }
@@ -63,7 +63,7 @@ class TreeListViewModel: ObservableObject {
     func refreshableAction() async -> Void {
         if networkMonitor.isDeviceConnectedToInternet() {
             resetTreeList()
-            await getTreesData()
+            await getTreesData(startRow: 0)
         }
     }
     
@@ -80,10 +80,9 @@ class TreeListViewModel: ObservableObject {
             return
         }
         
-        
-        //Need to change this condition
-        if treeList.last?.id == item.id {
-            await self.loadMoreContent()
+        let thresholdIndex = treeList.index(treeList.endIndex, offsetBy: -4)
+        if treeList.firstIndex(where: {$0.id == item.id}) == thresholdIndex {
+            await loadMoreContent()
         }
     }
     

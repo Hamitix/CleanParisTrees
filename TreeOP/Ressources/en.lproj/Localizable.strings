@@ -32,6 +32,7 @@
 //MARK: Strings
 
 "No Address" = "Address not specified";
+"treeListEmpty" = "The list of tree is empty!";
 
 //MARK: URLs
 

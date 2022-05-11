@@ -9,5 +9,5 @@ import Foundation
 
 protocol DataToDomain {
     associatedtype M: Any
-    func ToDomain() -> M
+    func TreeDataToDomain() -> M
 }

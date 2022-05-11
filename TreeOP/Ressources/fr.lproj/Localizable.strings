@@ -30,6 +30,7 @@
 //MARK: Strings
 
 "No Address" = "Adresse non renseignée";
+"treeListEmpty" = "La liste des arbres est vide !";
 
 
 //MARK: URLs

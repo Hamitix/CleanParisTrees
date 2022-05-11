@@ -18,7 +18,7 @@ struct Tree {
 }
 
 extension Record: DataToDomain {
-    func ToDomain() -> Tree {
+    func TreeDataToDomain() -> Tree {
         Tree(name: name,
              species: species,
              address: address,

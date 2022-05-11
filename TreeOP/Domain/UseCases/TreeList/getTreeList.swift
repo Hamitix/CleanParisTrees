@@ -9,13 +9,13 @@ import Foundation
 import Network
 
 protocol getTreeList {
-    func fetch(startRow: Int, forceRemote: Bool) async -> Result<[GeolocatedTree], UseCaseError>
+    func fetch(startRow: Int) async -> Result<[GeolocatedTree], UseCaseError>
 }
 
 struct GetTreeListUseCase: getTreeList {
     let networkManager = NetworkMonitor.shared
     
-    func fetch(startRow: Int, forceRemote: Bool = false) async -> Result<[GeolocatedTree], UseCaseError> {
+    func fetch(startRow: Int) async -> Result<[GeolocatedTree], UseCaseError> {
         
         switch networkManager.fetchStrategy {
             
