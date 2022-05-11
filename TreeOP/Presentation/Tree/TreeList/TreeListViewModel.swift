@@ -19,10 +19,7 @@ class TreeListViewModel: ObservableObject {
     
     @Published var filterButtonName: String = "Show Favourite Trees"
     @Published var isFilteringFavourites: Bool = false
-    
-    @Published var errorMessage: String = ""
-    @Published var hasError: Bool = false
-    
+        
     var filteredTrees: [GeolocatedTree] {
         switch isFilteringFavourites {
         case false:
@@ -37,7 +34,6 @@ class TreeListViewModel: ObservableObject {
     //MARK: Methods
     func getTreesData(startRow: Int = 0) async {
         
-        errorMessage = ""
         let result = await getTreeListUseCase.fetch(startRow: startRow)
         
         switch result {
@@ -50,10 +46,8 @@ class TreeListViewModel: ObservableObject {
                 }
             }
             
-        case .failure(let error):
+        case .failure:
             DispatchQueue.main.async {
-                self.errorMessage = error.localizedDescription
-                self.hasError = true
                 self.isLoadingRows = false
             }
         }
@@ -87,7 +81,7 @@ class TreeListViewModel: ObservableObject {
     }
     
     private func loadMoreContent() async {
-        guard !isLoadingRows && networkMonitor.isDeviceConnectedToInternet() else {
+        guard !isLoadingRows   else {
             return
         }
         

@@ -21,7 +21,7 @@ struct TreeListView: View {
                 if listViewModel.filteredTrees.isEmpty {
                     if listViewModel.isLoadingRows {
                         ProgressView()
-                    } else {                    
+                    } else {
                         Text("treeListEmpty")
                     }
                 }
@@ -36,11 +36,6 @@ struct TreeListView: View {
                                 .listRowSeparatorTint(Color("separator"))
                                 .listRowSeparator(.hidden, edges: .top)
                         }
-                        //                    GeometryReader { geo in
-                        //                        let offset = geo.frame(in: .named("list")).minY
-                        //                        print("offset : \(offset)")
-                        //                        Text("dzdzdz")
-                        //                    }
                     }
                     .listStyle(.inset)
                     .padding(.trailing)

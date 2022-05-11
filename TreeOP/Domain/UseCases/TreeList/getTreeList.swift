@@ -47,7 +47,7 @@ struct GetTreeListUseCase: getTreeList {
             let localTreeRepo = LocalTreeRepositoryImpl(dataSource: TreeDBImpl())
             
             do {
-                let trees = try localTreeRepo.getTreeList()
+                let trees = try localTreeRepo.getTreeList(offset: startRow)
                 return .success(trees)
                 
             } catch {

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LocalTreeDataSource {
-    func getTreeListLocal() throws -> [GeolocatedTree]
+    func getTreeListLocal(offset: Int) throws -> [GeolocatedTree]
 }
