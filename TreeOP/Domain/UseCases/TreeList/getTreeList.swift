@@ -6,28 +6,52 @@
 //
 
 import Foundation
+import Network
 
 protocol getTreeList {
-    func execute(startRow: Int) async -> Result<[GeolocatedTree], UseCaseError>
+    func fetch(startRow: Int, forceRemote: Bool) async -> Result<[GeolocatedTree], UseCaseError>
 }
 
 struct GetTreeListUseCase: getTreeList {
+    let networkManager = NetworkMonitor.shared
     
-    var treeRepository: TreeRepository
-    
-    func execute(startRow: Int) async -> Result<[GeolocatedTree], UseCaseError> {
-        do {
-            let treeList = try await treeRepository.getTreeList(startRow: startRow, nbrRows: K.OpenDataAPI.nbrRowPerRequest)
-            return .success(treeList)
-        } catch (let error) {
+    func fetch(startRow: Int, forceRemote: Bool = false) async -> Result<[GeolocatedTree], UseCaseError> {
+        
+        switch networkManager.fetchStrategy {
             
-            switch error {
+        case .remote:
+            
+            let remoteTreeRepo = RemoteTreeRepositoryImpl(dataSource: TreeAPIImpl())
+            
+            do {
+                let treeList = try await remoteTreeRepo.getTreeList(startRow: startRow, nbrRows: K.OpenDataAPI.nbrRowPerRequest)
                 
-            case APIServiceError.decodingError:
-                return .failure(.decodingError)
+                if startRow == 0 {
+                    CoreDataController.shared.deleteAllTreesInContext()
+                }
                 
-            default:
-                return .failure(.networkError)
+                return .success(treeList)
+            } catch (let error) {
+                switch error {
+                    
+                case APIServiceError.decodingError:
+                    return .failure(.decodingError)
+                    
+                default:
+                    return .failure(.networkError)
+                }
+            }
+            
+        case .local:
+            
+            let localTreeRepo = LocalTreeRepositoryImpl(dataSource: TreeDBImpl())
+            
+            do {
+                let trees = try localTreeRepo.getTreeList()
+                return .success(trees)
+                
+            } catch {
+                return .failure(UseCaseError.retrievingFromDBError)
             }
         }
     }

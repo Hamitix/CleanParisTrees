@@ -27,6 +27,11 @@
 "cannotProcessData" = "Impossible de traiter les données";
 "notSpecified" = "Non spécifié";
 
+//MARK: Strings
+
+"No Address" = "Adresse non renseignée";
+
+
 //MARK: URLs
 
 "urlOpenDataURL %lld %lld" = "https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&rows=%lld&start=%lld&facet=&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=circonferenceencm&facet=hauteurenm";

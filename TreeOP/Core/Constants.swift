@@ -9,8 +9,13 @@ import Foundation
 
 struct K {
     
-    static let latParis = 48.866667
-    static let longParis = 2.333333
+    struct Network {
+        static let labelDQ = "InternetConnectionMonitor"
+    }
+    
+    struct CoreData {
+        static let treeContainerName = "TreeCDModel"
+    }
     
     struct UserDefaults {
         static let keyFavTrees = "Favourites"

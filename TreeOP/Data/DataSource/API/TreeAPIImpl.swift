@@ -7,10 +7,9 @@
 
 import Foundation
 
-
-struct TreeAPIImpl: TreeDataSource {
-    
-    func getTreeList(startRow: Int, nbrRows: Int) async throws -> [GeolocatedTree] {
+struct TreeAPIImpl: RemoteTreeDataSource {
+   
+    func getTreeListRemote(startRow: Int, nbrRows: Int) async throws -> [GeolocatedTree] {
         guard let url = URL(string: String(localized: "urlOpenDataURL \(nbrRows) \(startRow)")) else {
             throw APIServiceError.badUrl
         }

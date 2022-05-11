@@ -9,9 +9,9 @@ import SwiftUI
 import Resolver
 
 class TreeListViewModel: ObservableObject {
-
     @Injected private var bookmarkManager: BookmarkManager
     
+    private let networkMonitor = NetworkMonitor.shared
     private var treeList = [GeolocatedTree]()
     
     @Published var isLoadingRows: Bool = false
@@ -24,19 +24,21 @@ class TreeListViewModel: ObservableObject {
     @Published var hasError: Bool = false
     
     var filteredTrees: [GeolocatedTree] {
-        switch self.isFilteringFavourites {
+        switch isFilteringFavourites {
         case false:
-            return self.treeList
+            return treeList
         case true:
-            return self.treeList.filter { bookmarkManager.isFavorite(id: $0.id) }
+            return treeList.filter { bookmarkManager.isFavorite(id: $0.id) }
         }
     }
-    var getTreeListUseCase = GetTreeListUseCase(treeRepository: TreeRepositoryImpl(dataSource: TreeAPIImpl()))
     
-    func getTreesData(startRow: Int = 0) async {
+    var getTreeListUseCase = GetTreeListUseCase()
+    
+    //MARK: Methods
+    func getTreesData(startRow: Int = 0, forceRemote: Bool = false) async {
         
         errorMessage = ""
-        let result = await getTreeListUseCase.execute(startRow: startRow)
+        let result = await getTreeListUseCase.fetch(startRow: startRow, forceRemote: forceRemote)
         
         switch result {
         case .success(let trees):
@@ -44,6 +46,8 @@ class TreeListViewModel: ObservableObject {
                 self.treeList.append(contentsOf: trees)
                 self.currentRow += K.OpenDataAPI.nbrRowPerRequest
                 self.isLoadingRows = false
+                if self.networkMonitor.isDeviceConnectedToInternet() { CoreDataController.shared.saveGLTreesInContext(glTrees: trees)
+                }
             }
             
         case .failure(let error):
@@ -55,33 +59,48 @@ class TreeListViewModel: ObservableObject {
         }
     }
     
-    //MARK: List Lazy Loading Methods
+    //MARK: Refreshable Methods
+    func refreshableAction() async -> Void {
+        if networkMonitor.isDeviceConnectedToInternet() {
+            resetTreeList()
+            await getTreesData()
+        }
+    }
     
+    private func resetTreeList() {
+        DispatchQueue.main.async {
+            self.treeList = []
+        }
+    }
+    
+    //MARK: List Lazy Loading Methods
     func loadMoreRowsIfNeeded(currentItem item : GeolocatedTree?) async {
         guard let item = item else {
             await self.loadMoreContent()
             return
         }
         
-        if self.treeList[treeList.count - 3] == item {
+        
+        //Need to change this condition
+        if treeList.last?.id == item.id {
             await self.loadMoreContent()
         }
     }
     
     private func loadMoreContent() async {
-        guard !isLoadingRows else {
+        guard !isLoadingRows && networkMonitor.isDeviceConnectedToInternet() else {
             return
         }
         
         isLoadingRows = true
-        await self.getTreesData(startRow: self.currentRow + 1)
+        await getTreesData(startRow: currentRow + 1)
     }
     
-    //MARK: Favourites Methods
     
+    //MARK: Favourites Methods
     func toggleFilterFavourites() {
-        self.isFilteringFavourites.toggle()
-        self.filterButtonName = self.isFilteringFavourites ? "Show All Trees" : "Show Favourite Trees"
+        isFilteringFavourites.toggle()
+        filterButtonName = isFilteringFavourites ? "Show All Trees" : "Show Favourite Trees"
     }
     
     func toggleFavorite(tree: Tree) {

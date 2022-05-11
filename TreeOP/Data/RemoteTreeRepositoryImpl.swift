@@ -7,12 +7,11 @@
 
 import Foundation
 
-struct TreeRepositoryImpl: TreeRepository {
+struct RemoteTreeRepositoryImpl: RemoteTreeRepository {
     
-    var dataSource: TreeDataSource
+    var dataSource: RemoteTreeDataSource
     
     func getTreeList(startRow: Int, nbrRows: Int) async throws -> [GeolocatedTree] {
-        let trees = try await dataSource.getTreeList(startRow: startRow, nbrRows: nbrRows)
-        return trees
+        try await dataSource.getTreeListRemote(startRow: startRow, nbrRows: nbrRows)
     }
 }

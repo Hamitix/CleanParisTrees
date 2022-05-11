@@ -8,5 +8,8 @@
 import Foundation
 
 enum APIServiceError : Error {
-    case badUrl, requestError, decodingError, statusNotOK
+    case badUrl
+    case requestError
+    case decodingError
+    case statusNotOK
 }

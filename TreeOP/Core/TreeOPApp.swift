@@ -8,7 +8,12 @@
 import SwiftUI
 
 @main
-struct TreeOPApp: App {    
+struct TreeOPApp: App {
+    
+    @StateObject private var coreDataController = CoreDataController.shared
+    
+    let networkMonitor = NetworkMonitor.shared
+    
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -23,7 +28,14 @@ struct TreeOPApp: App {
                         Image(systemName: String(localized: "questionMarkCircleIcon"))
                         Text("General Infos")
                     }
-                
+            }
+            .environment(\.managedObjectContext, coreDataController.container.viewContext)
+            
+            .onAppear {
+                networkMonitor.startMonitoring()
+            }
+            .onDisappear {
+                networkMonitor.stopMonitoring()
             }
         }
     }

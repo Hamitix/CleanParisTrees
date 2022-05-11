@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct TreeListView: View {
     
     @StateObject private var listViewModel: TreeListViewModel
@@ -33,6 +32,10 @@ struct TreeListView: View {
                 .listStyle(.inset)
                 .padding(.trailing)
                 
+                .refreshable {
+                    await listViewModel.refreshableAction()
+                }
+                
                 .animation(.default, value: listViewModel.isFilteringFavourites)
                 
                 .toolbar(content: {
@@ -47,13 +50,13 @@ struct TreeListView: View {
                 .navigationViewStyle(.stack)
             }
             
-            if listViewModel.isLoadingRows {
+            if listViewModel.isLoadingRows && !listViewModel.filteredTrees.isEmpty {
                 ProgressView()
                     .padding(.bottom)
             }
         }
         .task {
-            if listViewModel.filteredTrees.count == 0 {
+            if listViewModel.filteredTrees.isEmpty {
                 await self.listViewModel.getTreesData()
             }
         }

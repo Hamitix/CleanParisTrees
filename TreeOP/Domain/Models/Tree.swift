@@ -28,3 +28,20 @@ extension Record: DataToDomain {
              id: id)
     }
 }
+
+extension Tree : DomainToTreeCoreData {
+    func ToTreeCoreData() -> CDTree {
+        
+        let  cdTree = CDTree(context: CoreDataController.shared.container.viewContext)
+        
+        cdTree.id = id
+        cdTree.name = name
+        cdTree.species = species
+        cdTree.address = address
+        cdTree.address2 = address2
+        cdTree.height = height
+        cdTree.circumference = circumference
+        
+        return cdTree
+    }
+}
