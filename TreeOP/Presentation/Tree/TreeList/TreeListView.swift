@@ -16,16 +16,16 @@ struct TreeListView: View {
     }
     
     var body: some View {
-            VStack {
-                
-                if listViewModel.filteredTrees.isEmpty {
-                    if listViewModel.isLoadingRows {
-                        ProgressView()
-                    } else {
-                        Text("treeListEmpty")
-                    }
+        VStack {
+            
+            if listViewModel.filteredTrees.isEmpty {
+                if listViewModel.isLoadingRows {
+                    ProgressView()
+                } else {
+                    Text("treeListEmpty")
                 }
-                else {
+            }
+            else {
                 NavigationView {
                     List {
                         ForEach(listViewModel.filteredTrees) { item in
@@ -39,8 +39,6 @@ struct TreeListView: View {
                     }
                     .listStyle(.inset)
                     .padding(.trailing)
-                    
-                    .coordinateSpace(name: "list")
                     
                     .refreshable {
                         await listViewModel.refreshableAction()
@@ -59,19 +57,18 @@ struct TreeListView: View {
                     .navigationTitle(Text("titleMainView"))
                     .navigationViewStyle(.stack)
                 }
-
+                
                 if listViewModel.isLoadingRows && !listViewModel.filteredTrees.isEmpty {
                     ProgressView()
                         .padding(.bottom)
                 }
             }
-            
         }
-            .task {
-                if listViewModel.filteredTrees.isEmpty {
-                    await self.listViewModel.getTreesData()
-                }
+        .task {
+            if listViewModel.filteredTrees.isEmpty {
+                await self.listViewModel.getTreesData()
             }
+        }
     }
 }
 

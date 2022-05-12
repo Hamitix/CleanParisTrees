@@ -13,8 +13,8 @@ struct TreeDBImpl : LocalTreeDataSource {
     func getTreeListLocal(offset: Int) throws -> [GeolocatedTree] {
         
         let fetchRequest: NSFetchRequest<CDGeolocatedTree>
-        fetchRequest = CDGeolocatedTree.fetchRequest()
         
+        fetchRequest = CDGeolocatedTree.fetchRequest()
         fetchRequest.fetchOffset = offset
         fetchRequest.fetchLimit = K.OpenDataAPI.nbrRowPerRequest
         

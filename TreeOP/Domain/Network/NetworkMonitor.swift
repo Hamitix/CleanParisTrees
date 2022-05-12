@@ -22,7 +22,7 @@ final class NetworkMonitor: ObservableObject {
     
     func startMonitoring() {
         monitor.start(queue: queue)
-
+        
         monitor.pathUpdateHandler = { [weak self] newPath in
             if newPath.status != .unsatisfied {
                 self?.fetchStrategy = .remote

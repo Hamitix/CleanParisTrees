@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TreeItemView: View {
-        
+    
     @ObservedObject private var treeItemViewModel: TreeItemViewModel
     
     init(item: GeolocatedTree){

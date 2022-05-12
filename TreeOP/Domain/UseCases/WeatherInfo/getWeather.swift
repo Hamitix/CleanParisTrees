@@ -19,15 +19,12 @@ struct GetWeatherUseCase: getWeather {
     var weatherRepo: WeatherRepository
     
     func execute(lat: Double, lng: Double) async -> Result<Double, UseCaseError> {
-        
-        
         switch networkManager.fetchStrategy {
             
         case .local:
             return .failure(.networkError)
             
         case .remote:
-            
             do {
                 let temperature = try await weatherRepo.getWeather(lat: lat, lng: lng)
                 return .success(temperature)
@@ -39,7 +36,6 @@ struct GetWeatherUseCase: getWeather {
                 default:
                     return .failure(.networkError)
                 }
-                
             }
         }
     }

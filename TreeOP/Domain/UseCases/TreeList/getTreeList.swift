@@ -20,7 +20,6 @@ struct GetTreeListUseCase: getTreeList {
         switch networkManager.fetchStrategy {
             
         case .remote:
-            
             let remoteTreeRepo = RemoteTreeRepositoryImpl(dataSource: TreeAPIImpl())
             
             do {
@@ -43,7 +42,6 @@ struct GetTreeListUseCase: getTreeList {
             }
             
         case .local:
-            
             let localTreeRepo = LocalTreeRepositoryImpl(dataSource: TreeDBImpl())
             
             do {

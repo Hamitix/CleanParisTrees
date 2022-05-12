@@ -13,16 +13,15 @@ class CoreDataController: ObservableObject {
     
     static let shared = CoreDataController()
     let container: NSPersistentContainer
-
+    
     private init() {
         
         container = NSPersistentContainer(name: K.CoreData.treeContainerName)
-        
         container.loadPersistentStores { description, error in
             if let error = error {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
-        
+            
             self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
         }
     }
@@ -41,7 +40,7 @@ class CoreDataController: ObservableObject {
     
     func saveContext() {
         let context = container.viewContext
-
+        
         if context.hasChanges {
             do {
                 try context.save()
@@ -50,12 +49,11 @@ class CoreDataController: ObservableObject {
             }
         }
     }
-        
+    
     func deleteAllTreesInContext() {
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDGeolocatedTree")
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+        
         do {
             try container.viewContext.execute(batchDeleteRequest)
         } catch (let error) {

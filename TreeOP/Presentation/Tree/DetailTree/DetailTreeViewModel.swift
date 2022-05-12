@@ -65,7 +65,7 @@ class DetailTreeViewModel: ObservableObject {
         if let glTree = glTree  {
             self.coordinates = setCLLCoordinates(newLat: glTree.lat, newLng: glTree.lng)
             self.annotationItems = [glTree]
-        
+            
             DispatchQueue.main.async {
                 completion(self.coordinates)
             }

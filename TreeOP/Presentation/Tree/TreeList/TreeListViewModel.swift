@@ -19,7 +19,7 @@ class TreeListViewModel: ObservableObject {
     
     @Published var filterButtonName: String = "Show Favourite Trees"
     @Published var isFilteringFavourites: Bool = false
-        
+    
     var filteredTrees: [GeolocatedTree] {
         switch isFilteringFavourites {
         case false:
