@@ -11,7 +11,7 @@ struct LocalTreeRepositoryImpl: LocalTreeRepository {
     
     var dataSource: LocalTreeDataSource
     
-    func getTreeList(offset: Int) throws -> [GeolocatedTree] {
-        try dataSource.getTreeListLocal(offset: offset)
+    func getTreeList(offset: Int, isLazy: Bool) throws -> [GeolocatedTree] {
+        try dataSource.getTreeListLocal(offset: offset, isLazy: isLazy)
     }
 }

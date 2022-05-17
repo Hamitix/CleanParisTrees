@@ -9,9 +9,11 @@ import SwiftUI
 import Resolver
 
 class TreeListViewModel: ObservableObject {
+    
+    //MARK: Properties
     @Injected private var bookmarkManager: BookmarkManager
     
-    private let networkMonitor = NetworkMonitor.shared
+    let networkMonitor = NetworkMonitor.shared
     private var treeList = [GeolocatedTree]()
     
     @Published var isLoadingRows: Bool = true
@@ -53,6 +55,10 @@ class TreeListViewModel: ObservableObject {
         }
     }
     
+    func isListEmpty() -> Bool {
+        self.treeList.isEmpty
+    }
+ 
     //MARK: Refreshable Methods
     func refreshableAction() async -> Void {
         if networkMonitor.isDeviceConnectedToInternet() {
@@ -90,7 +96,7 @@ class TreeListViewModel: ObservableObject {
     }
     
     
-    //MARK: Favourites Methods
+    //MARK: Bookmark Methods
     func toggleFilterFavourites() {
         isFilteringFavourites.toggle()
         filterButtonName = isFilteringFavourites ? "Show All Trees" : "Show Favourite Trees"

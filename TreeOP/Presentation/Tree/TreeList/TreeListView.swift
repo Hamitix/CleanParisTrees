@@ -18,7 +18,7 @@ struct TreeListView: View {
     var body: some View {
         VStack {
             
-            if listViewModel.filteredTrees.isEmpty {
+            if listViewModel.isListEmpty() {
                 if listViewModel.isLoadingRows {
                     ProgressView()
                 } else {
@@ -57,13 +57,20 @@ struct TreeListView: View {
                     .navigationTitle(Text("titleMainView"))
                     .navigationViewStyle(.stack)
                 }
-                
-                if listViewModel.isLoadingRows && !listViewModel.filteredTrees.isEmpty {
-                    ProgressView()
-                        .padding(.bottom)
-                }
+            }
+            
+            if listViewModel.isLoadingRows && !listViewModel.filteredTrees.isEmpty {
+                ProgressView()
+                    .padding(.bottom)
             }
         }
+        
+        .overlay(alignment: .bottom, content: {
+            if !listViewModel.networkMonitor.isDeviceConnectedToInternet() {
+                NoConnectionView()
+            }
+        })
+        
         .task {
             if listViewModel.filteredTrees.isEmpty {
                 await self.listViewModel.getTreesData()
