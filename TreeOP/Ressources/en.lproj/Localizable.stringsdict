@@ -28,8 +28,8 @@
 	<string>Air Quality:</string>
 	<key>Trees</key>
 	<string>Trees</string>
-	<key>General Infos</key>
-	<string>General Informations</string>
+	<key>Weather</key>
+	<string>Weather</string>
 	<key>Paris</key>
 	<string>Paris</string>
 	<key>Description</key>

@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  TreeOP
+
+  Created by Dylan HAMITI on 16/05/2022.
+  
+*/
+
+
+"NSLocationWhenInUseUsageDescription" = "Votre localisation sera utilisée pour vous aider à trouver les différents arbres de la ville";
+
+"NSLocationAlwaysUsageDescription" = "Votre localisation sera utilisée pour vous aider à trouver les différents arbres de la ville";

@@ -8,13 +8,14 @@
 
 //MARK: Icons
 
-"listBulletIcon" = "list.bullet";
-"questionMarkCircleIcon" = "questionmark.circle";
+"leafIcon" = "leaf";
+"weatherIcon" = "sun.max";
 "starIcon" = "star";
 "starFillIcon" = "star-fill";
 "errorIcon" = "xmark.octagon";
 "thermometerIcon" = "thermometer";
 "aqiIcon" = "aqi.medium";
+"mapIcon" = "map";
 
 
 //MARK: Text Comments
@@ -33,6 +34,10 @@
 
 "No Address" = "Address not specified";
 "treeListEmpty" = "The list of tree is empty!";
+
+"notConnectedError" = "No internet connection";
+
+"Map" = "Map";
 
 //MARK: URLs
 

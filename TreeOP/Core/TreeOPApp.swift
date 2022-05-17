@@ -12,21 +12,28 @@ struct TreeOPApp: App {
     
     @StateObject private var coreDataController = CoreDataController.shared
     
-    let networkMonitor = NetworkMonitor.shared
+    private let networkMonitor = NetworkMonitor.shared
     
     var body: some Scene {
         WindowGroup {
             TabView {
                 TreeListView()
                     .tabItem {
-                        Image(systemName: String(localized: "listBulletIcon"))
+                        Image(systemName: String(localized: "leafIcon"))
                         Text("Trees")
+                    }
+                
+                
+                MapView()
+                    .tabItem {
+                        Image(systemName: String(localized: "mapIcon"))
+                        Text("Map")
                     }
                 
                 WeatherInfoView()
                     .tabItem {
-                        Image(systemName: String(localized: "questionMarkCircleIcon"))
-                        Text("General Infos")
+                        Image(systemName: String(localized: "weatherIcon"))
+                        Text("Weather")
                     }
             }
             .environment(\.managedObjectContext, coreDataController.container.viewContext)

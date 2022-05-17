@@ -30,6 +30,10 @@
 		A8757E1D28169D9B001E5EFF /* RemoteTreeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8757E1C28169D9B001E5EFF /* RemoteTreeRepository.swift */; };
 		A8757E1F2816A193001E5EFF /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8757E1E2816A193001E5EFF /* WeatherRepository.swift */; };
 		A8757E232816A348001E5EFF /* WeatherRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8757E222816A348001E5EFF /* WeatherRepositoryImpl.swift */; };
+		A89107B728323EF800C7A7F1 /* getTreeListRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107B628323EF800C7A7F1 /* getTreeListRemote.swift */; };
+		A89107C028327B9700C7A7F1 /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */; };
+		A89107C2283284C300C7A7F1 /* CenterOnUserIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */; };
+		A89107C52832998000C7A7F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A89107C32832998000C7A7F1 /* InfoPlist.strings */; };
 		A89C9ED828210FD800BE73C4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = A89C9ED728210FD800BE73C4 /* Resolver */; };
 		A89C9EDB2821109B00BE73C4 /* App+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C9EDA2821109B00BE73C4 /* App+Injection.swift */; };
 		A89C9EDE282121EF00BE73C4 /* TreeItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C9EDD282121EF00BE73C4 /* TreeItemViewModel.swift */; };
@@ -38,9 +42,13 @@
 		A8C73B2F282A9D2B009B440A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A8D58E2E2805814A009C3705 /* Localizable.stringsdict */; };
 		A8C73B30282A9D2B009B440A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8C7F0D728115D84009E87C8 /* Localizable.strings */; };
 		A8C73B32282A9E2B009B440A /* LocalTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73B31282A9E2B009B440A /* LocalTreeDataSource.swift */; };
-		A8C73B34282A9EAF009B440A /* TreeDBImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73B33282A9EAF009B440A /* TreeDBImpl.swift */; };
+		A8C73B34282A9EAF009B440A /* GetTreesDBImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73B33282A9EAF009B440A /* GetTreesDBImpl.swift */; };
 		A8C73B36282A9F55009B440A /* LocalTreeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73B35282A9F55009B440A /* LocalTreeRepositoryImpl.swift */; };
 		A8C73B38282AA282009B440A /* DBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73B37282AA282009B440A /* DBError.swift */; };
+		A8C73B69282E3DC0009B440A /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73B68282E3DC0009B440A /* NoConnectionView.swift */; };
+		A8C73BA3283235FA009B440A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73BA2283235FA009B440A /* MapView.swift */; };
+		A8C73BA528323605009B440A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73BA428323605009B440A /* MapViewModel.swift */; };
+		A8C73BA728323B89009B440A /* getTreeListLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73BA628323B89009B440A /* getTreeListLocal.swift */; };
 		A8C7F0D428113FD8009E87C8 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C7F0D328113FD8009E87C8 /* WeatherView.swift */; };
 		A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0972800626E0088CFDD /* TreeOPApp.swift */; };
 		A8E2D09A2800626E0088CFDD /* TreeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0992800626E0088CFDD /* TreeListView.swift */; };
@@ -109,6 +117,12 @@
 		A8757E1C28169D9B001E5EFF /* RemoteTreeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTreeRepository.swift; sourceTree = "<group>"; };
 		A8757E1E2816A193001E5EFF /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		A8757E222816A348001E5EFF /* WeatherRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryImpl.swift; sourceTree = "<group>"; };
+		A89107B628323EF800C7A7F1 /* getTreeListRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getTreeListRemote.swift; sourceTree = "<group>"; };
+		A89107BE2832551900C7A7F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapMarker.swift; sourceTree = "<group>"; };
+		A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterOnUserIcon.swift; sourceTree = "<group>"; };
+		A89107C42832998000C7A7F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A89107C6283299F700C7A7F1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A89C9EDA2821109B00BE73C4 /* App+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Injection.swift"; sourceTree = "<group>"; };
 		A89C9EDD282121EF00BE73C4 /* TreeItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItemViewModel.swift; sourceTree = "<group>"; };
 		A8A2C5FF2808114000431AFE /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
@@ -116,9 +130,13 @@
 		A8BF4C80282A9C5A00CDC738 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A8BF4C81282A9C7200CDC738 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		A8C73B31282A9E2B009B440A /* LocalTreeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTreeDataSource.swift; sourceTree = "<group>"; };
-		A8C73B33282A9EAF009B440A /* TreeDBImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDBImpl.swift; sourceTree = "<group>"; };
+		A8C73B33282A9EAF009B440A /* GetTreesDBImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTreesDBImpl.swift; sourceTree = "<group>"; };
 		A8C73B35282A9F55009B440A /* LocalTreeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTreeRepositoryImpl.swift; sourceTree = "<group>"; };
 		A8C73B37282AA282009B440A /* DBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBError.swift; sourceTree = "<group>"; };
+		A8C73B68282E3DC0009B440A /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
+		A8C73BA2283235FA009B440A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A8C73BA428323605009B440A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		A8C73BA628323B89009B440A /* getTreeListLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getTreeListLocal.swift; sourceTree = "<group>"; };
 		A8C7F0D328113FD8009E87C8 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		A8C7F0DA28115D99009E87C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A8D58E2F28058163009C3705 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fr; path = fr.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -188,6 +206,8 @@
 		A8757DED2812F03D001E5EFF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A8C73BA1283235EA009B440A /* Map */,
+				A8C73B67282E3DA7009B440A /* Errors */,
 				A84BCEF828196FE6006AD8F0 /* Bookmark */,
 				A8757DFC2813012A001E5EFF /* WeatherInfo */,
 				A8757DF928130091001E5EFF /* Tree */,
@@ -243,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				A8757DFD28130668001E5EFF /* getTreeList.swift */,
+				A8C73BA628323B89009B440A /* getTreeListLocal.swift */,
+				A89107B628323EF800C7A7F1 /* getTreeListRemote.swift */,
 			);
 			path = TreeList;
 			sourceTree = "<group>";
@@ -360,11 +382,31 @@
 			path = TreeItem;
 			sourceTree = "<group>";
 		};
+		A8C73B67282E3DA7009B440A /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A8C73B68282E3DC0009B440A /* NoConnectionView.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		A8C73BA1283235EA009B440A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A8C73BA2283235FA009B440A /* MapView.swift */,
+				A8C73BA428323605009B440A /* MapViewModel.swift */,
+				A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */,
+				A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		A8D58E272805812D009C3705 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
 				A8D58E2E2805814A009C3705 /* Localizable.stringsdict */,
 				A8C7F0D728115D84009E87C8 /* Localizable.strings */,
+				A89107C32832998000C7A7F1 /* InfoPlist.strings */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -392,6 +434,7 @@
 		A8E2D0962800626E0088CFDD /* TreeOP */ = {
 			isa = PBXGroup;
 			children = (
+				A89107BE2832551900C7A7F1 /* Info.plist */,
 				A8E2D0C2280064090088CFDD /* Core */,
 				A8757DED2812F03D001E5EFF /* Presentation */,
 				A8757DEE2812F047001E5EFF /* Domain */,
@@ -464,7 +507,7 @@
 				A8C73B37282AA282009B440A /* DBError.swift */,
 				A8F0D9882823B7AB005CA45D /* TreeCDModel.xcdatamodeld */,
 				A8F0D98B2823B8D3005CA45D /* CoreDataController.swift */,
-				A8C73B33282A9EAF009B440A /* TreeDBImpl.swift */,
+				A8C73B33282A9EAF009B440A /* GetTreesDBImpl.swift */,
 				A8F0D9992823C49D005CA45D /* CoreDataModel */,
 			);
 			path = DB;
@@ -607,6 +650,7 @@
 				A8C73B30282A9D2B009B440A /* Localizable.strings in Resources */,
 				A8E2D09F2800626F0088CFDD /* Preview Assets.xcassets in Resources */,
 				A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */,
+				A89107C52832998000C7A7F1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +677,9 @@
 			files = (
 				A8C73B38282AA282009B440A /* DBError.swift in Sources */,
 				A8757E1728168991001E5EFF /* UseCaseError.swift in Sources */,
+				A89107B728323EF800C7A7F1 /* getTreeListRemote.swift in Sources */,
 				A8A2C6002808114000431AFE /* AirQuality.swift in Sources */,
+				A89107C028327B9700C7A7F1 /* CustomMapMarker.swift in Sources */,
 				A8F0D98C2823B8D3005CA45D /* CoreDataController.swift in Sources */,
 				A8C73B36282A9F55009B440A /* LocalTreeRepositoryImpl.swift in Sources */,
 				A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */,
@@ -653,7 +699,8 @@
 				A8F3FF45280807CB0090B3B5 /* WeatherInfoViewModel.swift in Sources */,
 				A815F236282A947600B1962E /* LocalTreeRepository.swift in Sources */,
 				A8C7F0D428113FD8009E87C8 /* WeatherView.swift in Sources */,
-				A8C73B34282A9EAF009B440A /* TreeDBImpl.swift in Sources */,
+				A89107C2283284C300C7A7F1 /* CenterOnUserIcon.swift in Sources */,
+				A8C73B34282A9EAF009B440A /* GetTreesDBImpl.swift in Sources */,
 				A8F0D9842822CA57005CA45D /* MockedData.swift in Sources */,
 				A8E2D09A2800626E0088CFDD /* TreeListView.swift in Sources */,
 				A8F0D9982823C481005CA45D /* CDGeolocatedTree+CoreDataProperties.swift in Sources */,
@@ -668,6 +715,7 @@
 				A8757E0A2813080B001E5EFF /* WeatherDataSource.swift in Sources */,
 				A85BD6A72829142E0092CD32 /* DomainToCoreData.swift in Sources */,
 				A8757DFE28130668001E5EFF /* getTreeList.swift in Sources */,
+				A8C73BA3283235FA009B440A /* MapView.swift in Sources */,
 				A86BD2E92809B27000FB3102 /* TreeItemView.swift in Sources */,
 				A8757E1A28169D5D001E5EFF /* RemoteTreeRepositoryImpl.swift in Sources */,
 				A8F3FF43280807BC0090B3B5 /* WeatherInfoView.swift in Sources */,
@@ -679,9 +727,12 @@
 				A8757E1028130877001E5EFF /* WeatherAPIImpl.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,
 				A8C73B32282A9E2B009B440A /* LocalTreeDataSource.swift in Sources */,
+				A8C73BA728323B89009B440A /* getTreeListLocal.swift in Sources */,
 				A89C9EDE282121EF00BE73C4 /* TreeItemViewModel.swift in Sources */,
+				A8C73B69282E3DC0009B440A /* NoConnectionView.swift in Sources */,
 				A8757E232816A348001E5EFF /* WeatherRepositoryImpl.swift in Sources */,
 				A8E2D0CF28008A100088CFDD /* TreeListViewModel.swift in Sources */,
+				A8C73BA528323605009B440A /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +769,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A89107C32832998000C7A7F1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A89107C42832998000C7A7F1 /* en */,
+				A89107C6283299F700C7A7F1 /* fr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A8C7F0D728115D84009E87C8 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -866,6 +926,7 @@
 				DEVELOPMENT_TEAM = ZZMAMXS4V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TreeOP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -895,6 +956,7 @@
 				DEVELOPMENT_TEAM = ZZMAMXS4V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TreeOP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
