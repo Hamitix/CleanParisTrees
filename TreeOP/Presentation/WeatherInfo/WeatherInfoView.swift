@@ -18,6 +18,8 @@ struct WeatherInfoView: View {
     var body: some View {
         VStack(alignment: .center) {
             
+            Spacer()
+            
             Text("Paris")
                 .titleStyle()
             
@@ -30,11 +32,19 @@ struct WeatherInfoView: View {
             AirQualityView(aqiDesc: weatherInfoViewModel.aqiDescription)
             
             Divider()
+            
+            Spacer()
         }
         .task {
             await weatherInfoViewModel.getWeatherData()
             await weatherInfoViewModel.getAQData()
         }
+        
+        .overlay(alignment: .bottom, content: {
+            if weatherInfoViewModel.networkMonitor.fetchStrategy == .local {
+                NoConnectionView()
+            }
+        })
     }
 }
 

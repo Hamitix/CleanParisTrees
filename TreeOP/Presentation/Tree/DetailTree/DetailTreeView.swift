@@ -59,7 +59,6 @@ struct DetailTreeView: View {
             }
         }
     }
-    
 }
 
 struct DetailView_Previews: PreviewProvider {

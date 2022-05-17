@@ -16,6 +16,8 @@ class WeatherInfoViewModel: ObservableObject {
     private let latitude: Double
     private let longitude: Double
     
+    let networkMonitor = NetworkMonitor.shared
+    
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
