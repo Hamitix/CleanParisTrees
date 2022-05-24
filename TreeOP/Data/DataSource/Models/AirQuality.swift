@@ -8,7 +8,6 @@
 import Foundation
 
 struct AirQualityResponse: Decodable {
-    
     let data: [AQData]
     
     enum CodingKeys: String, CodingKey {
