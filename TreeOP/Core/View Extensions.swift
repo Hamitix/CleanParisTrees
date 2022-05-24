@@ -16,4 +16,4 @@ extension Text {
             .textCase(.uppercase)
             .padding(.vertical, 5)
     }
- }
+}

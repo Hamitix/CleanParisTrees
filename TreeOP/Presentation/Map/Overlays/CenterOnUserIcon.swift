@@ -17,7 +17,7 @@ struct CenterOnUserIcon: View {
             .foregroundColor(.blue)
             .background(Color("background"))
             .cornerRadius(20)
-            .padding(.all, 5)
+            .padding(5)
     }
 }
 
@@ -25,6 +25,5 @@ struct CenterOnUserIcon_Previews: PreviewProvider {
     static var previews: some View {
         CenterOnUserIcon()
             .previewLayout(.sizeThatFits)
-            .preferredColorScheme(.light)
     }
 }

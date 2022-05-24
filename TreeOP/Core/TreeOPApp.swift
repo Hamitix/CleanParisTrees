@@ -24,12 +24,12 @@ struct TreeOPApp: App {
                     }
                 
                 
-                MapView()
+                ClusterMapView()
                     .tabItem {
                         Image(systemName: String(localized: "mapIcon"))
                         Text("Map")
                     }
-                
+                    
                 WeatherInfoView()
                     .tabItem {
                         Image(systemName: String(localized: "weatherIcon"))

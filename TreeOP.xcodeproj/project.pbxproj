@@ -13,6 +13,11 @@
 		A85AEEB32805A6CE009EB14E /* DetailTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AEEB22805A6CE009EB14E /* DetailTreeView.swift */; };
 		A85AEEB52805A74A009EB14E /* View Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AEEB42805A74A009EB14E /* View Extensions.swift */; };
 		A85BD6A72829142E0092CD32 /* DomainToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85BD6A62829142E0092CD32 /* DomainToCoreData.swift */; };
+		A85C9208283786F000CC72AB /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C9207283786F000CC72AB /* CustomAnnotationView.swift */; };
+		A85C920A28379C6F00CC72AB /* TreeAnnotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C920928379C6F00CC72AB /* TreeAnnotationModel.swift */; };
+		A85C920F2837F6F900CC72AB /* Helper Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C920E2837F6F900CC72AB /* Helper Extensions.swift */; };
+		A85C9211283BAED500CC72AB /* ClusterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C9210283BAED500CC72AB /* ClusterMapView.swift */; };
+		A85C9214283CCE4400CC72AB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C9213283CCE4400CC72AB /* ErrorView.swift */; };
 		A86BD2E92809B27000FB3102 /* TreeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BD2E82809B27000FB3102 /* TreeItemView.swift */; };
 		A8757DF22812F0D7001E5EFF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8757DF12812F0D7001E5EFF /* Tree.swift */; };
 		A8757DF42812F1C9001E5EFF /* DataToDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8757DF32812F1C9001E5EFF /* DataToDomain.swift */; };
@@ -34,6 +39,9 @@
 		A89107C028327B9700C7A7F1 /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */; };
 		A89107C2283284C300C7A7F1 /* CenterOnUserIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */; };
 		A89107C52832998000C7A7F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A89107C32832998000C7A7F1 /* InfoPlist.strings */; };
+		A89107C82833971900C7A7F1 /* MapViewUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C72833971900C7A7F1 /* MapViewUIView.swift */; };
+		A89107CA2833982700C7A7F1 /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C92833982700C7A7F1 /* MapViewCoordinator.swift */; };
+		A89107CC28339FE400C7A7F1 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107CB28339FE400C7A7F1 /* ClusterAnnotationView.swift */; };
 		A89C9ED828210FD800BE73C4 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = A89C9ED728210FD800BE73C4 /* Resolver */; };
 		A89C9EDB2821109B00BE73C4 /* App+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C9EDA2821109B00BE73C4 /* App+Injection.swift */; };
 		A89C9EDE282121EF00BE73C4 /* TreeItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89C9EDD282121EF00BE73C4 /* TreeItemViewModel.swift */; };
@@ -63,7 +71,7 @@
 		A8ECAB352823ED6D002D9C81 /* FetchStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECAB342823ED6D002D9C81 /* FetchStrategy.swift */; };
 		A8ECAB382823EE74002D9C81 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ECAB372823EE74002D9C81 /* NetworkMonitor.swift */; };
 		A8F0D9842822CA57005CA45D /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D9832822CA57005CA45D /* MockedData.swift */; };
-		A8F0D9862822CB42005CA45D /* MockedDataDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */; };
+		A8F0D9862822CB42005CA45D /* MockedDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D9852822CB42005CA45D /* MockedDataAPI.swift */; };
 		A8F0D98A2823B7AB005CA45D /* TreeCDModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D9882823B7AB005CA45D /* TreeCDModel.xcdatamodeld */; };
 		A8F0D98C2823B8D3005CA45D /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D98B2823B8D3005CA45D /* CoreDataController.swift */; };
 		A8F0D9932823C481005CA45D /* CDTree+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F0D98D2823C481005CA45D /* CDTree+CoreDataClass.swift */; };
@@ -100,6 +108,11 @@
 		A85AEEB22805A6CE009EB14E /* DetailTreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTreeView.swift; sourceTree = "<group>"; };
 		A85AEEB42805A74A009EB14E /* View Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extensions.swift"; sourceTree = "<group>"; };
 		A85BD6A62829142E0092CD32 /* DomainToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToCoreData.swift; sourceTree = "<group>"; };
+		A85C9207283786F000CC72AB /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		A85C920928379C6F00CC72AB /* TreeAnnotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationModel.swift; sourceTree = "<group>"; };
+		A85C920E2837F6F900CC72AB /* Helper Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Extensions.swift"; sourceTree = "<group>"; };
+		A85C9210283BAED500CC72AB /* ClusterMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterMapView.swift; sourceTree = "<group>"; };
+		A85C9213283CCE4400CC72AB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		A86BD2E82809B27000FB3102 /* TreeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItemView.swift; sourceTree = "<group>"; };
 		A8757DF12812F0D7001E5EFF /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		A8757DF32812F1C9001E5EFF /* DataToDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataToDomain.swift; sourceTree = "<group>"; };
@@ -123,6 +136,9 @@
 		A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterOnUserIcon.swift; sourceTree = "<group>"; };
 		A89107C42832998000C7A7F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A89107C6283299F700C7A7F1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A89107C72833971900C7A7F1 /* MapViewUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewUIView.swift; sourceTree = "<group>"; };
+		A89107C92833982700C7A7F1 /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
+		A89107CB28339FE400C7A7F1 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
 		A89C9EDA2821109B00BE73C4 /* App+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Injection.swift"; sourceTree = "<group>"; };
 		A89C9EDD282121EF00BE73C4 /* TreeItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItemViewModel.swift; sourceTree = "<group>"; };
 		A8A2C5FF2808114000431AFE /* AirQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQuality.swift; sourceTree = "<group>"; };
@@ -156,7 +172,7 @@
 		A8ECAB342823ED6D002D9C81 /* FetchStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStrategy.swift; sourceTree = "<group>"; };
 		A8ECAB372823EE74002D9C81 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		A8F0D9832822CA57005CA45D /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
-		A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedDataDomain.swift; sourceTree = "<group>"; };
+		A8F0D9852822CB42005CA45D /* MockedDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedDataAPI.swift; sourceTree = "<group>"; };
 		A8F0D9892823B7AB005CA45D /* TreeCDModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TreeCDModel.xcdatamodel; sourceTree = "<group>"; };
 		A8F0D98B2823B8D3005CA45D /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		A8F0D98D2823C481005CA45D /* CDTree+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTree+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -203,14 +219,53 @@
 			path = Bookmark;
 			sourceTree = "<group>";
 		};
+		A85C92062837809D00CC72AB /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				A89107CB28339FE400C7A7F1 /* ClusterAnnotationView.swift */,
+				A85C9207283786F000CC72AB /* CustomAnnotationView.swift */,
+				A85C920928379C6F00CC72AB /* TreeAnnotationModel.swift */,
+				A85C920E2837F6F900CC72AB /* Helper Extensions.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
+		A85C920B2837C8AC00CC72AB /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A85C920D2837C8E600CC72AB /* Models */,
+				A8757E1B28169D8B001E5EFF /* Repository */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A85C920D2837C8E600CC72AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A8757DF12812F0D7001E5EFF /* Tree.swift */,
+				A8757DF52812F58F001E5EFF /* GeolocatedTree.swift */,
+				A8F0D9852822CB42005CA45D /* MockedDataAPI.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A85C9212283CCE3200CC72AB /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */,
+				A85C9213283CCE4400CC72AB /* ErrorView.swift */,
+			);
+			path = Overlays;
+			sourceTree = "<group>";
+		};
 		A8757DED2812F03D001E5EFF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				A8C73BA1283235EA009B440A /* Map */,
 				A8C73B67282E3DA7009B440A /* Errors */,
 				A84BCEF828196FE6006AD8F0 /* Bookmark */,
-				A8757DFC2813012A001E5EFF /* WeatherInfo */,
 				A8757DF928130091001E5EFF /* Tree */,
+				A8C73BA1283235EA009B440A /* Map */,
+				A8757DFC2813012A001E5EFF /* WeatherInfo */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -220,9 +275,7 @@
 			children = (
 				A8ECAB362823EE61002D9C81 /* Network */,
 				A89C9ED92821108E00BE73C4 /* Injection */,
-				A8757E1B28169D8B001E5EFF /* Repository */,
 				A8757DF72812FCA2001E5EFF /* UseCases */,
-				A8757DF02812F06F001E5EFF /* Models */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -240,11 +293,8 @@
 		A8757DF02812F06F001E5EFF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A8757DF12812F0D7001E5EFF /* Tree.swift */,
-				A8757DF52812F58F001E5EFF /* GeolocatedTree.swift */,
 				A8757DF32812F1C9001E5EFF /* DataToDomain.swift */,
 				A815F2332829321F00B1962E /* CoreDataToDomain.swift */,
-				A8F0D9852822CB42005CA45D /* MockedDataDomain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +305,7 @@
 				A8757E1628168991001E5EFF /* UseCaseError.swift */,
 				A8757DFF281306F4001E5EFF /* WeatherInfo */,
 				A8757DF82812FCB7001E5EFF /* TreeList */,
+				A8757DF02812F06F001E5EFF /* Models */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -396,7 +447,11 @@
 				A8C73BA2283235FA009B440A /* MapView.swift */,
 				A8C73BA428323605009B440A /* MapViewModel.swift */,
 				A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */,
-				A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */,
+				A85C9212283CCE3200CC72AB /* Overlays */,
+				A89107C72833971900C7A7F1 /* MapViewUIView.swift */,
+				A89107C92833982700C7A7F1 /* MapViewCoordinator.swift */,
+				A85C92062837809D00CC72AB /* Annotations */,
+				A85C9210283BAED500CC72AB /* ClusterMapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -434,13 +489,14 @@
 		A8E2D0962800626E0088CFDD /* TreeOP */ = {
 			isa = PBXGroup;
 			children = (
-				A89107BE2832551900C7A7F1 /* Info.plist */,
 				A8E2D0C2280064090088CFDD /* Core */,
 				A8757DED2812F03D001E5EFF /* Presentation */,
+				A85C920B2837C8AC00CC72AB /* API */,
 				A8757DEE2812F047001E5EFF /* Domain */,
 				A8757DEF2812F04F001E5EFF /* Data */,
 				A8D58E272805812D009C3705 /* Ressources */,
 				A8E2D09B2800626F0088CFDD /* Assets.xcassets */,
+				A89107BE2832551900C7A7F1 /* Info.plist */,
 				A8E2D09D2800626F0088CFDD /* Preview Content */,
 			);
 			path = TreeOP;
@@ -679,12 +735,15 @@
 				A8757E1728168991001E5EFF /* UseCaseError.swift in Sources */,
 				A89107B728323EF800C7A7F1 /* getTreeListRemote.swift in Sources */,
 				A8A2C6002808114000431AFE /* AirQuality.swift in Sources */,
+				A89107CA2833982700C7A7F1 /* MapViewCoordinator.swift in Sources */,
 				A89107C028327B9700C7A7F1 /* CustomMapMarker.swift in Sources */,
 				A8F0D98C2823B8D3005CA45D /* CoreDataController.swift in Sources */,
+				A85C920A28379C6F00CC72AB /* TreeAnnotationModel.swift in Sources */,
 				A8C73B36282A9F55009B440A /* LocalTreeRepositoryImpl.swift in Sources */,
 				A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */,
 				A89C9EDB2821109B00BE73C4 /* App+Injection.swift in Sources */,
 				A85AEEB32805A6CE009EB14E /* DetailTreeView.swift in Sources */,
+				A85C9208283786F000CC72AB /* CustomAnnotationView.swift in Sources */,
 				A84BCEFA28196FFA006AD8F0 /* BookmarkManager.swift in Sources */,
 				A8A2C60228085E1B00431AFE /* AirQualityView.swift in Sources */,
 				A8757E032813070A001E5EFF /* getAirQuality.swift in Sources */,
@@ -692,7 +751,8 @@
 				A8F0D98A2823B7AB005CA45D /* TreeCDModel.xcdatamodeld in Sources */,
 				A8757DF22812F0D7001E5EFF /* Tree.swift in Sources */,
 				A8757E08281307D0001E5EFF /* RemoteTreeDataSource.swift in Sources */,
-				A8F0D9862822CB42005CA45D /* MockedDataDomain.swift in Sources */,
+				A89107C82833971900C7A7F1 /* MapViewUIView.swift in Sources */,
+				A8F0D9862822CB42005CA45D /* MockedDataAPI.swift in Sources */,
 				A8757E1D28169D9B001E5EFF /* RemoteTreeRepository.swift in Sources */,
 				A8E2D0C7280064C40088CFDD /* Record.swift in Sources */,
 				A8757E0E2813086D001E5EFF /* TreeAPIImpl.swift in Sources */,
@@ -714,6 +774,7 @@
 				A85AEEB52805A74A009EB14E /* View Extensions.swift in Sources */,
 				A8757E0A2813080B001E5EFF /* WeatherDataSource.swift in Sources */,
 				A85BD6A72829142E0092CD32 /* DomainToCoreData.swift in Sources */,
+				A85C9214283CCE4400CC72AB /* ErrorView.swift in Sources */,
 				A8757DFE28130668001E5EFF /* getTreeList.swift in Sources */,
 				A8C73BA3283235FA009B440A /* MapView.swift in Sources */,
 				A86BD2E92809B27000FB3102 /* TreeItemView.swift in Sources */,
@@ -727,8 +788,11 @@
 				A8757E1028130877001E5EFF /* WeatherAPIImpl.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,
 				A8C73B32282A9E2B009B440A /* LocalTreeDataSource.swift in Sources */,
+				A85C9211283BAED500CC72AB /* ClusterMapView.swift in Sources */,
 				A8C73BA728323B89009B440A /* getTreeListLocal.swift in Sources */,
+				A89107CC28339FE400C7A7F1 /* ClusterAnnotationView.swift in Sources */,
 				A89C9EDE282121EF00BE73C4 /* TreeItemViewModel.swift in Sources */,
+				A85C920F2837F6F900CC72AB /* Helper Extensions.swift in Sources */,
 				A8C73B69282E3DC0009B440A /* NoConnectionView.swift in Sources */,
 				A8757E232816A348001E5EFF /* WeatherRepositoryImpl.swift in Sources */,
 				A8E2D0CF28008A100088CFDD /* TreeListViewModel.swift in Sources */,
