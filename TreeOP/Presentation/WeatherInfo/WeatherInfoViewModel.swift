@@ -6,28 +6,44 @@
 //
 
 import Foundation
+import Resolver
 
 class WeatherInfoViewModel: ObservableObject {
     
-    @Published var airQuality: Int = 0
-    @Published var aqiDescription: String? = ""
-    @Published var weather: Double? = 0
+    @Injected var networkMonitor: NetworkMonitor
+    
+    private var airQuality: Int = 0
+    @Published var aqiDescription: String = ""
+    @Published var weather: Double = 0
+    
+    @Published var weatherState: WeatherInfoState = .loading
+    @Published var aqiState: WeatherInfoState = .loading
     
     private let latitude: Double
     private let longitude: Double
-    
-    let networkMonitor = NetworkMonitor.shared
     
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
     }
     
-    var getWeatherUseCase = GetWeatherUseCase(weatherRepo: WeatherRepositoryImpl(dataSource: WeatherAPIImpl()))
+    @Injected var getWeatherUseCase: GetWeather
+    @Injected var getAirQualityUseCase: GetAirQuality
+
+    func getAllWeatherData(forceRefresh: Bool = false) async {
+        await getAQData(forceRefresh)
+        await getWeatherData(forceRefresh)
+    }
     
-    var getAirQualityUseCase = GetAirQualityUseCase(weatherRepository: WeatherRepositoryImpl(dataSource: WeatherAPIImpl()))
-    
-    func getWeatherData() async {
+    private func getWeatherData(_ forceRefresh: Bool = false) async {
+        
+        if !forceRefresh && weatherState == .loaded {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.weatherState = .loading
+        }
         
         let result = await getWeatherUseCase.execute(lat: K.Map.latParis, lng: K.Map.longParis)
         
@@ -35,16 +51,28 @@ class WeatherInfoViewModel: ObservableObject {
         case .success(let temperature):
             DispatchQueue.main.async {
                 self.weather = temperature
+                self.weatherState = .loaded
             }
-        case .failure(let error):
+        case .failure:
             DispatchQueue.main.async {
-                self.weather = nil
-                print("Failure getWeatherData : \(error.localizedDescription)")
+                self.weatherState = .errorNetwork
             }
         }
     }
     
-    func getAQData() async {
+    func getTemperatureValue() -> String {
+        String(format: "%.1f", weather) + " °C"
+    }
+    
+    private func getAQData(_ forceRefresh: Bool = false) async {
+        
+        if !forceRefresh && aqiState == .loaded {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.aqiState = .loading
+        }
         
         let result = await getAirQualityUseCase.execute(lat: self.latitude, lng: self.longitude)
         
@@ -53,13 +81,17 @@ class WeatherInfoViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.airQuality = aqi
                 self.aqiDescription = getAQDesc(id: aqi)
+                self.aqiState = .loaded
             }
-        case .failure(let error):
+        case .failure:
             DispatchQueue.main.async {
-                self.aqiDescription = nil
-                print("Failure getAQData : \(error.localizedDescription)")
+                self.aqiState = .errorNetwork
             }
         }
+    }
+    
+    func getAqiValue() -> String {
+        aqiDescription
     }
 }
 

@@ -18,6 +18,20 @@ struct WeatherInfoView: View {
     var body: some View {
         VStack(alignment: .center) {
             
+            // Refresh Button
+            HStack {
+                Spacer()
+                Button {
+                    Task {
+                        await weatherInfoViewModel.getAllWeatherData(forceRefresh: true)
+                    }
+                } label: {
+                    Image(systemName: String(localized:"refreshArrowIcon"))
+                        .padding()
+                        .foregroundColor(.primary)
+                }
+            }
+            
             Spacer()
             
             Text("Paris")
@@ -25,19 +39,20 @@ struct WeatherInfoView: View {
             
             Divider()
             
-            WeatherView(temp: weatherInfoViewModel.weather)
+            // Temperature
+            WeatherItemView(value: weatherInfoViewModel.getTemperatureValue(), valueState: weatherInfoViewModel.weatherState, labelTitle: "Temperature", iconName: "thermometerIcon")
             
             Divider()
             
-            AirQualityView(aqiDesc: weatherInfoViewModel.aqiDescription)
+            // Air Quality
+            WeatherItemView(value: weatherInfoViewModel.getAqiValue(), valueState: weatherInfoViewModel.aqiState, labelTitle: "Air Quality", iconName: "aqiIcon")
             
             Divider()
             
             Spacer()
         }
         .task {
-            await weatherInfoViewModel.getWeatherData()
-            await weatherInfoViewModel.getAQData()
+            await weatherInfoViewModel.getAllWeatherData()
         }
         
         .overlay(alignment: .bottom, content: {

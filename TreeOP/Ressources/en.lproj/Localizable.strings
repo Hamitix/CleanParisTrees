@@ -16,6 +16,7 @@
 "thermometerIcon" = "thermometer";
 "aqiIcon" = "aqi.medium";
 "mapIcon" = "map";
+"refreshArrowIcon" = "arrow.clockwise";
 
 
 //MARK: Text Comments
