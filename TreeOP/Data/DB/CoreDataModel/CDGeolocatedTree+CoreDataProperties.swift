@@ -31,3 +31,22 @@ extension CDGeolocatedTree: CoreDataToGLTreeDomain {
         GeolocatedTree(tree: cdTree.CDToTreeDomain(), lng: lng, lat: lat)
     }
 }
+
+extension GeolocatedTree : DomainToGLTreeCoreData {
+    func ToGLTreeCoreData() -> CDGeolocatedTree {
+        
+        let cdGlTree = CDGeolocatedTree(context: CoreDataController.shared.container.viewContext)
+        
+        cdGlTree.id = id
+        cdGlTree.lat = lat
+        cdGlTree.lng = lng
+        cdGlTree.cdTree = tree.ToTreeCoreData()
+        
+        return cdGlTree
+    }
+}
+
+extension CDGeolocatedTree {
+    static let nameType = "CDGeolocatedTree"
+}
+

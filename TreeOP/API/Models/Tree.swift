@@ -17,31 +17,4 @@ struct Tree {
     let id: Int
 }
 
-extension Record: DataToDomain {
-    func TreeDataToDomain() -> Tree {
-        Tree(name: name,
-             species: species,
-             address: address,
-             address2: address2,
-             height: height,
-             circumference: circumference,
-             id: id)
-    }
-}
 
-extension Tree : DomainToTreeCoreData {
-    func ToTreeCoreData() -> CDTree {
-        
-        let  cdTree = CDTree(context: CoreDataController.shared.container.viewContext)
-        
-        cdTree.id = id
-        cdTree.name = name
-        cdTree.species = species
-        cdTree.address = address
-        cdTree.address2 = address2
-        cdTree.height = height
-        cdTree.circumference = circumference
-        
-        return cdTree
-    }
-}

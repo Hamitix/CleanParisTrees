@@ -51,13 +51,13 @@ class CoreDataController: ObservableObject {
     }
     
     func deleteAllTreesInContext() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDGeolocatedTree")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: CDGeolocatedTree.nameType)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
             try container.viewContext.execute(batchDeleteRequest)
         } catch (let error) {
-            print("error reseting db : \(error.localizedDescription)")
+            print("Error reseting db : \(error.localizedDescription)")
         }
     }
 }

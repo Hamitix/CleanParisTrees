@@ -38,6 +38,18 @@ struct Record: Decodable, Hashable {
     }
 }
 
+extension Record: DataToDomain {
+    func TreeDataToDomain() -> Tree {
+        Tree(name: name,
+             species: species,
+             address: address,
+             address2: address2,
+             height: height,
+             circumference: circumference,
+             id: id)
+    }
+}
+
 struct Geometry: Decodable, Hashable {
     let type: String
     let coordinates: [Double]
