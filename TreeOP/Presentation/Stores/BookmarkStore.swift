@@ -1,5 +1,5 @@
 //
-//  BookmarkManager.swift
+//  BookmarkStore.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 27/04/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BookmarkManager: ObservableObject {
+class BookmarkStore: ObservableObject {
     
     @Published var treeIDs: Set<Int>
     
