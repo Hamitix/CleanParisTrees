@@ -57,7 +57,10 @@ struct MapView: View {
         
         .onAppear {
             mapViewModel.initLocation()
-            mapViewModel.getTrees()
+        }
+        
+        .task {
+            await mapViewModel.getTrees()
         }
     }
 }

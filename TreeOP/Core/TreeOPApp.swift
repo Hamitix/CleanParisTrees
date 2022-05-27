@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import Resolver
 
 @main
 struct TreeOPApp: App {
     
     @StateObject private var coreDataController = CoreDataController.shared
     
-    private let networkMonitor = NetworkMonitor.shared
+    @Injected private var networkMonitor: NetworkMonitor
     
     var body: some Scene {
         WindowGroup {

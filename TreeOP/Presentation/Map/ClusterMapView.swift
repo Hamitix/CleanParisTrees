@@ -37,7 +37,10 @@ struct ClusterMapView: View {
 
             .onAppear {
                 mapViewModel.initLocation()
-                mapViewModel.getTrees()
+            }
+        
+            .task {
+                await mapViewModel.getTrees()
             }
     }
 }
