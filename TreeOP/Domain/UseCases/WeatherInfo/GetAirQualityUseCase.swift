@@ -1,31 +1,32 @@
 //
-//  getAirQuality.swift
+//  GetAirQualityUseCase.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 22/04/2022.
 //
 
 import Foundation
+import Resolver
 
-protocol getAirQuality {
+protocol GetAirQuality {
     func execute(lat: Double, lng: Double) async -> Result<Int, UseCaseError>
 }
 
-struct GetAirQualityUseCase: getAirQuality {
+struct GetAirQualityUseCase: GetAirQuality {
     
-    let networkManager = NetworkMonitor.shared
+    @Injected var networkMonitor: NetworkMonitor
     
-    var weatherRepository: WeatherRepository
+    @Injected var repository: WeatherRepository
     
     func execute(lat: Double, lng: Double) async -> Result<Int, UseCaseError> {
         
-        switch networkManager.fetchStrategy {
+        switch networkMonitor.fetchStrategy {
             
         case .local:
             return .failure(.networkError)
         case .remote:
             do {
-                let airQualityIndex = try await weatherRepository.getAirQuality(lat: lat, lng: lng)
+                let airQualityIndex = try await repository.getAirQuality(lat: lat, lng: lng)
                 return .success(airQualityIndex)
             } catch (let error) {
                 switch error {

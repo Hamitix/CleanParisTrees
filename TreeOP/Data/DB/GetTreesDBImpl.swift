@@ -1,5 +1,5 @@
 //
-//  GetTreesDBImpl.swift
+//  LocalTreeDataSourceImpl.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 10/05/2022.
@@ -8,16 +8,16 @@
 import Foundation
 import CoreData
 
-struct GetTreesDBImpl : LocalTreeDataSource {
+struct LocalTreeDataSourceImpl : LocalTreeDataSource {
     
-    func getTreeListLocal(offset: Int, isLazy: Bool) throws -> [GeolocatedTree] {
+    func getTreeListLocal(startRow: Int, isLazy: Bool) throws -> [GeolocatedTree] {
         
         let fetchRequest: NSFetchRequest<CDGeolocatedTree>
         
         fetchRequest = CDGeolocatedTree.fetchRequest()
-        fetchRequest.fetchOffset = offset
+        fetchRequest.fetchOffset = startRow
         if isLazy {
-            fetchRequest.fetchLimit = K.OpenDataAPI.nbrRowPerRequest
+            fetchRequest.fetchLimit = K.OpenDataAPI.nbRowPerRequest
         }
         
         let context = CoreDataController.shared.container.viewContext

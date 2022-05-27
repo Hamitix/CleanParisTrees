@@ -1,5 +1,5 @@
 //
-//  WeatherAPIImpl.swift
+//  WeatherDataSourceImpl.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 22/04/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherAPIImpl: WeatherDataSource {
+struct WeatherDataSourceImpl: WeatherDataSource {
     
     func getTemperature(lat: Double, lng: Double) async throws -> Double {
         

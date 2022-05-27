@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Resolver
 
 struct LocalTreeRepositoryImpl: LocalTreeRepository {
     
-    var dataSource: LocalTreeDataSource
+    @Injected var dataSource: LocalTreeDataSource
     
-    func getTreeList(offset: Int, isLazy: Bool) throws -> [GeolocatedTree] {
-        try dataSource.getTreeListLocal(offset: offset, isLazy: isLazy)
+    func getTreeList(startRow: Int, isLazy: Bool) throws -> [GeolocatedTree] {
+        try dataSource.getTreeListLocal(startRow: startRow, isLazy: isLazy)
     }
 }

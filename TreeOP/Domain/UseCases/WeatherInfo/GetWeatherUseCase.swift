@@ -1,32 +1,33 @@
 //
-//  getWeather.swift
+//  GetWeatherUseCase.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 22/04/2022.
 //
 
 import Foundation
+import Resolver
 
 
-protocol getWeather {
+protocol GetWeather {
     func execute(lat: Double, lng: Double) async -> Result<Double, UseCaseError>
 }
 
-struct GetWeatherUseCase: getWeather {
+struct GetWeatherUseCase: GetWeather {
     
-    let networkManager = NetworkMonitor.shared
+    @Injected var networkMonitor: NetworkMonitor
     
-    var weatherRepo: WeatherRepository
+    @Injected var repository: WeatherRepository
     
     func execute(lat: Double, lng: Double) async -> Result<Double, UseCaseError> {
-        switch networkManager.fetchStrategy {
+        switch networkMonitor.fetchStrategy {
             
         case .local:
             return .failure(.networkError)
             
         case .remote:
             do {
-                let temperature = try await weatherRepo.getWeather(lat: lat, lng: lng)
+                let temperature = try await repository.getWeather(lat: lat, lng: lng)
                 return .success(temperature)
             } catch (let error) {
                 switch error {

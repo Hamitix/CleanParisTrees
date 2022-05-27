@@ -8,6 +8,5 @@
 import Foundation
 
 protocol RemoteTreeRepository {
-    func getTreeList(startRow: Int, nbrRows: Int) async throws -> [GeolocatedTree]
+    func getTreeList(startRow: Int, nbRows: Int) async throws -> [GeolocatedTree]
 }
-

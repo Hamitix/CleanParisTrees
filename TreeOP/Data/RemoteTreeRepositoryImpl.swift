@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Resolver
 
 struct RemoteTreeRepositoryImpl: RemoteTreeRepository {
     
-    var dataSource: RemoteTreeDataSource
+    @Injected var dataSource: RemoteTreeDataSource
     
-    func getTreeList(startRow: Int, nbrRows: Int) async throws -> [GeolocatedTree] {
-        try await dataSource.getTreeListRemote(startRow: startRow, nbrRows: nbrRows)
+    func getTreeList(startRow: Int, nbRows: Int) async throws -> [GeolocatedTree] {
+        try await dataSource.getTreeListRemote(startRow: startRow, nbRows: nbRows)
     }
 }

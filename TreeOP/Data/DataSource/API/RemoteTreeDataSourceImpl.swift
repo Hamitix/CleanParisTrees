@@ -1,5 +1,5 @@
 //
-//  TreeAPIImpl.swift
+//  RemoteTreeDataSourceImpl.swift
 //  TreeOP
 //
 //  Created by Dylan HAMITI on 22/04/2022.
@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct TreeAPIImpl: RemoteTreeDataSource {
+struct RemoteTreeDataSourceImpl
+: RemoteTreeDataSource {
    
-    func getTreeListRemote(startRow: Int, nbrRows: Int) async throws -> [GeolocatedTree] {
-        guard let url = URL(string: String(localized: "urlOpenDataURL \(nbrRows) \(startRow)")) else {
+    func getTreeListRemote(startRow: Int, nbRows: Int) async throws -> [GeolocatedTree] {
+        guard let url = URL(string: String(localized: "urlOpenDataURL \(nbRows) \(startRow)")) else {
             throw APIServiceError.badUrl
         }
                 
