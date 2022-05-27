@@ -11,22 +11,22 @@ import Resolver
 
 class TreeItemViewModel: ObservableObject {
     
-    @LazyInjected private var bookmarkManager: BookmarkManager
+    @LazyInjected private var bookmarkStore: BookmarkStore
     
     @Published var tree: GeolocatedTree
     @Published var isFavorite: Bool = false
     
     init(tree: GeolocatedTree) {
         self.tree = tree
-        self.isFavorite = self.bookmarkManager.isFavorite(id: tree.id)
+        self.isFavorite = self.bookmarkStore.isFavorite(id: tree.id)
     }
     
     func toggleFavorite() {
-        bookmarkManager.toggleFavorite(treeID: tree.id)
+        bookmarkStore.toggleFavorite(treeID: tree.id)
         isFavorite.toggle()
     }
     
     func getIsFavorite() {
-        self.isFavorite = bookmarkManager.isFavorite(id: tree.id)
+        self.isFavorite = bookmarkStore.isFavorite(id: tree.id)
     }
 }

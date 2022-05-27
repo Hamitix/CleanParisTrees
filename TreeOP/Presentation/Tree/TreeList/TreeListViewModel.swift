@@ -11,9 +11,10 @@ import Resolver
 class TreeListViewModel: ObservableObject {
     
     //MARK: Properties
-    @Injected private var bookmarkManager: BookmarkManager
+    @Injected private var bookmarkStore: BookmarkStore
     
-    let networkMonitor = NetworkMonitor.shared
+    @Injected var networkMonitor: NetworkMonitor
+    
     private var treeList = [GeolocatedTree]()
     
     @Published var isLoadingRows: Bool = true
@@ -27,25 +28,22 @@ class TreeListViewModel: ObservableObject {
         case false:
             return treeList
         case true:
-            return treeList.filter { bookmarkManager.isFavorite(id: $0.id) }
+            return treeList.filter { bookmarkStore.isFavorite(id: $0.id) }
         }
     }
     
-    var getTreeListUseCase = GetTreeListUseCase()
+    @Injected var getTreeListUseCase: GetTreeList
     
     //MARK: Methods
     func getTreesData(startRow: Int = 0) async {
         
-        let result = await getTreeListUseCase.fetch(startRow: startRow)
+        let result = await getTreeListUseCase.fetch(startRow: startRow, isLazy: true, fetchStrategy: networkMonitor.fetchStrategy)
         
         switch result {
+            
         case .success(let trees):
             DispatchQueue.main.async {
-                self.treeList.append(contentsOf: trees)
-                self.currentRow = self.treeList.count
-                self.isLoadingRows = false
-                if self.networkMonitor.isDeviceConnectedToInternet() { CoreDataController.shared.saveGLTreesInContext(glTrees: trees)
-                }
+                self.handleSuccessTrees(trees)
             }
             
         case .failure:
@@ -55,10 +53,20 @@ class TreeListViewModel: ObservableObject {
         }
     }
     
+    private func handleSuccessTrees(_ trees: [GeolocatedTree]) {
+        treeList.append(contentsOf: trees)
+        currentRow = treeList.count
+        isLoadingRows = false
+        if networkMonitor.isDeviceConnectedToInternet() {
+            CoreDataController.shared.saveGLTreesInContext(glTrees: trees)
+        }
+    }
+    
     func isListEmpty() -> Bool {
         self.treeList.isEmpty
     }
- 
+    
+    
     //MARK: Refreshable Methods
     func refreshableAction() async -> Void {
         if networkMonitor.isDeviceConnectedToInternet() {
@@ -72,6 +80,7 @@ class TreeListViewModel: ObservableObject {
             self.treeList = []
         }
     }
+    
     
     //MARK: List Lazy Loading Methods
     func loadMoreRowsIfNeeded(currentItem item : GeolocatedTree?) async {
@@ -87,13 +96,14 @@ class TreeListViewModel: ObservableObject {
     }
     
     private func loadMoreContent() async {
-        guard !isLoadingRows   else {
+        guard !isLoadingRows else {
             return
         }
         
         isLoadingRows = true
         await getTreesData(startRow: currentRow + 1)
     }
+    
     
     
     //MARK: Bookmark Methods
@@ -103,6 +113,6 @@ class TreeListViewModel: ObservableObject {
     }
     
     func toggleFavorite(tree: Tree) {
-        bookmarkManager.toggleFavorite(treeID: tree.id)
+        bookmarkStore.toggleFavorite(treeID: tree.id)
     }
 }

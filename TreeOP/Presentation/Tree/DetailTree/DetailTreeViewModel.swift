@@ -11,7 +11,7 @@ import Resolver
 
 class DetailTreeViewModel: ObservableObject {
     
-    @Injected private var bookmarkManager: BookmarkManager
+    @Injected private var bookmarkStore: BookmarkStore
     
     @Published var glTree: GeolocatedTree?
     
@@ -22,7 +22,7 @@ class DetailTreeViewModel: ObservableObject {
     
     func setStarIconName() {
         if let glTree = glTree {
-            starIconName =   String(localized: bookmarkManager.isFavorite(id: glTree.id) ? "starFillIcon" : "starIcon")
+            starIconName =   String(localized: bookmarkStore.isFavorite(id: glTree.id) ? "starFillIcon" : "starIcon")
         }
     }
     
@@ -50,7 +50,7 @@ class DetailTreeViewModel: ObservableObject {
     
     func toggleFavorite() {
         if let glTree = glTree {
-            bookmarkManager.toggleFavorite(treeID: glTree.id)
+            bookmarkStore.toggleFavorite(treeID: glTree.id)
             setStarIconName()
         }
     }

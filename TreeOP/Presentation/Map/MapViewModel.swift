@@ -16,7 +16,6 @@ class MapViewModel: CLLocationManager, CLLocationManagerDelegate, ObservableObje
     @Published var mapAnnotations: [TreeAnnotation] = []
     
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: K.Map.latParis, longitude: K.Map.longParis), span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
-
     
     private let locationManager: CLLocationManager = CLLocationManager()
     
