@@ -8,6 +8,10 @@
 import Foundation
 import Resolver
 
+protocol TreeItemVMProtocol {
+    func toggleFavorite()
+    func getIsFavorite()
+}
 
 class TreeItemViewModel: ObservableObject {
     

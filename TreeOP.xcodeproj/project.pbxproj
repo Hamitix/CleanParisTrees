@@ -417,11 +417,11 @@
 			isa = PBXGroup;
 			children = (
 				A8C5474F283E73B7006E7977 /* App+Injection.swift */,
+				A8C547602844C57C006E7977 /* ViewModel+Injection.swift */,
+				A8C547592840BC8B006E7977 /* Store+Injection.swift */,
 				A8C54751283E73F5006E7977 /* DataSource+Injection.swift */,
 				A8C54753283E768D006E7977 /* Repository+Injection.swift */,
 				A8C54755283E7850006E7977 /* UseCase+Injection.swift */,
-				A8C547592840BC8B006E7977 /* Store+Injection.swift */,
-				A8C547602844C57C006E7977 /* ViewModel+Injection.swift */,
 			);
 			path = Injection;
 			sourceTree = "<group>";

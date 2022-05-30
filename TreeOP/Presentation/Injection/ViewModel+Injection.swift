@@ -11,6 +11,7 @@ import Resolver
 extension Resolver {
     public static func registerViewModels() {
         
+        // Tree
         register { TreeListViewModel() }.implements(TreeListVMProtocol.self).scope(.application)
         
         register { _, args in
@@ -21,7 +22,10 @@ extension Resolver {
             DetailTreeViewModel(glTree: args.optional())
         }
         
+        // Map
         register { MapViewModel() }.implements(MapVMProtocol.self).scope(.application)
         
+        // Weather Info
+        register { WeatherInfoViewModel() }.implements(WeatherInfoVMProtocol.self).scope(.application)
     }
 }

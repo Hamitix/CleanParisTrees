@@ -8,6 +8,15 @@
 import Foundation
 import Resolver
 
+protocol WeatherInfoVMProtocol {
+    func getAllWeatherData(forceRefresh: Bool) async
+    func getWeatherData(_ forceRefresh: Bool) async
+    func getTemperatureValue() -> String
+    func getAQData(_ forceRefresh: Bool) async
+    func getAqiValue() -> String
+    func getAQDesc(id: Int) -> String
+}
+
 class WeatherInfoViewModel: ObservableObject {
     
     @Injected var networkMonitor: NetworkMonitor
@@ -19,17 +28,12 @@ class WeatherInfoViewModel: ObservableObject {
     @Published var weatherState: WeatherInfoState = .loading
     @Published var aqiState: WeatherInfoState = .loading
     
-    private let latitude: Double
-    private let longitude: Double
-    
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
-    }
+    private let latitude: Double = K.Map.latParis
+    private let longitude: Double = K.Map.longParis
     
     @Injected var getWeatherUseCase: GetWeather
     @Injected var getAirQualityUseCase: GetAirQuality
-
+    
     func getAllWeatherData(forceRefresh: Bool = false) async {
         await getAQData(forceRefresh)
         await getWeatherData(forceRefresh)
@@ -80,7 +84,7 @@ class WeatherInfoViewModel: ObservableObject {
         case .success(let aqi):
             DispatchQueue.main.async {
                 self.airQuality = aqi
-                self.aqiDescription = getAQDesc(id: aqi)
+                self.aqiDescription = self.getAQDesc(id: aqi)
                 self.aqiState = .loaded
             }
         case .failure:
@@ -93,22 +97,21 @@ class WeatherInfoViewModel: ObservableObject {
     func getAqiValue() -> String {
         aqiDescription
     }
-}
-
-private func getAQDesc(id: Int) -> String {
-    switch id {
-    case 1:
-        return "Good"
-    case 2:
-        return "Fair"
-    case 3:
-        return "Moderate"
-    case 4:
-        return "Poor"
-    case 5:
-        return "Very Poor"
-    default:
-        return "cannotProcessData"
+    
+    private func getAQDesc(id: Int) -> String {
+        switch id {
+        case 1:
+            return "Good"
+        case 2:
+            return "Fair"
+        case 3:
+            return "Moderate"
+        case 4:
+            return "Poor"
+        case 5:
+            return "Very Poor"
+        default:
+            return "cannotProcessData"
+        }
     }
 }
-

@@ -27,7 +27,7 @@ class CoreDataController: ObservableObject {
     }
     
     func saveGLTreesInContext(glTrees: [GeolocatedTree]) {
-        glTrees.map { glTree in
+        let _ = glTrees.map { glTree in
             let CDTree = CDGeolocatedTree(context: self.container.viewContext)
             
             CDTree.cdTree = glTree.tree.ToTreeCoreData()

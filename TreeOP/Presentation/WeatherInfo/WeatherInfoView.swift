@@ -6,14 +6,11 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct WeatherInfoView: View {
     
-    @StateObject private var weatherInfoViewModel: WeatherInfoViewModel
-    
-    init (viewModel: WeatherInfoViewModel = .init(latitude: K.Map.latParis, longitude: K.Map.longParis)) {
-        _weatherInfoViewModel = StateObject(wrappedValue: viewModel)
-    }
+    @InjectedObject var weatherInfoViewModel: WeatherInfoViewModel
     
     var body: some View {
         VStack(alignment: .center) {
