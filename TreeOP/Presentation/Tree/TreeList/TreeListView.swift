@@ -6,19 +6,16 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct TreeListView: View {
     
-    @StateObject private var listViewModel: TreeListViewModel
-    
-    init(viewModel: TreeListViewModel = .init()) {
-        _listViewModel = StateObject(wrappedValue: viewModel)
-    }
+    @InjectedObject private var listViewModel: TreeListViewModel
     
     var body: some View {
         VStack {
-            
-            if listViewModel.isListEmpty() {
+                        
+            if listViewModel.treeStore.isListEmpty() {
                 if listViewModel.isLoadingRows {
                     ProgressView()
                 } else {
@@ -29,10 +26,12 @@ struct TreeListView: View {
                 NavigationView {
                     List {
                         ForEach(listViewModel.filteredTrees) { item in
-                            TreeItemView(item: item)
+                            
+                            TreeItemView(treeItemViewModel: Resolver.resolve(args: item))
                                 .task {
                                     await listViewModel.loadMoreRowsIfNeeded(currentItem: item)
                                 }
+                            
                                 .listRowSeparatorTint(Color("separator"))
                                 .listRowSeparator(.hidden, edges: .top)
                         }

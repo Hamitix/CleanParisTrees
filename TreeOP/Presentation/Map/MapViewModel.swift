@@ -6,13 +6,23 @@
 //
 
 import Foundation
+import Resolver
 import CoreLocation
 import MapKit
-import Resolver
 
-class MapViewModel: CLLocationManager, CLLocationManagerDelegate, ObservableObject {
+protocol MapVMProtocol {
+    func initLocation()
+    func centerMapOnUser()
+    func getTrees() async
+    func handleSuccessTrees(_ trees: [GeolocatedTree])
+    func getMapAnnotations()
+    func resetAnnotations()
+}
+
+class MapViewModel: CLLocationManager, CLLocationManagerDelegate, ObservableObject, MapVMProtocol {
     
-    @Published var treeList: [GeolocatedTree] = []
+    @Injected var treeStore: TreeStore
+    
     @Published var mapAnnotations: [TreeAnnotation] = []
     
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: K.Map.latParis, longitude: K.Map.longParis), span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))

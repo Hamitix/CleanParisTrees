@@ -8,15 +8,25 @@
 import SwiftUI
 import Resolver
 
-class TreeListViewModel: ObservableObject {
+protocol TreeListVMProtocol {
+    func getTreesData(startRow: Int) async
+    func handleSuccessTrees(_ trees: [GeolocatedTree])
+    func refreshableAction() async
+    func resetTreeList()
+    func loadMoreRowsIfNeeded(currentItem item : GeolocatedTree?) async
+    func loadMoreContent() async
+    func toggleFilterFavourites()
+    func toggleFavorite(tree: Tree)
+}
+
+class TreeListViewModel: ObservableObject, TreeListVMProtocol {
     
     //MARK: Properties
     @Injected private var bookmarkStore: BookmarkStore
-    
+    @Injected var treeStore: TreeStore
     @Injected var networkMonitor: NetworkMonitor
     
-    private var treeList = [GeolocatedTree]()
-    
+
     @Published var isLoadingRows: Bool = true
     private var currentRow: Int = 0
     
@@ -26,9 +36,9 @@ class TreeListViewModel: ObservableObject {
     var filteredTrees: [GeolocatedTree] {
         switch isFilteringFavourites {
         case false:
-            return treeList
+            return treeStore.treeList
         case true:
-            return treeList.filter { bookmarkStore.isFavorite(id: $0.id) }
+            return treeStore.treeList.filter { bookmarkStore.isFavorite(id: $0.id) }
         }
     }
     
@@ -53,31 +63,28 @@ class TreeListViewModel: ObservableObject {
         }
     }
     
-    private func handleSuccessTrees(_ trees: [GeolocatedTree]) {
-        treeList.append(contentsOf: trees)
-        currentRow = treeList.count
+    internal func handleSuccessTrees(_ trees: [GeolocatedTree]) {
+        
+        treeStore.appendTreesInList(treesToInsert: trees)
+        currentRow = treeStore.getNbOfTrees()
         isLoadingRows = false
+        
         if networkMonitor.isDeviceConnectedToInternet() {
             CoreDataController.shared.saveGLTreesInContext(glTrees: trees)
         }
     }
     
-    func isListEmpty() -> Bool {
-        self.treeList.isEmpty
-    }
-    
-    
     //MARK: Refreshable Methods
     func refreshableAction() async -> Void {
         if networkMonitor.isDeviceConnectedToInternet() {
             resetTreeList()
-            await getTreesData(startRow: 0)
+            await getTreesData()
         }
     }
     
-    private func resetTreeList() {
+    internal func resetTreeList() {
         DispatchQueue.main.async {
-            self.treeList = []
+            self.treeStore.resetList()
         }
     }
     
@@ -89,13 +96,13 @@ class TreeListViewModel: ObservableObject {
             return
         }
         
-        let thresholdIndex = treeList.index(treeList.endIndex, offsetBy: -4)
-        if treeList.firstIndex(where: {$0.id == item.id}) == thresholdIndex {
+        let thresholdIndex = treeStore.treeList.index(treeStore.treeList.endIndex, offsetBy: -4)
+        if treeStore.treeList.firstIndex(where: {$0.id == item.id}) == thresholdIndex {
             await loadMoreContent()
         }
     }
     
-    private func loadMoreContent() async {
+    internal func loadMoreContent() async {
         guard !isLoadingRows else {
             return
         }

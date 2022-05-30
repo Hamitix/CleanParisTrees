@@ -52,6 +52,7 @@
 		A8C5475A2840BC8B006E7977 /* Store+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C547592840BC8B006E7977 /* Store+Injection.swift */; };
 		A8C5475C2840C630006E7977 /* WeatherInfoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C5475B2840C630006E7977 /* WeatherInfoState.swift */; };
 		A8C5475E2840D6CA006E7977 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C5475D2840D6CA006E7977 /* MockedData.swift */; };
+		A8C547612844C57C006E7977 /* ViewModel+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C547602844C57C006E7977 /* ViewModel+Injection.swift */; };
 		A8C73B2F282A9D2B009B440A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = A8D58E2E2805814A009C3705 /* Localizable.stringsdict */; };
 		A8C73B30282A9D2B009B440A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A8C7F0D728115D84009E87C8 /* Localizable.strings */; };
 		A8C73B32282A9E2B009B440A /* LocalTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C73B31282A9E2B009B440A /* LocalTreeDataSource.swift */; };
@@ -152,6 +153,7 @@
 		A8C547592840BC8B006E7977 /* Store+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Injection.swift"; sourceTree = "<group>"; };
 		A8C5475B2840C630006E7977 /* WeatherInfoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoState.swift; sourceTree = "<group>"; };
 		A8C5475D2840D6CA006E7977 /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
+		A8C547602844C57C006E7977 /* ViewModel+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+Injection.swift"; sourceTree = "<group>"; };
 		A8C73B31282A9E2B009B440A /* LocalTreeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTreeDataSource.swift; sourceTree = "<group>"; };
 		A8C73B33282A9EAF009B440A /* LocalTreeDataSourceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTreeDataSourceImpl.swift; sourceTree = "<group>"; };
 		A8C73B35282A9F55009B440A /* LocalTreeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTreeRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				A8C54753283E768D006E7977 /* Repository+Injection.swift */,
 				A8C54755283E7850006E7977 /* UseCase+Injection.swift */,
 				A8C547592840BC8B006E7977 /* Store+Injection.swift */,
+				A8C547602844C57C006E7977 /* ViewModel+Injection.swift */,
 			);
 			path = Injection;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				A8757DF42812F1C9001E5EFF /* DataToDomain.swift in Sources */,
 				A8F0D9932823C481005CA45D /* CDTree+CoreDataClass.swift in Sources */,
 				A8757E1028130877001E5EFF /* WeatherDataSourceImpl.swift in Sources */,
+				A8C547612844C57C006E7977 /* ViewModel+Injection.swift in Sources */,
 				A8E2D0982800626E0088CFDD /* TreeOPApp.swift in Sources */,
 				A8C73B32282A9E2B009B440A /* LocalTreeDataSource.swift in Sources */,
 				A85C9211283BAED500CC72AB /* ClusterMapView.swift in Sources */,

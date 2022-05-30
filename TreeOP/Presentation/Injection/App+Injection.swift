@@ -12,11 +12,13 @@ extension Resolver: ResolverRegistering {
     public static func registerAllServices() {
         defaultScope = .graph
         
+        register { NetworkMonitor.shared }.scope(.application)
+        
+        registerViewModels()
+        registerStores()
         registerDataSources()
         registerRepositories()
         registerUseCases()
-        registerStores()
         
-        register { NetworkMonitor.shared }.scope(.application)
     }
 }

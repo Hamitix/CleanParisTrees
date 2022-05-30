@@ -7,14 +7,11 @@
 
 import SwiftUI
 import MapKit
+import Resolver
 
 struct ClusterMapView: View {
     
-    @StateObject private var mapViewModel: MapViewModel
-    
-    init(viewModel: MapViewModel = .init()) {
-        _mapViewModel = StateObject(wrappedValue: viewModel)
-    }
+    @InjectedObject private var mapViewModel: MapViewModel
     
     var body: some View {
         

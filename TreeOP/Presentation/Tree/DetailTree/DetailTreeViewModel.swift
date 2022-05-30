@@ -9,6 +9,16 @@ import SwiftUI
 import CoreLocation
 import Resolver
 
+protocol DetailTreeVMProtocol {
+    func setStarIconName()
+    func displayTreeName() -> Text
+    func getFullAddress(tree: Tree) -> String
+    func displayFullAddress() -> Text?
+    func toggleFavorite()
+    func setCLLCoordinates(newLat: Double, newLng: Double) -> CLLocationCoordinate2D
+    func updateCoordinates(completion: @escaping (_ coordinates: CLLocationCoordinate2D) -> Void)
+}
+
 class DetailTreeViewModel: ObservableObject {
     
     @Injected private var bookmarkStore: BookmarkStore
@@ -19,6 +29,10 @@ class DetailTreeViewModel: ObservableObject {
     @Published var annotationItems: [GeolocatedTree] = [GeolocatedTree]()
     
     @Published var starIconName: String = String(localized: "starIcon")
+    
+    init(glTree: GeolocatedTree?) {
+        self.glTree = glTree
+    }
     
     func setStarIconName() {
         if let glTree = glTree {

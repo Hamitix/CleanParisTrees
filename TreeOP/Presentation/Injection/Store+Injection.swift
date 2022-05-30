@@ -11,5 +11,7 @@ import Resolver
 extension Resolver {
     public static func registerStores() {
         register { BookmarkStore() }.scope(.application)
+        
+        register { TreeStore() }.scope(.application)
     }
 }

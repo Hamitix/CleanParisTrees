@@ -8,10 +8,11 @@
 
 import SwiftUI
 import MapKit
+import Resolver
 
 struct MapViewUIView: UIViewRepresentable {
     
-    @StateObject  var mapViewModel: MapViewModel
+    @InjectedObject private var mapViewModel: MapViewModel
     @State private var tracking: MapUserTrackingMode = .follow
     
     func makeCoordinator() -> MapViewCoordinator {

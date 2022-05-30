@@ -6,21 +6,18 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct TreeItemView: View {
     
-    @ObservedObject private var treeItemViewModel: TreeItemViewModel
-    
-    init(item: GeolocatedTree){
-        treeItemViewModel = TreeItemViewModel(tree: item)
-    }
+    @ObservedObject var treeItemViewModel: TreeItemViewModel
     
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             
             if let glTree = treeItemViewModel.tree {
                 
-                NavigationLink(destination: DetailTreeView(glTree: glTree)) {
+                NavigationLink(destination: DetailTreeView(detailViewModel: Resolver.resolve(args: glTree))) {
                     Text(LocalizedStringKey(glTree.tree.name ?? String(localized: "No Name")), comment: "treeNameComment")
                     
                     if treeItemViewModel.isFavorite {

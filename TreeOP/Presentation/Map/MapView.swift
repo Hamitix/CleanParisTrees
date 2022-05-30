@@ -6,18 +6,17 @@
 //
 
 import SwiftUI
+import Resolver
+
 import MapKit
 import CoreLocation
 
 struct MapView: View {
     
-    @StateObject private var mapViewModel: MapViewModel
+    @InjectedObject var mapViewModel: MapViewModel
+    
     @State private var tracking: MapUserTrackingMode = .none
-    
-    init(viewModel: MapViewModel = .init()) {
-        _mapViewModel = StateObject(wrappedValue: viewModel)
-    }
-    
+
     var body: some View {
         
         ZStack(alignment: .center) {
@@ -30,7 +29,7 @@ struct MapView: View {
                 
                 Text("Map")
                 
-                Map(coordinateRegion: $mapViewModel.mapRegion, interactionModes: .all , showsUserLocation: true, userTrackingMode: $tracking ,annotationItems: mapViewModel.treeList) { item in
+                Map(coordinateRegion: $mapViewModel.mapRegion, interactionModes: .all , showsUserLocation: true, userTrackingMode: $tracking ,annotationItems: mapViewModel.treeStore.treeList) { item in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng)) {
                         
                         CustomMapMarker(isFav: false, name: item.tree.name ?? String(localized: "No Name"))

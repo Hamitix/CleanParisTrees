@@ -9,13 +9,11 @@
 import SwiftUI
 import MapKit
 
+import Resolver
+
 struct DetailTreeView: View {
     
-    @ObservedObject private var detailViewModel = DetailTreeViewModel()
-    
-    init(glTree: GeolocatedTree) {
-        detailViewModel.glTree = glTree
-    }
+    @ObservedObject var detailViewModel: DetailTreeViewModel
     
     @State var mapRegion: MKCoordinateRegion = MKCoordinateRegion.init()
     
@@ -63,6 +61,6 @@ struct DetailTreeView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailTreeView(glTree: GeolocatedTree.mock)
+        DetailTreeView(detailViewModel: Resolver.resolve(args: GeolocatedTree.mock))
     }
 }
