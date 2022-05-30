@@ -49,7 +49,7 @@ class MapViewModel: CLLocationManager, CLLocationManagerDelegate, ObservableObje
     }
     
     func getTrees() async {
-        let result = await getTreeListUseCase.fetch(startRow: 0, isLazy: false, fetchStrategy: networkMonitor.fetchStrategy)
+        let result = await getTreeListUseCase.fetch(startRow: 0, isLazy: false, fetchStrategy: .local)
         
         switch result {
         case .success(let trees):
@@ -63,35 +63,23 @@ class MapViewModel: CLLocationManager, CLLocationManagerDelegate, ObservableObje
         }
     }
     
-    private func handleSuccessTrees(_ trees: [GeolocatedTree]) {
-        if !treeList.isEmpty && trees.count < treeList.count {
-            resetAnnotations()
-            treeList = trees
-        } else {
-            // Only append the elements that are new --> We drop the annotations that were already added to the map
-            treeList.append(contentsOf: trees.dropFirst(treeList.count))
-        }
-        
+    internal func handleSuccessTrees(_ trees: [GeolocatedTree]) {
         getMapAnnotations()
     }
     
-    private func getMapAnnotations() {
-        
-        var newAnnotations: [TreeAnnotation] = []
-        
-        if mapAnnotations.isEmpty {
-            
-            newAnnotations = treeList.map { TreeAnnotation(coordinates: CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.lng), glTree: $0) }
-        } else {
-            
-            newAnnotations = treeList.dropFirst(mapAnnotations.count).map {
-                TreeAnnotation(coordinates: CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.lng), glTree: $0) }
+    func getMapAnnotations() {
+
+        if treeStore.getNbOfTrees() < mapAnnotations.count {
+            resetAnnotations()
         }
+        
+        let newAnnotations = treeStore.treeList.dropFirst(mapAnnotations.count).map {
+            TreeAnnotation(coordinates: CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.lng), glTree: $0) }
         
         mapAnnotations.append(contentsOf: newAnnotations)
     }
     
-    private func resetAnnotations() {
+    internal func resetAnnotations() {
         self.mapAnnotations = []
     }
 }

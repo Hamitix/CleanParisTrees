@@ -35,14 +35,8 @@ struct MapViewUIView: UIViewRepresentable {
         mapView.contentMode = .center
         mapView.showsUserLocation = true
         
-        // Compass addition
         addCompassToMap(to: mapView)
-        
-        // Scale addition
         addScaleToMap(to: mapView)
-        
-        
-        mapView.addAnnotations(mapViewModel.mapAnnotations)
         
         return mapView
     }
@@ -68,7 +62,7 @@ struct MapViewUIView: UIViewRepresentable {
     private func addScaleToMap(to mapView: MKMapView) {
         
         let scale = MKScaleView(mapView: mapView)
-        scale.scaleVisibility = .visible // always visible
+        scale.scaleVisibility = .visible
         mapView.addSubview(scale)
         
         scale.translatesAutoresizingMaskIntoConstraints = false
@@ -79,9 +73,13 @@ struct MapViewUIView: UIViewRepresentable {
     
     private func addAnnotationIfAvailable(in mapView: MKMapView) {
         
-        if mapView.annotations.count < mapViewModel.mapAnnotations.count && !mapViewModel.mapAnnotations.isEmpty {
-            
-            mapView.addAnnotations(mapViewModel.mapAnnotations)
+        if mapView.annotations.count > mapViewModel.treeStore.getNbOfTrees() {
+            deleteAllAnnotations(in: mapView)
         }
+        mapView.addAnnotations(mapViewModel.mapAnnotations)
+    }
+    
+    private func deleteAllAnnotations(in mapView: MKMapView) {
+        mapView.removeAnnotations(mapView.annotations)
     }
 }

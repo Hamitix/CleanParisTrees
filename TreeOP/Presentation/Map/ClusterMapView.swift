@@ -15,7 +15,7 @@ struct ClusterMapView: View {
     
     var body: some View {
         
-        MapViewUIView(mapViewModel: mapViewModel)
+        MapViewUIView()
         
             .overlay(alignment: .bottomTrailing) {
                 Button {
@@ -25,13 +25,13 @@ struct ClusterMapView: View {
                 }
                 .offset(x: -10, y: -20)
             }
-            
+        
             .overlay(alignment: .bottom, content: {
                 if !mapViewModel.networkMonitor.isDeviceConnectedToInternet() {
-                        NoConnectionView()
+                    NoConnectionView()
                 }
             })
-
+        
             .onAppear {
                 mapViewModel.initLocation()
             }
