@@ -101,17 +101,17 @@ class WeatherInfoViewModel: ObservableObject {
     private func getAQDesc(id: Int) -> String {
         switch id {
         case 1:
-            return "Good"
+            return String(localized: "Good")
         case 2:
-            return "Fair"
+            return String(localized: "Fair")
         case 3:
-            return "Moderate"
+            return String(localized: "Moderate")
         case 4:
-            return "Poor"
+            return String(localized: "Poor")
         case 5:
-            return "Very Poor"
+            return String(localized: "Very Poor")
         default:
-            return "cannotProcessData"
+            return String(localized: "cannotProcessData")
         }
     }
 }

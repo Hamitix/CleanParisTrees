@@ -22,6 +22,6 @@ final class TreeAnnotation: NSObject, MKAnnotation {
         self.glTree = glTree
         self.title = glTree.tree.name
         self.subtitle = glTree.tree.species?.localizedCapitalized
-        self.image = UIImage(named: "Leaf")!.imageWithColor(tintColor: .black)
+        self.image = UIImage(named: "Leaf")!
     }
 }

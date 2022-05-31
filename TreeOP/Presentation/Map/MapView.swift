@@ -16,7 +16,7 @@ struct MapView: View {
     @InjectedObject var mapViewModel: MapViewModel
     
     @State private var tracking: MapUserTrackingMode = .none
-
+    
     var body: some View {
         
         ZStack(alignment: .center) {
@@ -24,33 +24,28 @@ struct MapView: View {
                 .ignoresSafeArea(.all, edges: .top)
                 .padding(.bottom)
                 .animation(.easeOut(duration: 0.5), value: mapViewModel.networkMonitor.fetchStrategy)
-                
-            VStack(alignment: .center, spacing: 10) {
-                
-                Text("Map")
-                
-                Map(coordinateRegion: $mapViewModel.mapRegion, interactionModes: .all , showsUserLocation: true, userTrackingMode: $tracking ,annotationItems: mapViewModel.treeStore.treeList) { item in
-                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng)) {
-                        
-                        CustomMapMarker(isFav: false, name: item.tree.name ?? String(localized: "No Name"))
-                    }
+            
+            Map(coordinateRegion: $mapViewModel.mapRegion, interactionModes: .all , showsUserLocation: true, userTrackingMode: $tracking ,annotationItems: mapViewModel.treeStore.treeList) { item in
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: item.lat, longitude: item.lng)) {
+                    
+                    CustomMapMarker(isFav: false)
                 }
-                .cornerRadius(20)
             }
+            .cornerRadius(20)
         }
         
         .overlay(alignment: .bottomTrailing) {
             Button {
                 mapViewModel.centerMapOnUser()
             } label: {
-                CenterOnUserIcon()
+                CenterLocationIcon()
             }
             .offset(x: -10, y: -20)
         }
         
         .overlay(alignment: .bottom, content: {
             if !mapViewModel.networkMonitor.isDeviceConnectedToInternet() {
-                    NoConnectionView()
+                NoConnectionView()
             }
         })
         
