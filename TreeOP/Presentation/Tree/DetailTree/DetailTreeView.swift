@@ -30,7 +30,20 @@ struct DetailTreeView: View {
                 .padding(.bottom, 5)
             
             Map(coordinateRegion: $mapRegion, interactionModes: .all , annotationItems: self.detailViewModel.annotationItems) { item in
-                MapMarker(coordinate: self.detailViewModel.coordinates, tint: .red)
+                MapAnnotation(coordinate: detailViewModel.coordinates) {
+                    CustomMapMarker(isFav: detailViewModel.isTreeInFavourites())
+                }
+            }
+            .overlay(alignment: .bottomTrailing) {
+                Button {
+                    DispatchQueue.main.async {
+                        self.mapRegion.center = detailViewModel.getTreeCoordinates()
+                    }
+                    
+                } label: {
+                    CenterLocationIcon()
+                }
+                .offset(x: -10, y: -20)
             }
         }
         

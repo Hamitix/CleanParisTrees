@@ -29,6 +29,9 @@ class MapViewModel: CLLocationManager, CLLocationManagerDelegate, ObservableObje
     
     private let locationManager: CLLocationManager = CLLocationManager()
     
+    @Published var selectedTree: GeolocatedTree = GeolocatedTree.mock
+    @Published var navigateToSelectedTreeDetailView: Bool = false
+    
     @Injected var networkMonitor: NetworkMonitor
     @Injected var getTreeListUseCase: GetTreeList
     

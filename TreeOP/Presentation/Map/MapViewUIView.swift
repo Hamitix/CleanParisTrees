@@ -14,7 +14,7 @@ struct MapViewUIView: UIViewRepresentable {
     
     @InjectedObject private var mapViewModel: MapViewModel
     @State private var tracking: MapUserTrackingMode = .follow
-    
+        
     func makeCoordinator() -> MapViewCoordinator {
         MapViewCoordinator(self)
     }
@@ -81,5 +81,10 @@ struct MapViewUIView: UIViewRepresentable {
     
     private func deleteAllAnnotations(in mapView: MKMapView) {
         mapView.removeAnnotations(mapView.annotations)
+    }
+    
+    func tappedOnCalloutInfoButton(glTree : GeolocatedTree) {
+        mapViewModel.selectedTree = glTree
+        mapViewModel.navigateToSelectedTreeDetailView = true
     }
 }

@@ -36,7 +36,7 @@
 		A8757E1F2816A193001E5EFF /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8757E1E2816A193001E5EFF /* WeatherRepository.swift */; };
 		A8757E232816A348001E5EFF /* WeatherRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8757E222816A348001E5EFF /* WeatherRepositoryImpl.swift */; };
 		A89107C028327B9700C7A7F1 /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */; };
-		A89107C2283284C300C7A7F1 /* CenterOnUserIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */; };
+		A89107C2283284C300C7A7F1 /* CenterLocationIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C1283284C300C7A7F1 /* CenterLocationIcon.swift */; };
 		A89107C52832998000C7A7F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A89107C32832998000C7A7F1 /* InfoPlist.strings */; };
 		A89107C82833971900C7A7F1 /* MapViewUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C72833971900C7A7F1 /* MapViewUIView.swift */; };
 		A89107CA2833982700C7A7F1 /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C92833982700C7A7F1 /* MapViewCoordinator.swift */; };
@@ -135,7 +135,7 @@
 		A8757E222816A348001E5EFF /* WeatherRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepositoryImpl.swift; sourceTree = "<group>"; };
 		A89107BE2832551900C7A7F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapMarker.swift; sourceTree = "<group>"; };
-		A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterOnUserIcon.swift; sourceTree = "<group>"; };
+		A89107C1283284C300C7A7F1 /* CenterLocationIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterLocationIcon.swift; sourceTree = "<group>"; };
 		A89107C42832998000C7A7F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A89107C6283299F700C7A7F1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A89107C72833971900C7A7F1 /* MapViewUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewUIView.swift; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 		A85C9212283CCE3200CC72AB /* Overlays */ = {
 			isa = PBXGroup;
 			children = (
-				A89107C1283284C300C7A7F1 /* CenterOnUserIcon.swift */,
+				A89107C1283284C300C7A7F1 /* CenterLocationIcon.swift */,
 				A85C9213283CCE4400CC72AB /* ErrorView.swift */,
 			);
 			path = Overlays;
@@ -756,7 +756,7 @@
 				A8F3FF45280807CB0090B3B5 /* WeatherInfoViewModel.swift in Sources */,
 				A815F236282A947600B1962E /* LocalTreeRepository.swift in Sources */,
 				A8C7F0D428113FD8009E87C8 /* WeatherItemView.swift in Sources */,
-				A89107C2283284C300C7A7F1 /* CenterOnUserIcon.swift in Sources */,
+				A89107C2283284C300C7A7F1 /* CenterLocationIcon.swift in Sources */,
 				A8C73B34282A9EAF009B440A /* LocalTreeDataSourceImpl.swift in Sources */,
 				A8E2D09A2800626E0088CFDD /* TreeListView.swift in Sources */,
 				A8F0D9982823C481005CA45D /* CDGeolocatedTree+CoreDataProperties.swift in Sources */,

@@ -12,33 +12,36 @@ import Resolver
 struct ClusterMapView: View {
     
     @InjectedObject private var mapViewModel: MapViewModel
-    
+
     var body: some View {
         
-        MapViewUIView()
-        
-            .overlay(alignment: .bottomTrailing) {
-                Button {
-                    mapViewModel.centerMapOnUser()
-                } label: {
-                    CenterOnUserIcon()
+        NavigationView {
+            
+            VStack {
+                
+                NavigationLink(destination: DetailTreeView(detailViewModel: Resolver.resolve(args: mapViewModel.selectedTree)), isActive: $mapViewModel.navigateToSelectedTreeDetailView) {
+                    EmptyView()
                 }
-                .offset(x: -10, y: -20)
+                
+                MapViewUIView()
             }
-        
+
             .overlay(alignment: .bottom, content: {
                 if !mapViewModel.networkMonitor.isDeviceConnectedToInternet() {
                     NoConnectionView()
                 }
             })
-        
+            
             .onAppear {
                 mapViewModel.initLocation()
+                mapViewModel.navigateToSelectedTreeDetailView = false
             }
-        
+            
             .task {
                 await mapViewModel.getTrees()
             }
+            .navigationBarHidden(true)
+        }
     }
 }
 

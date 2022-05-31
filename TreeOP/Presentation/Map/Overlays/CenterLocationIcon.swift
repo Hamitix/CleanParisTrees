@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CenterOnUserIcon: View {
+struct CenterLocationIcon: View {
     var body: some View {
         
         Image(systemName: "location.circle.fill")
@@ -23,7 +23,7 @@ struct CenterOnUserIcon: View {
 
 struct CenterOnUserIcon_Previews: PreviewProvider {
     static var previews: some View {
-        CenterOnUserIcon()
+        CenterLocationIcon()
             .previewLayout(.sizeThatFits)
     }
 }

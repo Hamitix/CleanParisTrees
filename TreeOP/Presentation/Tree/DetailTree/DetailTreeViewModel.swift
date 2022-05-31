@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreLocation
+
 import Resolver
 
 protocol DetailTreeVMProtocol {
@@ -15,8 +16,9 @@ protocol DetailTreeVMProtocol {
     func getFullAddress(tree: Tree) -> String
     func displayFullAddress() -> Text?
     func toggleFavorite()
-    func setCLLCoordinates(newLat: Double, newLng: Double) -> CLLocationCoordinate2D
+    func isTreeInFavourites() -> Bool
     func updateCoordinates(completion: @escaping (_ coordinates: CLLocationCoordinate2D) -> Void)
+    func getTreeCoordinates() -> CLLocationCoordinate2D
 }
 
 class DetailTreeViewModel: ObservableObject {
@@ -26,6 +28,7 @@ class DetailTreeViewModel: ObservableObject {
     @Published var glTree: GeolocatedTree?
     
     @Published var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2D.init()
+    
     @Published var annotationItems: [GeolocatedTree] = [GeolocatedTree]()
     
     @Published var starIconName: String = String(localized: "starIcon")
@@ -35,10 +38,9 @@ class DetailTreeViewModel: ObservableObject {
     }
     
     func setStarIconName() {
-        if let glTree = glTree {
-            starIconName =   String(localized: bookmarkStore.isFavorite(id: glTree.id) ? "starFillIcon" : "starIcon")
-        }
+        starIconName = String(localized: isTreeInFavourites() ? "starFillIcon" : "starIcon")
     }
+    
     
     func displayTreeName() -> Text {
         if let glTree = glTree {
@@ -62,6 +64,8 @@ class DetailTreeViewModel: ObservableObject {
         return nil
     }
     
+    
+    //MARK: Bookmark & Favourites Methods 
     func toggleFavorite() {
         if let glTree = glTree {
             bookmarkStore.toggleFavorite(treeID: glTree.id)
@@ -69,8 +73,15 @@ class DetailTreeViewModel: ObservableObject {
         }
     }
     
-    //MARK: Coordinates Methods
+    func isTreeInFavourites() -> Bool {
+        guard let glTree = glTree else {
+            return false
+        }
+        return bookmarkStore.isFavorite(id: glTree.id)
+    }
     
+    
+    //MARK: Coordinates & Map Methods
     private func setCLLCoordinates(newLat: Double, newLng: Double) -> CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
     }
@@ -85,5 +96,8 @@ class DetailTreeViewModel: ObservableObject {
             }
         }
     }
-    
+        
+    func getTreeCoordinates() -> CLLocationCoordinate2D {
+        coordinates
+    }
 }
