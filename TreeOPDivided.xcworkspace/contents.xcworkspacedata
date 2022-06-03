@@ -2,13 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/d.hamiti/Documents/Code/Swift/SwiftUI/TreeOP Divided/Data Layer/DataLayer.xcodeproj">
+      location = "group:DataLayer/DataLayer.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/d.hamiti/Documents/Code/Swift/SwiftUI/TreeOP Divided/Domain Layer/DomainLayer.xcodeproj">
+      location = "group:DomainLayer/DomainLayer.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/d.hamiti/Documents/Code/Swift/SwiftUI/TreeOP Divided/ApiLayer/APILayer.xcodeproj">
+      location = "group:APILayer/APILayer.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:TreeOP.xcodeproj">
