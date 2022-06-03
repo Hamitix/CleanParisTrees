@@ -11,6 +11,8 @@ import MapKit
 
 import Resolver
 
+import APILayer
+
 struct DetailTreeView: View {
     
     @ObservedObject var detailViewModel: DetailTreeViewModel

@@ -10,6 +10,9 @@ import Resolver
 import CoreLocation
 import MapKit
 
+import APILayer
+import DomainLayer
+
 protocol MapVMProtocol {
     func initLocation()
     func centerMapOnUser()

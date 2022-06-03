@@ -7,6 +7,8 @@
 
 import Foundation
 
+import APILayer
+
 class TreeStore: ObservableObject {
     
     @Published var treeList: [GeolocatedTree] = []

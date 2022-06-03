@@ -8,9 +8,13 @@
 import SwiftUI
 import Resolver
 
+import APILayer
+import DomainLayer
+import DataLayer
+
 protocol TreeListVMProtocol {
     func getTreesData(startRow: Int) async
-    func handleSuccessTrees(_ trees: [GeolocatedTree])
+    func handleSuccessTrees(trees: [GeolocatedTree], startRow: Int)
     func refreshableAction() async
     func resetTreeList()
     func loadMoreRowsIfNeeded(currentItem item : GeolocatedTree?) async
@@ -53,23 +57,26 @@ class TreeListViewModel: ObservableObject, TreeListVMProtocol {
             
         case .success(let trees):
             DispatchQueue.main.async {
-                self.handleSuccessTrees(trees)
+                self.handleSuccessTrees(trees: trees, startRow: startRow)
             }
             
         case .failure:
-            DispatchQueue.main.async {
+                DispatchQueue.main.async {
                 self.isLoadingRows = false
             }
         }
     }
     
-    internal func handleSuccessTrees(_ trees: [GeolocatedTree]) {
+    internal func handleSuccessTrees(trees: [GeolocatedTree], startRow: Int) {
         
         treeStore.appendTreesInList(treesToInsert: trees)
         currentRow = treeStore.getNbOfTrees()
         isLoadingRows = false
         
         if networkMonitor.isDeviceConnectedToInternet() {
+            if startRow == 0 {
+                CoreDataController.shared.deleteAllTreesInContext()
+            }
             CoreDataController.shared.saveGLTreesInContext(glTrees: trees)
         }
     }

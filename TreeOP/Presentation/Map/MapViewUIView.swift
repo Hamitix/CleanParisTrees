@@ -10,6 +10,8 @@ import SwiftUI
 import MapKit
 import Resolver
 
+import APILayer
+
 struct MapViewUIView: UIViewRepresentable {
     
     @InjectedObject private var mapViewModel: MapViewModel

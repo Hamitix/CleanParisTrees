@@ -7,8 +7,10 @@
 
 import Foundation
 
+import APILayer
+
 extension Tree {
-    static let mock = Tree(name: "Pommier",  species: "trilobata", address: "Rue Victor Hugo", address2: "85", height: 12, circumference: 12, id: 23)
+    static let mock = Tree(id: 23, name: "Pommier",  species: "trilobata", address: "Rue Victor Hugo", address2: "85", height: 12, circumference: 12)
 }
 
 extension GeolocatedTree {

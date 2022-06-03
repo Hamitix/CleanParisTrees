@@ -8,6 +8,9 @@
 import Foundation
 import Resolver
 
+import APILayer
+import DataLayer
+
 extension Resolver {
     public static func registerRepositories() {
         register { RemoteTreeRepositoryImpl() }.implements(RemoteTreeRepository.self).scope(.application)

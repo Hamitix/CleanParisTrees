@@ -8,6 +8,8 @@
 import Foundation
 import Resolver
 
+import DataLayer
+
 extension Resolver {
     public static func registerDataSources() {
         register { RemoteTreeDataSourceImpl() }.implements(RemoteTreeDataSource.self).scope(.application)

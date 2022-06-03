@@ -8,6 +8,8 @@
 import Foundation
 import Resolver
 
+import DomainLayer
+
 extension Resolver {
     public static func registerUseCases() {
         register { GetTreeListUseCase()  }.implements(GetTreeList.self).scope(.application)

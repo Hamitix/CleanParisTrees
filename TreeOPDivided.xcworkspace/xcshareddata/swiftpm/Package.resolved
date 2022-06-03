@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "resolver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Resolver.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "369813aaa96fe68b04dcb9248b584ebc46070784"
+      }
+    }
+  ],
+  "version" : 2
+}

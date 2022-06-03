@@ -8,6 +8,8 @@
 import Foundation
 import Resolver
 
+import APILayer
+
 protocol TreeItemVMProtocol {
     func toggleFavorite()
     func getIsFavorite()

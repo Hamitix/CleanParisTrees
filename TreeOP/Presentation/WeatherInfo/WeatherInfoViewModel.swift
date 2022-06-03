@@ -8,6 +8,8 @@
 import Foundation
 import Resolver
 
+import DomainLayer
+
 protocol WeatherInfoVMProtocol {
     func getAllWeatherData(forceRefresh: Bool) async
     func getWeatherData(_ forceRefresh: Bool) async
@@ -49,7 +51,7 @@ class WeatherInfoViewModel: ObservableObject {
             self.weatherState = .loading
         }
         
-        let result = await getWeatherUseCase.execute(lat: K.Map.latParis, lng: K.Map.longParis)
+        let result = await getWeatherUseCase.execute(lat: K.Map.latParis, lng: K.Map.longParis, fetchStrategy: networkMonitor.fetchStrategy)
         
         switch result {
         case .success(let temperature):
@@ -78,7 +80,7 @@ class WeatherInfoViewModel: ObservableObject {
             self.aqiState = .loading
         }
         
-        let result = await getAirQualityUseCase.execute(lat: self.latitude, lng: self.longitude)
+        let result = await getAirQualityUseCase.execute(lat: self.latitude, lng: self.longitude, fetchStrategy: networkMonitor.fetchStrategy)
         
         switch result {
         case .success(let aqi):

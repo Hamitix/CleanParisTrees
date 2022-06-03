@@ -8,6 +8,8 @@
 import Foundation
 import MapKit
 
+import APILayer
+
 final class TreeAnnotation: NSObject, MKAnnotation {
         
     let id = UUID()

@@ -9,7 +9,7 @@ import Foundation
 
 class BookmarkStore: ObservableObject {
     
-    @Published var treeIDs: Set<Int>
+    @Published var treeIDs: Set<Int> = []
     
     init() {
         let savedValues = UserDefaults.standard.array(forKey: K.UserDefaults.keyFavTrees) as? [Int] ?? []

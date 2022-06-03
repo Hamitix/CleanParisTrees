@@ -8,6 +8,8 @@
 import Foundation
 import Network
 
+import DomainLayer
+
 final class NetworkMonitor: ObservableObject {
     static let shared: NetworkMonitor = NetworkMonitor()
     

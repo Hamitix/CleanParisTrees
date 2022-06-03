@@ -10,6 +10,8 @@ import CoreLocation
 
 import Resolver
 
+import APILayer
+
 protocol DetailTreeVMProtocol {
     func setStarIconName()
     func displayTreeName() -> Text

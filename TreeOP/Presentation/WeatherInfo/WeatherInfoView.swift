@@ -16,18 +16,7 @@ struct WeatherInfoView: View {
         VStack(alignment: .center) {
             
             // Refresh Button
-            HStack {
-                Spacer()
-                Button {
-                    Task {
-                        await weatherInfoViewModel.getAllWeatherData(forceRefresh: true)
-                    }
-                } label: {
-                    Image(systemName: String(localized:"refreshArrowIcon"))
-                        .padding()
-                        .foregroundColor(.primary)
-                }
-            }
+            RefreshButtonView()
             
             Spacer()
             

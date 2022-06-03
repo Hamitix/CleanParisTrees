@@ -8,6 +8,8 @@
 import SwiftUI
 import Resolver
 
+import DataLayer
+
 @main
 struct TreeOPApp: App {
     
