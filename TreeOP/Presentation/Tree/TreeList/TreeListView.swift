@@ -55,6 +55,7 @@ struct TreeListView: View {
                     
                     .navigationTitle(Text("titleMainView"))
                     .navigationViewStyle(.stack)
+                    .accessibilityIdentifier("treeList")
                 }
             }
             

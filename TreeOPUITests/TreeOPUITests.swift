@@ -7,35 +7,59 @@
 
 import XCTest
 
+import Quick
+import Nimble
+
 class TreeOPUITests: XCTestCase {
-
+    
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+        app.launchArguments = ["testing"]
+        app.launch()
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testNavigationTitleOnLaunch() {
+        // XCTAssertTrue(self.app.navigationBars["Liste des Arbres"].exists)
+        expect(self.app.navigationBars["Liste des Arbres"].exists).to(beTrue())
     }
+    
+    func testGoToDetailPageOfFirstTreeOfTheList() {
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+        let cellCounts = app.tables["treeList"].cells.count
+        
+        // XCTAssertTrue(cellCounts > 0)
+        // XCTAssertTrue(cellCounts == 20)
+        expect(cellCounts).to(beGreaterThan(0))
+        expect(cellCounts).to(equal(20))
+        
+        let firstTree = app.tables["treeList"].cells.element(boundBy: 0)
+                
+        // XCTAssertTrue(firstTree.exists)
+        expect(firstTree.exists).to(beTrue())
+        firstTree.tap()
+    }
+    
+    func testGoToWeatherViewAndReloadData() {
+                
+        // XCTAssertTrue(self.app.buttons["Météo"].exists)
+        expect(self.app.buttons["Météo"].exists).to(beTrue())
+        let weatherButton = self.app.buttons["Météo"]
+        weatherButton.tap()
+    
+        // XCTAssertTrue(self.app.buttons["Actualiser"].exists)
+        expect(self.app.buttons["Actualiser"].exists).to(beTrue())
+        let reloadDataButton = self.app.buttons["Actualiser"]
+        reloadDataButton.tap()
+    
+        // The data was reload without failure
+        // XCTAssertFalse(self.app.staticTexts["Impossible de traiter les données"].exists)
+        expect(self.app.staticTexts["Impossible de traiter les données"].exists).to(beFalse())
     }
 }
