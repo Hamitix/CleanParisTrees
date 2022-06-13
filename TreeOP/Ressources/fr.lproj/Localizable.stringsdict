@@ -5,7 +5,7 @@
 	<key>titleApp</key>
 	<string>Arbre OP</string>
 	<key>titleMainView</key>
-	<string>Listes des Arbres</string>
+	<string>Liste des Arbres</string>
 	<key>Species %@</key>
 	<string>**Espèce** : %@</string>
 	<key>Height %lld</key>
