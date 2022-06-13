@@ -34,6 +34,7 @@ class BookmarkStore: ObservableObject {
     }
     
     func reset(){
+        treeIDs.removeAll()
         UserDefaults.standard.set([]  as [Int], forKey: K.UserDefaults.keyFavTrees)
     }
 }

@@ -15,6 +15,13 @@
 		A85C920F2837F6F900CC72AB /* Helper Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C920E2837F6F900CC72AB /* Helper Extensions.swift */; };
 		A85C9211283BAED500CC72AB /* ClusterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C9210283BAED500CC72AB /* ClusterMapView.swift */; };
 		A85C9214283CCE4400CC72AB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C9213283CCE4400CC72AB /* ErrorView.swift */; };
+		A85DA34C28534DBD00612823 /* Resolver+XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA34B28534DBD00612823 /* Resolver+XCTest.swift */; };
+		A85DA35028536A5C00612823 /* BookmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA34F28536A5C00612823 /* BookmarkTests.swift */; };
+		A85DA35228536D2700612823 /* MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA35128536D2700612823 /* MapTests.swift */; };
+		A85DA3552853813100612823 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = A85DA3542853813100612823 /* Resolver */; };
+		A85DA35D28571CF400612823 /* MockGetTreeListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA35C28571CF400612823 /* MockGetTreeListUseCase.swift */; };
+		A85DA3622857298800612823 /* MockGeolocatedTreeDataMain.json in Resources */ = {isa = PBXBuildFile; fileRef = A85DA3612857298800612823 /* MockGeolocatedTreeDataMain.json */; };
+		A85DA36428572C0600612823 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA36328572C0600612823 /* XCTestCase.swift */; };
 		A86BD2E92809B27000FB3102 /* TreeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BD2E82809B27000FB3102 /* TreeItemView.swift */; };
 		A89107C028327B9700C7A7F1 /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */; };
 		A89107C2283284C300C7A7F1 /* CenterLocationIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C1283284C300C7A7F1 /* CenterLocationIcon.swift */; };
@@ -50,7 +57,7 @@
 		A8E2D09A2800626E0088CFDD /* TreeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0992800626E0088CFDD /* TreeListView.swift */; };
 		A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E2D09B2800626F0088CFDD /* Assets.xcassets */; };
 		A8E2D09F2800626F0088CFDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E2D09E2800626F0088CFDD /* Preview Assets.xcassets */; };
-		A8E2D0A92800626F0088CFDD /* TreeOPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0A82800626F0088CFDD /* TreeOPTests.swift */; };
+		A8E2D0A92800626F0088CFDD /* TreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0A82800626F0088CFDD /* TreeTests.swift */; };
 		A8E2D0B32800626F0088CFDD /* TreeOPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0B22800626F0088CFDD /* TreeOPUITests.swift */; };
 		A8E2D0B52800626F0088CFDD /* TreeOPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0B42800626F0088CFDD /* TreeOPUITestsLaunchTests.swift */; };
 		A8E2D0CD28006D270088CFDD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2D0CC28006D270088CFDD /* Constants.swift */; };
@@ -103,6 +110,13 @@
 		A85C920E2837F6F900CC72AB /* Helper Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Extensions.swift"; sourceTree = "<group>"; };
 		A85C9210283BAED500CC72AB /* ClusterMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterMapView.swift; sourceTree = "<group>"; };
 		A85C9213283CCE4400CC72AB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		A85DA34B28534DBD00612823 /* Resolver+XCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+XCTest.swift"; sourceTree = "<group>"; };
+		A85DA34F28536A5C00612823 /* BookmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTests.swift; sourceTree = "<group>"; };
+		A85DA35128536D2700612823 /* MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTests.swift; sourceTree = "<group>"; };
+		A85DA35B28571C7200612823 /* MockGeolocatedTreeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockGeolocatedTreeData.json; sourceTree = "<group>"; };
+		A85DA35C28571CF400612823 /* MockGetTreeListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetTreeListUseCase.swift; sourceTree = "<group>"; };
+		A85DA3612857298800612823 /* MockGeolocatedTreeDataMain.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockGeolocatedTreeDataMain.json; sourceTree = "<group>"; };
+		A85DA36328572C0600612823 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		A86BD2E82809B27000FB3102 /* TreeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItemView.swift; sourceTree = "<group>"; };
 		A89107BE2832551900C7A7F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapMarker.swift; sourceTree = "<group>"; };
@@ -140,7 +154,7 @@
 		A8E2D09B2800626F0088CFDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8E2D09E2800626F0088CFDD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A8E2D0A42800626F0088CFDD /* TreeOPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeOPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8E2D0A82800626F0088CFDD /* TreeOPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPTests.swift; sourceTree = "<group>"; };
+		A8E2D0A82800626F0088CFDD /* TreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTests.swift; sourceTree = "<group>"; };
 		A8E2D0AE2800626F0088CFDD /* TreeOPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeOPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E2D0B22800626F0088CFDD /* TreeOPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPUITests.swift; sourceTree = "<group>"; };
 		A8E2D0B42800626F0088CFDD /* TreeOPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeOPUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -168,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85DA3552853813100612823 /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +223,49 @@
 				A85C9213283CCE4400CC72AB /* ErrorView.swift */,
 			);
 			path = Overlays;
+			sourceTree = "<group>";
+		};
+		A85DA34A28534DAC00612823 /* Resolver */ = {
+			isa = PBXGroup;
+			children = (
+				A85DA34B28534DBD00612823 /* Resolver+XCTest.swift */,
+			);
+			path = Resolver;
+			sourceTree = "<group>";
+		};
+		A85DA34D28534E5200612823 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A8E2D0A82800626F0088CFDD /* TreeTests.swift */,
+				A85DA34F28536A5C00612823 /* BookmarkTests.swift */,
+				A85DA35128536D2700612823 /* MapTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		A85DA35328537D7500612823 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A85DA35C28571CF400612823 /* MockGetTreeListUseCase.swift */,
+				A85DA3652857422700612823 /* Data */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A85DA35E28571EFE00612823 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A85DA36328572C0600612823 /* XCTestCase.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A85DA3652857422700612823 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A85DA35B28571C7200612823 /* MockGeolocatedTreeData.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		A86C88DA2848BC03001F2F6E /* Frameworks */ = {
@@ -323,6 +381,7 @@
 				A8D58E2E2805814A009C3705 /* Localizable.stringsdict */,
 				A8C7F0D728115D84009E87C8 /* Localizable.strings */,
 				A89107C32832998000C7A7F1 /* InfoPlist.strings */,
+				A85DA3612857298800612823 /* MockGeolocatedTreeDataMain.json */,
 			);
 			path = Ressources;
 			sourceTree = "<group>";
@@ -382,7 +441,10 @@
 		A8E2D0A72800626F0088CFDD /* TreeOPTests */ = {
 			isa = PBXGroup;
 			children = (
-				A8E2D0A82800626F0088CFDD /* TreeOPTests.swift */,
+				A85DA34D28534E5200612823 /* Tests */,
+				A85DA34A28534DAC00612823 /* Resolver */,
+				A85DA35328537D7500612823 /* Mocks */,
+				A85DA35E28571EFE00612823 /* Extension */,
 			);
 			path = TreeOPTests;
 			sourceTree = "<group>";
@@ -453,6 +515,9 @@
 				A8E2D0A62800626F0088CFDD /* PBXTargetDependency */,
 			);
 			name = TreeOPTests;
+			packageProductDependencies = (
+				A85DA3542853813100612823 /* Resolver */,
+			);
 			productName = TreeOPTests;
 			productReference = A8E2D0A42800626F0088CFDD /* TreeOPTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -531,6 +596,7 @@
 				A8C73B30282A9D2B009B440A /* Localizable.strings in Resources */,
 				A8E2D09F2800626F0088CFDD /* Preview Assets.xcassets in Resources */,
 				A8E2D09C2800626F0088CFDD /* Assets.xcassets in Resources */,
+				A85DA3622857298800612823 /* MockGeolocatedTreeDataMain.json in Resources */,
 				A89107C52832998000C7A7F1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,7 +666,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8E2D0A92800626F0088CFDD /* TreeOPTests.swift in Sources */,
+				A85DA34C28534DBD00612823 /* Resolver+XCTest.swift in Sources */,
+				A85DA35028536A5C00612823 /* BookmarkTests.swift in Sources */,
+				A85DA36428572C0600612823 /* XCTestCase.swift in Sources */,
+				A85DA35D28571CF400612823 /* MockGetTreeListUseCase.swift in Sources */,
+				A85DA35228536D2700612823 /* MapTests.swift in Sources */,
+				A8E2D0A92800626F0088CFDD /* TreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +1031,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A85DA3542853813100612823 /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A89C9ED628210FD800BE73C4 /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
 		A89C9ED728210FD800BE73C4 /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A89C9ED628210FD800BE73C4 /* XCRemoteSwiftPackageReference "Resolver" */;

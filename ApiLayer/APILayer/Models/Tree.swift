@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Tree {
+public struct Tree: Codable {
     public let id: Int
     public let name: String?
     public let species: String?

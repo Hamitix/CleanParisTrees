@@ -26,7 +26,7 @@ protocol TreeListVMProtocol {
 class TreeListViewModel: ObservableObject, TreeListVMProtocol {
     
     //MARK: Properties
-    @Injected private var bookmarkStore: BookmarkStore
+    @Injected var bookmarkStore: BookmarkStore
     @Injected var treeStore: TreeStore
     @Injected var networkMonitor: NetworkMonitor
     

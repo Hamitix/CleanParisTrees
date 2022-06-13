@@ -6,12 +6,13 @@
 //
 
 import Foundation
-import Resolver
 import CoreLocation
 import MapKit
 
 import APILayer
 import DomainLayer
+
+import Resolver
 
 protocol MapVMProtocol {
     func initLocation()
@@ -30,10 +31,10 @@ class MapViewModel: CLLocationManager, CLLocationManagerDelegate, ObservableObje
     
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: K.Map.latParis, longitude: K.Map.longParis), span: MKCoordinateSpan(latitudeDelta: K.Map.latitudeDelta, longitudeDelta: K.Map.longitudeDelta))
     
-    private let locationManager: CLLocationManager = CLLocationManager()
-    
     @Published var selectedTree: GeolocatedTree = GeolocatedTree.mock
     @Published var navigateToSelectedTreeDetailView: Bool = false
+    
+    private let locationManager: CLLocationManager = CLLocationManager()
     
     @Injected var networkMonitor: NetworkMonitor
     @Injected var getTreeListUseCase: GetTreeList

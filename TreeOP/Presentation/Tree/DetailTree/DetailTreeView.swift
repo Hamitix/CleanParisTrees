@@ -77,5 +77,6 @@ struct DetailTreeView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailTreeView(detailViewModel: Resolver.resolve(args: GeolocatedTree.mock))
+            .preferredColorScheme(.dark)
     }
 }

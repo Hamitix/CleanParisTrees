@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GeolocatedTree: Identifiable {
+public struct GeolocatedTree: Identifiable, Codable {
     public let tree: Tree
     public let lng: Double
     public let lat: Double
