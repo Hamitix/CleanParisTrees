@@ -22,6 +22,11 @@
 		A85DA35D28571CF400612823 /* MockGetTreeListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA35C28571CF400612823 /* MockGetTreeListUseCase.swift */; };
 		A85DA3622857298800612823 /* MockGeolocatedTreeDataMain.json in Resources */ = {isa = PBXBuildFile; fileRef = A85DA3612857298800612823 /* MockGeolocatedTreeDataMain.json */; };
 		A85DA36428572C0600612823 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA36328572C0600612823 /* XCTestCase.swift */; };
+		A85DA36C28575B5800612823 /* QNTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA36B28575B5800612823 /* QNTreeTests.swift */; };
+		A85DA36F28575BD400612823 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = A85DA36E28575BD400612823 /* Quick */; };
+		A85DA37228575CFE00612823 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = A85DA37128575CFE00612823 /* Nimble */; };
+		A85DA3742857621500612823 /* QNBookmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA3732857621500612823 /* QNBookmarkTests.swift */; };
+		A85DA3762857630400612823 /* QNMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85DA3752857630400612823 /* QNMapTests.swift */; };
 		A86BD2E92809B27000FB3102 /* TreeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86BD2E82809B27000FB3102 /* TreeItemView.swift */; };
 		A89107C028327B9700C7A7F1 /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */; };
 		A89107C2283284C300C7A7F1 /* CenterLocationIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89107C1283284C300C7A7F1 /* CenterLocationIcon.swift */; };
@@ -117,6 +122,9 @@
 		A85DA35C28571CF400612823 /* MockGetTreeListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetTreeListUseCase.swift; sourceTree = "<group>"; };
 		A85DA3612857298800612823 /* MockGeolocatedTreeDataMain.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockGeolocatedTreeDataMain.json; sourceTree = "<group>"; };
 		A85DA36328572C0600612823 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
+		A85DA36B28575B5800612823 /* QNTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QNTreeTests.swift; sourceTree = "<group>"; };
+		A85DA3732857621500612823 /* QNBookmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QNBookmarkTests.swift; sourceTree = "<group>"; };
+		A85DA3752857630400612823 /* QNMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QNMapTests.swift; sourceTree = "<group>"; };
 		A86BD2E82809B27000FB3102 /* TreeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeItemView.swift; sourceTree = "<group>"; };
 		A89107BE2832551900C7A7F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A89107BF28327B9700C7A7F1 /* CustomMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapMarker.swift; sourceTree = "<group>"; };
@@ -182,6 +190,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85DA37228575CFE00612823 /* Nimble in Frameworks */,
+				A85DA36F28575BD400612823 /* Quick in Frameworks */,
 				A85DA3552853813100612823 /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,9 +246,8 @@
 		A85DA34D28534E5200612823 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A8E2D0A82800626F0088CFDD /* TreeTests.swift */,
-				A85DA34F28536A5C00612823 /* BookmarkTests.swift */,
-				A85DA35128536D2700612823 /* MapTests.swift */,
+				A85DA36A28575B3E00612823 /* Quick & Nimble */,
+				A85DA36928575B3400612823 /* XCTest */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -266,6 +275,26 @@
 				A85DA35B28571C7200612823 /* MockGeolocatedTreeData.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		A85DA36928575B3400612823 /* XCTest */ = {
+			isa = PBXGroup;
+			children = (
+				A8E2D0A82800626F0088CFDD /* TreeTests.swift */,
+				A85DA34F28536A5C00612823 /* BookmarkTests.swift */,
+				A85DA35128536D2700612823 /* MapTests.swift */,
+			);
+			path = XCTest;
+			sourceTree = "<group>";
+		};
+		A85DA36A28575B3E00612823 /* Quick & Nimble */ = {
+			isa = PBXGroup;
+			children = (
+				A85DA36B28575B5800612823 /* QNTreeTests.swift */,
+				A85DA3732857621500612823 /* QNBookmarkTests.swift */,
+				A85DA3752857630400612823 /* QNMapTests.swift */,
+			);
+			path = "Quick & Nimble";
 			sourceTree = "<group>";
 		};
 		A86C88DA2848BC03001F2F6E /* Frameworks */ = {
@@ -517,6 +546,8 @@
 			name = TreeOPTests;
 			packageProductDependencies = (
 				A85DA3542853813100612823 /* Resolver */,
+				A85DA36E28575BD400612823 /* Quick */,
+				A85DA37128575CFE00612823 /* Nimble */,
 			);
 			productName = TreeOPTests;
 			productReference = A8E2D0A42800626F0088CFDD /* TreeOPTests.xctest */;
@@ -575,6 +606,8 @@
 			mainGroup = A8E2D08B2800626D0088CFDD;
 			packageReferences = (
 				A89C9ED628210FD800BE73C4 /* XCRemoteSwiftPackageReference "Resolver" */,
+				A85DA36D28575BD400612823 /* XCRemoteSwiftPackageReference "Quick" */,
+				A85DA37028575CFE00612823 /* XCRemoteSwiftPackageReference "Nimble" */,
 			);
 			productRefGroup = A8E2D0952800626E0088CFDD /* Products */;
 			projectDirPath = "";
@@ -666,12 +699,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85DA3742857621500612823 /* QNBookmarkTests.swift in Sources */,
 				A85DA34C28534DBD00612823 /* Resolver+XCTest.swift in Sources */,
 				A85DA35028536A5C00612823 /* BookmarkTests.swift in Sources */,
+				A85DA3762857630400612823 /* QNMapTests.swift in Sources */,
 				A85DA36428572C0600612823 /* XCTestCase.swift in Sources */,
 				A85DA35D28571CF400612823 /* MockGetTreeListUseCase.swift in Sources */,
 				A85DA35228536D2700612823 /* MapTests.swift in Sources */,
 				A8E2D0A92800626F0088CFDD /* TreeTests.swift in Sources */,
+				A85DA36C28575B5800612823 /* QNTreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,6 +1056,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A85DA36D28575BD400612823 /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		A85DA37028575CFE00612823 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		A89C9ED628210FD800BE73C4 /* XCRemoteSwiftPackageReference "Resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Resolver.git";
@@ -1035,6 +1087,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A89C9ED628210FD800BE73C4 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
+		};
+		A85DA36E28575BD400612823 /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A85DA36D28575BD400612823 /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+		A85DA37128575CFE00612823 /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A85DA37028575CFE00612823 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
 		};
 		A89C9ED728210FD800BE73C4 /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
