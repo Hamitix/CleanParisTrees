@@ -62,6 +62,8 @@ struct DetailTreeView: View {
                 Image(systemName: detailViewModel.starIconName)
                     .foregroundColor(.yellow)
             }
+            .accessibilityAddTraits(.isButton)
+            .accessibilityAddTraits(detailViewModel.isTreeInFavourites() ? .isSelected : [])  
         })
         
         .onAppear {

@@ -33,6 +33,7 @@ struct WeatherItemView: View {
             }
         }
         .padding()
+        .accessibilityElement(children: .combine)
     }
 }
 
