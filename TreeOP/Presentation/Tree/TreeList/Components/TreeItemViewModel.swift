@@ -32,7 +32,7 @@ class TreeItemViewModel: ObservableObject {
         isFavorite.toggle()
     }
     
-    func getIsFavorite() {x
+    func getIsFavorite() {
         self.isFavorite = bookmarkStore.isFavorite(id: glTree.id)
     }
     
