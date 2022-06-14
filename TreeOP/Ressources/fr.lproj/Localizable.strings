@@ -46,3 +46,9 @@
 "temperatureURL %@ %@" = "https://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&appid=bffc2bd3a2ab6f94b7cdfd793266b8c4&units=metric";
 
 "aqiURL %@ %@" = "https://api.openweathermap.org/data/2.5/air_pollution?lat=%@&lon=%@&appid=bffc2bd3a2ab6f94b7cdfd793266b8c4&units=metric";
+
+//MARK: Accessibility
+
+"hintGoToDetailTree" = "Voir les détails de l'arbre";
+"labelGoToDetailTree %@" = "%@";
+"labelGoToDetailTreeFav %@" = "%@, dans vos favoris";

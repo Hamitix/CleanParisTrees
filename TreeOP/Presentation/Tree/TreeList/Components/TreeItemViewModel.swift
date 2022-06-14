@@ -19,20 +19,28 @@ class TreeItemViewModel: ObservableObject {
     
     @LazyInjected private var bookmarkStore: BookmarkStore
     
-    @Published var tree: GeolocatedTree
+    @Published var glTree: GeolocatedTree
     @Published var isFavorite: Bool = false
     
     init(tree: GeolocatedTree) {
-        self.tree = tree
+        self.glTree = tree
         self.isFavorite = self.bookmarkStore.isFavorite(id: tree.id)
     }
     
     func toggleFavorite() {
-        bookmarkStore.toggleFavorite(treeID: tree.id)
+        bookmarkStore.toggleFavorite(treeID: glTree.id)
         isFavorite.toggle()
     }
     
-    func getIsFavorite() {
-        self.isFavorite = bookmarkStore.isFavorite(id: tree.id)
+    func getIsFavorite() {x
+        self.isFavorite = bookmarkStore.isFavorite(id: glTree.id)
+    }
+    
+    func getAccessibilityLabel() -> String.LocalizationValue {
+        if let treeName = glTree.tree.name {
+            return isFavorite ? "labelGoToDetailTreeFav \(treeName)" : "labelGoToDetailTree \(treeName)"
+        } else {
+            return "No Name"
+        }
     }
 }

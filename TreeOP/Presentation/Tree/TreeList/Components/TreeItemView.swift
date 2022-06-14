@@ -15,7 +15,7 @@ struct TreeItemView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             
-            if let glTree = treeItemViewModel.tree {
+            if let glTree = treeItemViewModel.glTree {
                 
                 NavigationLink(destination: DetailTreeView(detailViewModel: Resolver.resolve(args: glTree))) {
                     Text(LocalizedStringKey(glTree.tree.name ?? String(localized: "No Name")), comment: "treeNameComment")
@@ -27,6 +27,9 @@ struct TreeItemView: View {
                 }
             }
         }
+        .accessibilityHint("hintGoToDetailTree")
+        .accessibilityLabel(String(localized: treeItemViewModel.getAccessibilityLabel()))
+        
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button {
                 treeItemViewModel.toggleFavorite()
